@@ -99,9 +99,10 @@ public class ModeloCliente {
    public void insertarCliente() {
      Conexion conect = new Conexion();
      Connection cn = conect.iniciarConexion();
-     String sql = "Call cli_ente (?,?,?,?,?,?,?";
+     String sql = "Call cli_ente (?,?,?,?,?,?,?)";
+     Date fec=(java.sql.Date) getFec();
       try {
-         PreparedStatement ps= cn.prepareStatement(sql);
+         PreparedStatement ps= cn.prepareCall(sql);
          ps.setInt(1, getDoc());
          ps.setInt(2, getSex());
           ps.setString(3, getNom());
@@ -109,6 +110,7 @@ public class ModeloCliente {
           ps.setString(5, getCor());
           ps.setString(6, getDirecc());
           ps.setDate(7, (java.sql.Date) getFec());
+          System.out.println(getFec());
           ps.executeUpdate();
          JOptionPane.showMessageDialog(null, "Registro almacenamiento", "registro", sex );
          cn.close();

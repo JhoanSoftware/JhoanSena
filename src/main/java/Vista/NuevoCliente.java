@@ -146,6 +146,8 @@ public class NuevoCliente extends javax.swing.JFrame {
 
         lblnombre.setText("Nombre :");
 
+        jdcfechanacimiento.setDateFormatString("yyyy-MM-dd");
+
         btguardarr.setText("Guardar");
 
         lbltelefono.setText("Telefono :");

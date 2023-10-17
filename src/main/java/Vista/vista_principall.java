@@ -47,6 +47,7 @@ public class vista_principall extends javax.swing.JFrame {
         jtProducto = new javax.swing.JPanel();
         jtFactura = new javax.swing.JPanel();
         jtUsuario = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
         jtCliente = new javax.swing.JPanel();
         btnuevocliente = new javax.swing.JButton();
@@ -111,21 +112,38 @@ public class vista_principall extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnNuevo)
+                .addContainerGap(454, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnNuevo)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jtUsuarioLayout = new javax.swing.GroupLayout(jtUsuario);
         jtUsuario.setLayout(jtUsuarioLayout);
         jtUsuarioLayout.setHorizontalGroup(
             jtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtUsuarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnNuevo)
-                .addContainerGap(491, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jtUsuarioLayout.setVerticalGroup(
             jtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtUsuarioLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(btnNuevo)
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(295, Short.MAX_VALUE))
         );
 
         jtprincipal.addTab("Usuario", jtUsuario);
@@ -215,6 +233,7 @@ public class vista_principall extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jtCliente;
     private javax.swing.JPanel jtFactura;
     private javax.swing.JPanel jtProducto;

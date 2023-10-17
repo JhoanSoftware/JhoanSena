@@ -65,9 +65,10 @@ public class ControladorCliente implements ActionListener {
                 mocli.setSex(sexo);
                 mocli.setTel(nucli.getTxttelefono().getText());
                 mocli.setFec(fecha);
-
+                System.out.println(mocli.getFec());
                 mocli.insertarCliente();
                 mocli.limpiar(nucli.getjPanel1().getComponents());
+                
 
             }
         }
