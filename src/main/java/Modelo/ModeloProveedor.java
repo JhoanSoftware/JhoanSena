@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 
 public class ModeloProveedor {
      private int sex, rol;
-    private String nom, dir, tel, cor, lo, indo,doc, tipoper;
+    private String nom, dir, tel, cor, lo, indo,doc, tipoper,tipodocumento;
     private Date fec;
 
     public String getDoc() {
@@ -111,6 +111,14 @@ public class ModeloProveedor {
         this.tipoper = tipoper;
     }
 
+    public String getTipodocumento() {
+        return tipodocumento;
+    }
+
+    public void setTipodocumento(String tipodocumento) {
+        this.tipodocumento = tipodocumento;
+    }
+
     public Map<String, Integer> llenarCombo(String valor) {
         Conexion conect = new Conexion();
         Connection cn = conect.iniciarConexion();
@@ -135,15 +143,15 @@ public class ModeloProveedor {
         String sql = "Call pro_veedor(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
-         ps.setString(2, getDoc());
-         ps.setInt(1, getSex());
+            ps.setString(1, getTipodocumento());
+         ps.setInt(2, getSex());
           ps.setString(3, getNom());
           ps.setString(4, getCor());
           ps.setString(5, getTel());
           ps.setString(6, getDir());
           ps.setString(7, getTipoper());
-           ps.setDate(8, (java.sql.Date) getFec());
-           ps.executeUpdate();
+          ps.setDate(8, (java.sql.Date) getFec());
+          ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Registro almacenamiento", "registro", sex);
             cn.close();
         } catch (SQLException e) {

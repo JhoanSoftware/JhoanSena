@@ -22,7 +22,7 @@ public class ModeloCliente {
     Connection cn = conect.iniciarConexion();
     
     private int doc,sex;
-    private String nom,tel,cor, direcc;
+    private String nom,tel,cor, direcc,tipodocu;
     private Date fec;
 
     public int getDoc() {
@@ -80,6 +80,16 @@ public class ModeloCliente {
     public void setDirecc(String direcc) {
         this.direcc = direcc;
     }
+
+    public String getTipodocu() {
+        return tipodocu;
+    }
+
+    public void setTipodocu(String tipodocu) {
+        this.tipodocu = tipodocu;
+    }
+
+   
     
      public Map<String,Integer> llenarCombo(String valor){
         String sql="Select * from mostrar_"+valor;
@@ -99,17 +109,19 @@ public class ModeloCliente {
    public void insertarCliente() {
      Conexion conect = new Conexion();
      Connection cn = conect.iniciarConexion();
-     String sql = "Call cli_ente (?,?,?,?,?,?,?)";
+     String sql = "Call cli_ente (?,?,?,?,?,?,?,?)";
      Date fec=(java.sql.Date) getFec();
       try {
          PreparedStatement ps= cn.prepareCall(sql);
          ps.setInt(1, getDoc());
-         ps.setInt(2, getSex());
-          ps.setString(3, getNom());
-          ps.setString(4, getTel());
-          ps.setString(5, getCor());
-          ps.setString(6, getDirecc());
-          ps.setDate(7, (java.sql.Date) getFec());
+         ps.setString(2, getTipodocu());
+         ps.setInt(3, getSex());
+          ps.setString(4, getNom());
+          ps.setString(5, getTel());
+          ps.setString(6, getCor());
+          ps.setString(7, getDirecc());
+          ps.setDate(8, (java.sql.Date) getFec());
+          
           System.out.println(getFec());
           ps.executeUpdate();
          JOptionPane.showMessageDialog(null, "Registro almacenamiento", "registro", sex );

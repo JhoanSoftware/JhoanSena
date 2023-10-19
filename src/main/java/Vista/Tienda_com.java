@@ -175,6 +175,9 @@ public class Tienda_com extends javax.swing.JFrame {
         lblobligatorio3 = new javax.swing.JLabel();
         lblcargo = new javax.swing.JLabel();
         lbllogin = new javax.swing.JLabel();
+        lblseledo = new javax.swing.JLabel();
+        cbxseleccdo = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -266,6 +269,14 @@ public class Tienda_com extends javax.swing.JFrame {
 
         lbllogin.setText("Login");
 
+        lblseledo.setText("Tipo de documento");
+
+        cbxseleccdo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione....", "Cedula", "Tarjeta identidad", "Pasaporte", "Nit" }));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel3.setText("*");
+
         javax.swing.GroupLayout JpnuevousuLayout = new javax.swing.GroupLayout(Jpnuevousu);
         Jpnuevousu.setLayout(JpnuevousuLayout);
         JpnuevousuLayout.setHorizontalGroup(
@@ -273,38 +284,45 @@ public class Tienda_com extends javax.swing.JFrame {
             .addGroup(JpnuevousuLayout.createSequentialGroup()
                 .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JpnuevousuLayout.createSequentialGroup()
-                        .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbldocumento)
-                            .addComponent(lbldireccion)
-                            .addComponent(lblcorreo)
-                            .addComponent(lblcargo)
-                            .addComponent(lbllogin)
-                            .addComponent(lblclave)
-                            .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lbltelefono)
-                                .addComponent(lblnombre))
-                            .addComponent(lblfechanacimiento)
-                            .addComponent(lblsexo))
-                        .addGap(18, 18, 18)
-                        .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(JpnuevousuLayout.createSequentialGroup()
-                                .addComponent(btguardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btcancelar)
-                                .addGap(19, 19, 19))
-                            .addComponent(txtdocumento)
-                            .addComponent(txtnombre)
-                            .addComponent(txttelefono)
-                            .addComponent(txtcorreo)
-                            .addComponent(txtdireccion)
-                            .addComponent(CbxCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtlogin)
-                            .addGroup(JpnuevousuLayout.createSequentialGroup()
-                                .addComponent(pfppassword, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btojito))
-                            .addComponent(Jcvsexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JpnuevousuLayout.createSequentialGroup()
+                                .addComponent(lblseledo)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbxseleccdo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JpnuevousuLayout.createSequentialGroup()
+                                .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbldocumento)
+                                    .addComponent(lbldireccion)
+                                    .addComponent(lblcorreo)
+                                    .addComponent(lblcargo)
+                                    .addComponent(lbllogin)
+                                    .addComponent(lblclave)
+                                    .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lbltelefono)
+                                        .addComponent(lblnombre))
+                                    .addComponent(lblfechanacimiento)
+                                    .addComponent(lblsexo))
+                                .addGap(18, 18, 18)
+                                .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtdocumento)
+                                    .addComponent(txtnombre)
+                                    .addComponent(txttelefono)
+                                    .addComponent(txtcorreo)
+                                    .addComponent(txtdireccion)
+                                    .addComponent(CbxCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtlogin)
+                                    .addGroup(JpnuevousuLayout.createSequentialGroup()
+                                        .addComponent(pfppassword, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btojito))
+                                    .addComponent(Jcvsexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(JpnuevousuLayout.createSequentialGroup()
+                                        .addComponent(btguardar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btcancelar)
+                                        .addGap(20, 20, 20)))))
                         .addGap(18, 18, 18)
                         .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblobligatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,16 +334,22 @@ public class Tienda_com extends javax.swing.JFrame {
                             .addComponent(lblobligatorio4)
                             .addComponent(lblobligatorio6)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2)))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)))
                     .addGroup(JpnuevousuLayout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addComponent(lblnuevousuario)))
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
         JpnuevousuLayout.setVerticalGroup(
             JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JpnuevousuLayout.createSequentialGroup()
                 .addComponent(lblnuevousuario)
+                .addGap(28, 28, 28)
+                .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblseledo)
+                    .addComponent(cbxseleccdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(JpnuevousuLayout.createSequentialGroup()
@@ -387,11 +411,11 @@ public class Tienda_com extends javax.swing.JFrame {
                     .addComponent(lblfechanacimiento)
                     .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btguardar)
                     .addComponent(btcancelar))
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -407,8 +431,8 @@ public class Tienda_com extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(Jpnuevousu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Jpnuevousu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -435,8 +459,10 @@ public class Tienda_com extends javax.swing.JFrame {
     private javax.swing.JButton btcancelar;
     private javax.swing.JButton btguardar;
     private javax.swing.JButton btojito;
+    private javax.swing.JComboBox<String> cbxseleccdo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private com.toedter.calendar.JDateChooser jdcfecha;
     private javax.swing.JLabel lblcargo;
     private javax.swing.JLabel lblclave;
@@ -455,6 +481,7 @@ public class Tienda_com extends javax.swing.JFrame {
     private javax.swing.JLabel lblobligatorio4;
     private javax.swing.JLabel lblobligatorio5;
     private javax.swing.JLabel lblobligatorio6;
+    private javax.swing.JLabel lblseledo;
     private javax.swing.JLabel lblsexo;
     private javax.swing.JLabel lbltelefono;
     private javax.swing.JPasswordField pfppassword;

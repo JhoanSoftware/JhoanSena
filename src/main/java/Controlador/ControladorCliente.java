@@ -48,7 +48,7 @@ public class ControladorCliente implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(nucli.getBtguardarr())) {
-            if (((nucli.getTxtdocumento().getText().isEmpty()) || (nucli.getCbxsexo().getSelectedItem().equals("Seleccione...")) || (nucli.getTxtnombre().getText().isEmpty()) || (nucli.getTxttelefono().getText().isEmpty()) || (nucli.getTxtcorreo().getText().isEmpty()) || (nucli.getTxtdireccion().getText().isEmpty()) || (nucli.getJdcfechanacimiento().getDate() == null))) {
+            if (((nucli.getTxtdocumento().getText().isEmpty()) || (nucli.getCbxtipodocumento().getSelectedItem().equals("Seleccione...")) || (nucli.getCbxsexo().getSelectedItem().equals("Seleccione...")) || (nucli.getTxtnombre().getText().isEmpty()) || (nucli.getTxttelefono().getText().isEmpty()) || (nucli.getTxtcorreo().getText().isEmpty()) || (nucli.getTxtdireccion().getText().isEmpty()) || (nucli.getJdcfechanacimiento().getDate() == null))) {
                 JOptionPane.showMessageDialog(null, "Falta Informacion");
             } else {
                 JOptionPane.showMessageDialog(null, "Exito");
@@ -65,6 +65,7 @@ public class ControladorCliente implements ActionListener {
                 mocli.setSex(sexo);
                 mocli.setTel(nucli.getTxttelefono().getText());
                 mocli.setFec(fecha);
+                mocli.setTipodocu(nucli.getCbxtipodocumento().getSelectedItem().toString());
                 System.out.println(mocli.getFec());
                 mocli.insertarCliente();
                 mocli.limpiar(nucli.getjPanel1().getComponents());

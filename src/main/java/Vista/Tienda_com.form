@@ -32,10 +32,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Component id="Jpnuevousu" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="Jpnuevousu" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,45 +46,55 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbldocumento" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbldireccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblcorreo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblcargo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbllogin" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblclave" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="lbltelefono" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblnombre" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="lblfechanacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblsexo" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btguardar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btcancelar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Component id="lblseledo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="cbxseleccdo" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="txtdocumento" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtnombre" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txttelefono" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtcorreo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtdireccion" alignment="0" max="32767" attributes="0"/>
-                              <Component id="CbxCargo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtlogin" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="pfppassword" min="-2" pref="171" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btojito" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lbldocumento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbldireccion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblcorreo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblcargo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbllogin" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblclave" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Component id="lbltelefono" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblnombre" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="lblfechanacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblsexo" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtdocumento" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtnombre" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txttelefono" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtcorreo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtdireccion" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="CbxCargo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtlogin" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="pfppassword" min="-2" pref="171" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="btojito" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="Jcvsexo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jdcfecha" min="-2" pref="220" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="btguardar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="btcancelar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <Component id="Jcvsexo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jdcfecha" min="-2" pref="220" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -98,6 +108,7 @@
                               <Component id="lblobligatorio6" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -105,7 +116,7 @@
                           <Component id="lblnuevousuario" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -113,6 +124,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="lblnuevousuario" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblseledo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbxseleccdo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
@@ -193,12 +210,12 @@
                       <Component id="jdcfecha" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btguardar" min="-2" max="-2" attributes="0"/>
-                      <Component id="btcancelar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btguardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btcancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -436,6 +453,38 @@
         <Component class="javax.swing.JLabel" name="lbllogin">
           <Properties>
             <Property name="text" type="java.lang.String" value="Login"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblseledo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tipo de documento"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cbxseleccdo">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Seleccione...."/>
+                <StringItem index="1" value="Cedula"/>
+                <StringItem index="2" value="Tarjeta identidad"/>
+                <StringItem index="3" value="Pasaporte"/>
+                <StringItem index="4" value="Nit"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
         </Component>
       </SubComponents>

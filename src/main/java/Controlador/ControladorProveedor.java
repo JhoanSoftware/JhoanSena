@@ -74,7 +74,7 @@ public class ControladorProveedor implements ActionListener{
                         long fe = fec.getTime();
                         java.sql.Date fecha = new Date(fe);
 
-                        mopro.setDoc(nupro.getCbxtipodocumento().getSelectedItem().toString());
+                     
                         mopro.setNom(nupro.getTxtnombree().getText());
                         mopro.setCor(nupro.getTxtcorreoo().getText());
                         mopro.setDir(nupro.getTxtdireccion().getText());
@@ -82,6 +82,7 @@ public class ControladorProveedor implements ActionListener{
                         mopro.setTecl(nupro.getTxttelefonoo().getText());
                         mopro.setFec(fecha);
                         mopro.setTipoper(nupro.getCbxtipopersona().getSelectedItem().toString());
+                        mopro.setTipodocumento(nupro.getCbxtipodocumento().getSelectedItem().toString());
 
                         mopro.insertarUsuario();
                         mopro.limpiar(nupro.getjPanel1().getComponents());

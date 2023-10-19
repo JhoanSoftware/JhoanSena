@@ -46,6 +46,8 @@ public class vista_principall extends javax.swing.JFrame {
         btnuevoproveedor = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbprovee = new javax.swing.JTable();
+        txtbuscarproo = new javax.swing.JTextField();
+        btbuscarprovee = new javax.swing.JButton();
         jtProducto = new javax.swing.JPanel();
         jtFactura = new javax.swing.JPanel();
         jtUsuario = new javax.swing.JPanel();
@@ -58,6 +60,8 @@ public class vista_principall extends javax.swing.JFrame {
         btnuevocliente = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbcliente = new javax.swing.JTable();
+        txtbuscarcli = new javax.swing.JTextField();
+        btbuscarcli = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -79,6 +83,11 @@ public class vista_principall extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tbprovee);
 
+        txtbuscarproo.setForeground(new java.awt.Color(204, 204, 204));
+        txtbuscarproo.setText("Buscar Proveedor");
+
+        btbuscarprovee.setText("BuscarProvee");
+
         javax.swing.GroupLayout jtProveedorLayout = new javax.swing.GroupLayout(jtProveedor);
         jtProveedor.setLayout(jtProveedorLayout);
         jtProveedorLayout.setHorizontalGroup(
@@ -87,7 +96,11 @@ public class vista_principall extends javax.swing.JFrame {
                 .addGroup(jtProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jtProveedorLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnuevoproveedor))
+                        .addComponent(btnuevoproveedor)
+                        .addGap(187, 187, 187)
+                        .addComponent(txtbuscarproo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btbuscarprovee))
                     .addGroup(jtProveedorLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -97,7 +110,10 @@ public class vista_principall extends javax.swing.JFrame {
             jtProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtProveedorLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(btnuevoproveedor)
+                .addGroup(jtProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnuevoproveedor)
+                    .addComponent(txtbuscarproo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btbuscarprovee))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                 .addGap(321, 321, 321))
@@ -206,6 +222,11 @@ public class vista_principall extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tbcliente);
 
+        txtbuscarcli.setForeground(new java.awt.Color(204, 204, 204));
+        txtbuscarcli.setText("Buscar Cliente");
+
+        btbuscarcli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
+
         javax.swing.GroupLayout jtClienteLayout = new javax.swing.GroupLayout(jtCliente);
         jtCliente.setLayout(jtClienteLayout);
         jtClienteLayout.setHorizontalGroup(
@@ -214,20 +235,27 @@ public class vista_principall extends javax.swing.JFrame {
                 .addGroup(jtClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jtClienteLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(btnuevocliente))
+                        .addComponent(btnuevocliente)
+                        .addGap(103, 103, 103)
+                        .addComponent(txtbuscarcli, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(btbuscarcli))
                     .addGroup(jtClienteLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jtClienteLayout.setVerticalGroup(
             jtClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtClienteLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(btnuevocliente)
+                .addGroup(jtClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnuevocliente)
+                    .addComponent(txtbuscarcli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btbuscarcli))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(363, Short.MAX_VALUE))
         );
 
         jtprincipal.addTab("Cliente", jtCliente);
@@ -290,6 +318,8 @@ public class vista_principall extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btbuscarcli;
+    private javax.swing.JButton btbuscarprovee;
     private javax.swing.JButton btbuscarusu;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnuevocliente;
@@ -309,6 +339,8 @@ public class vista_principall extends javax.swing.JFrame {
     private javax.swing.JTable tbcliente;
     private javax.swing.JTable tbprovee;
     private javax.swing.JTable tbusuario;
+    private javax.swing.JTextField txtbuscarcli;
+    private javax.swing.JTextField txtbuscarproo;
     private javax.swing.JTextField txtbuscarusuario;
     // End of variables declaration//GEN-END:variables
 }
