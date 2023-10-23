@@ -33,21 +33,6 @@ public class ControladorProveedor implements ActionListener{
 
     }
 
-    public void controladorusu() {
-
-        prin.setVisible(false);//Cierra la ventana principal para a que solo se visualice la ventana de nuevo usuario
-        nupro.setLocationRelativeTo(null);
-        nupro.setVisible(true);
-
-        nupro.getCbxsexoo().addItem("Seleccione...");
-        Map<String, Integer> dato = mopro.llenarCombo("sexo");
-        for (String sexo : dato.keySet()) {
-            nupro.getCbxsexoo().addItem(sexo);
-        }
-
-       
-      
-        }
     public void controladorProvee() {
 
         prin.setVisible(false);//Cierra la ventana principal para a que solo se visualice la ventana de nuevo usuario

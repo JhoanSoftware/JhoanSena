@@ -17,6 +17,17 @@ import javax.swing.JTextField;
  */
 public class Tienda_com extends javax.swing.JFrame {
 
+    public JComboBox<String> getCbxseleccdo() {
+        return cbxseleccdo;
+    }
+
+    public void setCbxseleccdo(JComboBox<String> cbxseleccdo) {
+        this.cbxseleccdo = cbxseleccdo;
+    }
+
+    
+    
+    
     /**
      * Creates new form Tienda_com
      */

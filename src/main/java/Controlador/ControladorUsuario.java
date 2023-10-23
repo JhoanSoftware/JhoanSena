@@ -49,6 +49,7 @@ public class ControladorUsuario implements ActionListener {
         for (String rol : datos.keySet()) {
             nuevo.getCbxCargo().addItem(rol);
         }
+        
     }
 
     @Override
@@ -58,11 +59,14 @@ public class ControladorUsuario implements ActionListener {
                 nuevo.getPfppassword().setEchoChar((char) 0);
                 nuevo.getBtojito().setIcon(new javax.swing.ImageIcon(
                         getClass().getResource("/img/Ojo-Abierto.png")));
+                
             } else {
                 nuevo.getPfppassword().setEchoChar('\u2022');
                 nuevo.getBtojito().setIcon(new javax.swing.ImageIcon(
                         getClass().getResource("/img/Ojo-Cerrado.png")));
-                if (e.getSource().equals(nuevo.getBtguardar())) {
+            }
+        }
+         if (e.getSource().equals(nuevo.getBtguardar())) {
                     if (((nuevo.getTxtdocumento().getText().isEmpty()) || (nuevo.getTxtnombre().getText().isEmpty()) || (nuevo.getTxttelefono().getText().isEmpty()) || (nuevo.getTxtcorreo().getText().isEmpty()) || (nuevo.getTxtdireccion().getText().isEmpty()) || (nuevo.getCbxCargo().getSelectedItem().equals("Seleccione..."))) || (nuevo.getJcvsexo().getSelectedItem().equals("Seleccione...")) || (nuevo.getTxtlogin().getText().isEmpty() || (nuevo.getJdcfecha().getDate() == null)) || (nuevo.getPfppassword().getPassword() == null)) {
                         JOptionPane.showMessageDialog(null, "Falta Informacion");
                     } else {
@@ -91,13 +95,12 @@ public class ControladorUsuario implements ActionListener {
                         usu.setLo(nuevo.getTxtlogin().getText());
                         usu.setFec(fecha);
                         usu.setCl(contrasena);
+                        usu.setTipodoc(nuevo.getCbxseleccdo().getSelectedItem().toString());
 
                         usu.insertarUsuario();
                         usu.limpiar(nuevo.getJpnuevousu().getComponents());
 
                     }
                 }
-            }
-        }
     }
 }

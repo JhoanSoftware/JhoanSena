@@ -2,6 +2,9 @@
 package Vista;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 
 
 public class vista_principall extends javax.swing.JFrame {
@@ -29,11 +32,43 @@ public class vista_principall extends javax.swing.JFrame {
     public void setBtnuevoproveedor(JButton btnuevoproveedor) {
         this.btnuevoproveedor = btnuevoproveedor;
     }
+
+    public JPanel getJtUsuario() {
+        return jtUsuario;
+    }
+
+    public void setJtUsuario(JPanel jtUsuario) {
+        this.jtUsuario = jtUsuario;
+    }
+
+    public JTabbedPane getJtprincipal() {
+        return jtprincipal;
+    }
+
+    public void setJtprincipal(JTabbedPane jtprincipal) {
+        this.jtprincipal = jtprincipal;
+    }
     
 
    
     public vista_principall() {
         initComponents();
+    }
+
+    public JTable getTbusuario() {
+        return tbusuario;
+    }
+
+    public void setTbusuario(JTable tbusuario) {
+        this.tbusuario = tbusuario;
+    }
+
+    public JButton getBtbuscarusu() {
+        return btbuscarusu;
+    }
+
+    public void setBtbuscarusu(JButton btbuscarusu) {
+        this.btbuscarusu = btbuscarusu;
     }
 
     
@@ -104,7 +139,7 @@ public class vista_principall extends javax.swing.JFrame {
                     .addGroup(jtProveedorLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(773, Short.MAX_VALUE))
         );
         jtProveedorLayout.setVerticalGroup(
             jtProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +160,7 @@ public class vista_principall extends javax.swing.JFrame {
         jtProducto.setLayout(jtProductoLayout);
         jtProductoLayout.setHorizontalGroup(
             jtProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 1335, Short.MAX_VALUE)
         );
         jtProductoLayout.setVerticalGroup(
             jtProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +173,7 @@ public class vista_principall extends javax.swing.JFrame {
         jtFactura.setLayout(jtFacturaLayout);
         jtFacturaLayout.setHorizontalGroup(
             jtFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 1335, Short.MAX_VALUE)
         );
         jtFacturaLayout.setVerticalGroup(
             jtFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +190,7 @@ public class vista_principall extends javax.swing.JFrame {
             }
         });
 
-        btbuscarusu.setText("BuscarUsu");
+        btbuscarusu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
 
         txtbuscarusuario.setForeground(new java.awt.Color(255, 204, 255));
         txtbuscarusuario.setText("Buscar Usuario");
@@ -179,26 +214,21 @@ public class vista_principall extends javax.swing.JFrame {
             jtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jtUsuarioLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(126, Short.MAX_VALUE))
-                    .addGroup(jtUsuarioLayout.createSequentialGroup()
-                        .addComponent(btnNuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtbuscarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btbuscarusu)
-                        .addContainerGap())))
+                .addComponent(btnNuevo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1039, Short.MAX_VALUE)
+                .addComponent(txtbuscarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btbuscarusu)
+                .addGap(25, 25, 25))
+            .addComponent(jScrollPane1)
         );
         jtUsuarioLayout.setVerticalGroup(
             jtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNuevo)
+                .addGroup(jtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btbuscarusu)
+                    .addComponent(btnNuevo)
                     .addComponent(txtbuscarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,7 +273,7 @@ public class vista_principall extends javax.swing.JFrame {
                     .addGroup(jtClienteLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(831, Short.MAX_VALUE))
         );
         jtClienteLayout.setVerticalGroup(
             jtClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,12 +319,11 @@ public class vista_principall extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jtprincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(757, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtprincipal)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +331,7 @@ public class vista_principall extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtprincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtprincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
