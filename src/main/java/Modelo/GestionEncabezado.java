@@ -18,8 +18,8 @@ public class GestionEncabezado implements TableCellRenderer {
         encabezado = new JLabel((String)value);
         ((JLabel)encabezado).setHorizontalAlignment(SwingConstants.CENTER);
         Object cellValue= value;
-        encabezado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 1, Color.yellow));
-        encabezado.setForeground(Color.red);
+        encabezado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 1, Color.black));
+        encabezado.setForeground(Color.BLUE);
         encabezado.setFont(new java.awt.Font("Rockwell",1,15));
         return encabezado;
     }

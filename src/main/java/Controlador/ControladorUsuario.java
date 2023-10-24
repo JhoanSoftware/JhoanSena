@@ -103,4 +103,36 @@ public class ControladorUsuario implements ActionListener {
                     }
                 }
     }
+
+    void actualizarUsiario(int doc) {
+     usu.buscarUsuario(doc);
+     nuevo.getTxtdocumento().setEnabled(false);
+     nuevo.getTxtlogin().setEnabled(false);
+     nuevo.getTxtdocumento().setText(String.valueOf(doc));
+     nuevo.getTxtcorreo().setText(usu.getCor());
+     nuevo.getTxtnombre().setText(usu.getNom());
+     nuevo.getTxtdireccion().setText(usu.getDir());
+     nuevo.getTxttelefono().setText(usu.getTel());
+     nuevo.getTxtlogin().setText(usu.getLo());
+     nuevo.getPfppassword().setText(usu.getCl());
+     nuevo.getJdcfecha().setDate(usu.getFec());
+     
+     Map<String, Integer> pepe = usu.llenarCombo("sexo");
+     for (String sexo : pepe.keySet()){
+         nuevo.getJcvsexo().addItem(sexo);
+     }
+//     Obtener el valor guardado en la base de datos
+       String valorSexo = usu.obtenerSeleccion(pepe, usu.getSex());
+       nuevo.getJcvsexo().setSelectedItem(valorSexo);
+       
+       Map<String , Integer> pepe2 = usu.llenarCombo("rol");
+     for (String rol : pepe2.keySet()){
+         nuevo.getJcvsexo().addItem(rol);
+     }
+//     Obtener el valor guardado en la base de datos
+       String valorRol = usu.obtenerSeleccion(pepe2, usu.getRol());
+       nuevo.getCbxCargo().setSelectedItem(valorRol);
+       
+    }
+    
 }

@@ -16,6 +16,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class ControladorPrincipal implements ActionListener, ChangeListener {
 
@@ -97,14 +99,42 @@ public class ControladorPrincipal implements ActionListener, ChangeListener {
         if(seleccion==3){
             ModeloUsuario mousu= new ModeloUsuario();
             mousu.mostrarTablaUsuario(prin.getTbusuario(),"");
-            prin.getBtbuscarusu().addMouseListener(new MouseAdapter() {
+            prin.getTxtbuscarusuario().addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e){
-                    prin.getBtbuscarusu().setText("");
-                    prin.getBtbuscarusu().setForeground(Color.black);
+                    prin.getTxtbuscarusuario().setText("");
+                    prin.getTxtbuscarusuario().setForeground(Color.BLUE);
                     
                 }
             } );
             
+            prin.getTxtbuscarusuario().getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+               mousu.mostrarTablaUsuario(prin.getTbusuario(), prin.getTxtbuscarusuario().getText());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                mousu.mostrarTablaUsuario(prin.getTbusuario(), prin.getTxtbuscarusuario().getText());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {  
+                mousu.mostrarTablaUsuario(prin.getTbusuario(), prin.getTxtbuscarusuario().getText());
+            }
+        });
+              prin.getTbusuario().addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e){
+                    int fila = prin.getTbusuario().rowAtPoint(e.getPoint());
+                    int columna = prin.getTbusuario().columnAtPoint(e.getPoint());
+                    mousu.setDoc(Integer.parseInt(prin.getTbusuario().getValueAt(fila, 1).toString()));
+                    if(columna==9){
+                        control.actualizarUsiario(mousu.getDoc());
+                    }
+                }
+            } );
         }
+  
     }
 }

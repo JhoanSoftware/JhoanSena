@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 
 public class vista_principall extends javax.swing.JFrame {
@@ -63,12 +64,12 @@ public class vista_principall extends javax.swing.JFrame {
         this.tbusuario = tbusuario;
     }
 
-    public JButton getBtbuscarusu() {
-        return btbuscarusu;
+        public JTextField getTxtbuscarusuario() {
+        return txtbuscarusuario;
     }
 
-    public void setBtbuscarusu(JButton btbuscarusu) {
-        this.btbuscarusu = btbuscarusu;
+    public void setTxtbuscarusuario(JTextField txtbuscarusuario) {
+        this.txtbuscarusuario = txtbuscarusuario;
     }
 
     
@@ -87,7 +88,6 @@ public class vista_principall extends javax.swing.JFrame {
         jtFactura = new javax.swing.JPanel();
         jtUsuario = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
-        btbuscarusu = new javax.swing.JButton();
         txtbuscarusuario = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbusuario = new javax.swing.JTable();
@@ -190,8 +190,6 @@ public class vista_principall extends javax.swing.JFrame {
             }
         });
 
-        btbuscarusu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
-
         txtbuscarusuario.setForeground(new java.awt.Color(255, 204, 255));
         txtbuscarusuario.setText("Buscar Usuario");
 
@@ -215,24 +213,21 @@ public class vista_principall extends javax.swing.JFrame {
             .addGroup(jtUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1039, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtbuscarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btbuscarusu)
-                .addGap(25, 25, 25))
-            .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1335, Short.MAX_VALUE)
         );
         jtUsuarioLayout.setVerticalGroup(
             jtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btbuscarusu)
+                .addGroup(jtUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
                     .addComponent(txtbuscarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jtprincipal.addTab("Usuario", jtUsuario);
@@ -349,7 +344,6 @@ public class vista_principall extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btbuscarcli;
     private javax.swing.JButton btbuscarprovee;
-    private javax.swing.JButton btbuscarusu;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnuevocliente;
     private javax.swing.JButton btnuevoproveedor;

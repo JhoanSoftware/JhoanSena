@@ -38,9 +38,6 @@ public class ModeloUsuario {
         this.tipodoc = tipodoc;
     }
 
-    
-    
-    
     public void setDoc(int doc) {
         this.doc = doc;
     }
@@ -143,7 +140,7 @@ public class ModeloUsuario {
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setInt(1, getDoc());
             ps.setString(3, getNom());
-                     ps.setString(2, getTipodoc());
+            ps.setString(2, getTipodoc());
             ps.setInt(4, getSex());
             ps.setInt(5, getRol());
             ps.setString(6, getTel());
@@ -160,69 +157,116 @@ public class ModeloUsuario {
         }
         conect.cerrarConexion();
     }
-    public void limpiar (Component[] panel) {
-        for (Object control : panel){
-            if (control instanceof JTextField){
+
+    public void limpiar(Component[] panel) {
+        for (Object control : panel) {
+            if (control instanceof JTextField) {
                 ((JTextField) control).setText("");
-                
+
             }
-            if (control instanceof JComboBox){
-                ((JComboBox)control).setSelectedItem("Seleccione...");
+            if (control instanceof JComboBox) {
+                ((JComboBox) control).setSelectedItem("Seleccione...");
             }
-            if (control instanceof JDateChooser){
+            if (control instanceof JDateChooser) {
                 ((JDateChooser) control).setDate(null);
-                
+
             }
         }
     }
-         public void mostrarTablaUsuario(JTable tabla, String valor){
+
+    public void mostrarTablaUsuario(JTable tabla, String valor) {
         Conexion conect = new Conexion();
         Connection cn = conect.iniciarConexion();
-        JTableHeader encabezado= tabla.getTableHeader();
+        JTableHeader encabezado = tabla.getTableHeader();
         encabezado.setDefaultRenderer(new GestionEncabezado());
         tabla.setTableHeader(encabezado);
-        tabla.setDefaultRenderer(Object.class,new GestionCeldas());
-        
+        tabla.setDefaultRenderer(Object.class, new GestionCeldas());
+
         JButton editar = new JButton();
         JButton eliminar = new JButton();
-        
+
         editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/descarga.png")));
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/borrar.png")));
-        
-        String[] titulo = {"Tipo De Documento","Genero/Sexo","Cargo/Rol","Nombre","Telefono","Correo","Direccion","Fecha De Nacimiento","Tipo de Documento","",""};
-        
-        DefaultTableModel tablaUsuario = new DefaultTableModel(null,titulo);
-        
+
+        String[] titulo = {"Numero De Documento", "Genero/Sexo", "Cargo/Rol", "Nombre", "Telefono", "Correo", "Direccion", "Fecha De Nacimiento", "Tipo de Documento", "", ""};
+
+        DefaultTableModel tablaUsuario = new DefaultTableModel(null, titulo) {
+            public boolean isCellEditable(int row, int column) {
+
+                return false;
+            }
+
+        };
+
         String sqlUsuario;
-        if(valor.equals("")){
-            sqlUsuario="Select * from mostrar_usuario";
-        }else{
-            sqlUsuario="call new_usua('"+valor+"')";
+        if (valor.equals("")) {
+            sqlUsuario = "Select * from mostrar_usuario";
+        } else {
+            sqlUsuario = "call consultar_usuario('" + valor + "')";
         }
-        try{
-            String[] dato = new String[titulo.length];         
+        try {
+            String[] dato = new String[titulo.length];
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sqlUsuario);
-            while(rs.next()){
-                for(int i=0;i<titulo.length-2;i++){
-                  dato[i] = rs.getString(i+1);
+            while (rs.next()) {
+                for (int i = 0; i < titulo.length - 2; i++) {
+                    dato[i] = rs.getString(i + 1);
                 }
-                tablaUsuario.addRow(new Object[]{dato[0],dato[1],dato[2],dato[3],dato[4],dato[5],dato[6],dato[7],dato[8],editar,eliminar});
+                tablaUsuario.addRow(new Object[]{dato[0], dato[1], dato[2], dato[3], dato[4], dato[5], dato[6], dato[7], dato[8], editar, eliminar});
             }
             cn.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         tabla.setModel(tablaUsuario);
         //Darle tamaño a cada columna
-        int numColumnas= tabla.getColumnCount();
-       int[] tamanos={100,150,150,100,150,150,100,200,200,30,30};
-       for (int i=0;i<numColumnas;i++){
-           TableColumn columna = tabla.getColumnModel().getColumn(i);
-           columna.setPreferredWidth(tamanos[i]);
-       }
-       conect.cerrarConexion();
+        int numColumnas = tabla.getColumnCount();
+        int[] tamanos = {200, 150, 150, 100, 150, 120, 100, 200, 200, 30, 30};
+        for (int i = 0; i < numColumnas; i++) {
+            TableColumn columna = tabla.getColumnModel().getColumn(i);
+            columna.setPreferredWidth(tamanos[i]);
+        }
+        conect.cerrarConexion();
 
     }
-}   
+
+    public void buscarUsuario(int valor) {
+        Conexion cone = new Conexion();
+        Connection cn = cone.iniciarConexion();
+        String sql = "call bus_usuario(" + valor + ")";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                setDoc(rs.getInt(1));
+                setTipodoc(rs.getString(2));
+                setNom(rs.getString(3));
+                setSex(rs.getInt(4));
+                setRol(rs.getInt(5));
+                setTel(rs.getString(6));
+                setCor(rs.getString(7));
+                setDir(rs.getString(8));
+                setLo(rs.getString(9));
+                setCl(rs.getString(10));
+                setFec(rs.getDate(11));
+ 
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public String obtenerSeleccion (Map<String,Integer>pepe,int valor){
+        for(Map.Entry<String,Integer> seleccion:pepe.entrySet()){
+          if(seleccion.getValue()==valor){
+              return seleccion.getKey();
+          }
+    }
+    return null;
+    
+}
+}
+
+        
+    
 
