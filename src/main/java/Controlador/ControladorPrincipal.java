@@ -1,7 +1,10 @@
 package Controlador;
 
 import Modelo.ModeloUsuario;
+import Vista.NuevaFactura;
+import Vista.NuevaVenta;
 import Vista.NuevoCliente;
+import Vista.NuevoProducto;
 import Vista.NuevoProveedor;
 import Vista.Tienda_com;
 import Vista.ini_secion;
@@ -29,21 +32,34 @@ public class ControladorPrincipal implements ActionListener, ChangeListener {
     NuevoProveedor nupro = new NuevoProveedor();
     ControladorProveedor conpro = new ControladorProveedor();
     ControladorUsuario control = new ControladorUsuario();
+    NuevoProducto nuproduc= new NuevoProducto();
+    NuevaFactura nufa = new NuevaFactura();
+    NuevaVenta nuve= new NuevaVenta();
+    
 
     public ControladorPrincipal() {
         prin.getBtnNuevo().addActionListener(this);
         nuevo.getBtguardar().addActionListener(this);
         nuevo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//        prin.getBtnNuevo().addActionListener(this);
+        
         prin.getBtnuevocliente().addActionListener(this);
         nucli.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//        prin.getBtnNuevo().addActionListener(this);
+        
         prin.getBtnuevoproveedor().addActionListener(this);
         nupro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//        prin.getBtnNuevo().addActionListener(this);
-        prin.getJtprincipal().addChangeListener(this);
         
-//        prin.getBtbuscarusu().addChangeListener(this);
+        prin.getJtprincipal().addChangeListener(this);
+         prin.getBtnuevopro().addActionListener(this);
+        nuproduc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        
+        prin.getBtnuevafactura().addActionListener(this);
+        nufa.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+          prin.getBtnuevoventa().addActionListener(this);
+        nuve.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+
 
     }
 
@@ -90,6 +106,24 @@ public class ControladorPrincipal implements ActionListener, ChangeListener {
             });
             conpro.controladorProvee();
             prin.setVisible(false);
+        }
+        
+         if (e.getSource().equals(prin.getBtnuevopro())) {
+            nuproduc.setVisible(true);
+            
+           
+        }
+         
+           if (e.getSource().equals(prin.getBtnuevafactura())) {
+            nufa.setVisible(true);
+            
+           
+        }
+           
+          if (e.getSource().equals(prin.getBtnuevoventa())) {
+            nuve.setVisible(true);
+            
+           
         }
     }
 

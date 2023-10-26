@@ -49,7 +49,7 @@ public class ControladorProveedor implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(nupro.getBtguardarpro())) {
             nupro.getCbxsexoo().getSelectedItem().equals("Seleccione...");
-            if ((((nupro.getCbxtipodocumento().getSelectedItem().equals("Seleccione...")) || nupro.getTxtingresenumero().getText().isEmpty()) || (nupro.getCbxsexoo().getSelectedItem().equals("Seleccione..."))) ||(nupro.getTxtnombree().getText().isEmpty()) || (nupro.getTxtcorreoo().getText().isEmpty()) || (nupro.getTxttelefonoo().getText().isEmpty()) || (nupro.getTxtdireccion().getText().isEmpty()) || (nupro.getTxtproductos().getText().isEmpty()) || (nupro.getCbxtipopersona().getSelectedItem().equals("Seleccione...")) || (nupro.getjDateChooser1().getDate() == null)) {
+            if ((((nupro.getCbxtipodocumento().getSelectedItem().equals("Seleccione...")) || (nupro.getCbxsexoo().getSelectedItem().equals("Seleccione..."))) ||(nupro.getTxtnombree().getText().isEmpty()) || (nupro.getTxtcorreoo().getText().isEmpty()) || (nupro.getTxttelefonoo().getText().isEmpty()) || (nupro.getTxtdireccion().getText().isEmpty()) || (nupro.getTxtproductos().getText().isEmpty()) || (nupro.getCbxtipopersona().getSelectedItem().equals("Seleccione...")) || (nupro.getjDateChooser1().getDate() == null))) {
                 JOptionPane.showMessageDialog(null, "Falta Informacion");
             } else {
                 JOptionPane.showMessageDialog(null, "Exito");
