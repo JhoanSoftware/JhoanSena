@@ -27,7 +27,7 @@ public class ControladorProveedor implements ActionListener{
         nupro.addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent e) {
                     ControladorPrincipal princ = new ControladorPrincipal();
-                    princ.iniciar();
+                    princ.iniciar(0);
             }
         });
 

@@ -45,7 +45,7 @@ public class ControladorLogin implements ActionListener{
             modlog.setContra(pass);
             if(modlog.validar(modlog.getUsu(), modlog.getContra())){
                 log.setVisible(false);
-                prin.iniciar();
+                prin.iniciar(3);
                 
                 
             }else{

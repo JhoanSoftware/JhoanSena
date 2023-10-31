@@ -7,6 +7,7 @@ package Vista;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -138,6 +139,14 @@ public class Tienda_com extends javax.swing.JFrame {
 
     public void setBtojito(JButton btojito) {
         this.btojito = btojito;
+    }
+
+    public JLabel getLblnuevousuario() {
+        return lblnuevousuario;
+    }
+
+    public void setLblnuevousuario(JLabel lblnuevousuario) {
+        this.lblnuevousuario = lblnuevousuario;
     }
 
     

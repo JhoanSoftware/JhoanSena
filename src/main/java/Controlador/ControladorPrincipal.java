@@ -22,7 +22,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public class ControladorPrincipal implements ActionListener, ChangeListener {
+public class ControladorPrincipal implements ActionListener, ChangeListener, DocumentListener {
 
     vista_principall prin = new vista_principall();
     Tienda_com nuevo = new Tienda_com();
@@ -35,6 +35,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener {
     NuevoProducto nuproduc= new NuevoProducto();
     NuevaFactura nufa = new NuevaFactura();
     NuevaVenta nuve= new NuevaVenta();
+    ModeloUsuario mousu= new ModeloUsuario();
     
 
     public ControladorPrincipal() {
@@ -59,21 +60,27 @@ public class ControladorPrincipal implements ActionListener, ChangeListener {
           prin.getBtnuevoventa().addActionListener(this);
         nuve.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
+        prin.getTxtbuscarusuario().getDocument().addDocumentListener(this);
 
 
     }
 
-    public void iniciar() {
+    public void iniciar(int valor) {
         inise.setVisible(false);
         prin.setLocationRelativeTo(null);
         prin.setTitle("Principal");
         prin.setExtendedState(JFrame.MAXIMIZED_BOTH);
         prin.setVisible(true);
         gestionPestaña();
+        prin.getJtprincipal().setSelectedIndex(valor);
     }
     public void gestionPestaña(){
         if(prin.getJtprincipal().getSelectedIndex() == 3){
             
+        }
+        
+        if(prin.getJtprincipal().getSelectedIndex()==2){
+            gestionarFactura();
         }
     }
     
@@ -126,13 +133,10 @@ public class ControladorPrincipal implements ActionListener, ChangeListener {
            
         }
     }
-
-    @Override
-    public void stateChanged(ChangeEvent e) {
-        int seleccion= prin.getJtprincipal().getSelectedIndex();
-        if(seleccion==3){
-            ModeloUsuario mousu= new ModeloUsuario();
-            mousu.mostrarTablaUsuario(prin.getTbusuario(),"");
+    
+    public void gestionarUsuario() {
+    
+            mousu.mostrarTablaUsuario(prin.getTbusuario(),"","Usuario");
             prin.getTxtbuscarusuario().addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e){
                     prin.getTxtbuscarusuario().setText("");
@@ -141,34 +145,76 @@ public class ControladorPrincipal implements ActionListener, ChangeListener {
                 }
             } );
             
-            prin.getTxtbuscarusuario().getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-               mousu.mostrarTablaUsuario(prin.getTbusuario(), prin.getTxtbuscarusuario().getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                mousu.mostrarTablaUsuario(prin.getTbusuario(), prin.getTxtbuscarusuario().getText());
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {  
-                mousu.mostrarTablaUsuario(prin.getTbusuario(), prin.getTxtbuscarusuario().getText());
-            }
-        });
               prin.getTbusuario().addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e){
                     int fila = prin.getTbusuario().rowAtPoint(e.getPoint());
                     int columna = prin.getTbusuario().columnAtPoint(e.getPoint());
-                    mousu.setDoc(Integer.parseInt(prin.getTbusuario().getValueAt(fila, 1).toString()));
+                    mousu.setDoc(Integer.parseInt(prin.getTbusuario().getValueAt(fila, 0).toString()));
                     if(columna==9){
-                        control.actualizarUsiario(mousu.getDoc());
+                        control.actualizarUsuario(mousu.getDoc());
+                    }
+                    
+                    if(columna==10){
+                        control.eliminarUsuario(mousu.getDoc());
+                        mousu.mostrarTablaUsuario(prin.getTbusuario(), "", "Usuario");
                     }
                 }
             } );
+              }
+              
+        public void gestionarFactura() {
+    
+            mousu.mostrarTablaUsuario(prin.getTbfactura(),"","Factura");
+            prin.getTxtbuscarusuario().addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e){
+                    prin.getTxtbuscarusuario().setText("");
+                    prin.getTxtbuscarusuario().setForeground(Color.BLUE);
+                    
+                }
+            } );
+            
+              prin.getTbfactura().addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e){
+                    int fila = prin.getTbfactura().rowAtPoint(e.getPoint());
+                    int columna = prin.getTbfactura().columnAtPoint(e.getPoint());
+                    mousu.setDoc(Integer.parseInt(prin.getTbusuario().getValueAt(fila, 0).toString()));
+                    if(columna==9){
+                        prin.setVisible(false);
+                        control.actualizarUsuario(mousu.getDoc());
+                    }
+                    if(columna==9){
+                        
+                    }
+                }
+            } );
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        int seleccion= prin.getJtprincipal().getSelectedIndex();
+        if(seleccion==3){
+            gestionarUsuario();
+            
         }
-  
+  if(seleccion==2){
+      gestionPestaña();
+  }
+    }
+
+    @Override
+    public void insertUpdate(DocumentEvent e) {
+        mousu.mostrarTablaUsuario(prin.getTbusuario(), prin.getTxtbuscarusuario().getText(), "usuario");
+    }
+
+    @Override
+    public void removeUpdate(DocumentEvent e) {
+        mousu.mostrarTablaUsuario(prin.getTbusuario(), prin.getTxtbuscarusuario().getText(),"usuario");
+    }
+
+    @Override
+    public void changedUpdate(DocumentEvent e) {
+        mousu.mostrarTablaUsuario(prin.getTbusuario(), prin.getTxtbuscarusuario().getText(),"usuario");
     }
 }
