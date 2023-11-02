@@ -151,7 +151,7 @@ public class ControladorUsuario implements ActionListener {
 
     }
     public void eliminarUsuario(int doc) {
-    int resp=JOptionPane.showConfirmDialog(null, "¿Desea agregar al usuario?\n"+doc, "Eliminar Usuario", JOptionPane.YES_OPTION);
+    int resp=JOptionPane.showConfirmDialog(null, "¿Desea eliminar al usuario?\n"+doc, "Eliminar Usuario", JOptionPane.YES_OPTION);
             if(resp==JOptionPane.YES_OPTION){
                 usu.setDoc(doc);
                 usu.eliminarUsuario();

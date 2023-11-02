@@ -4,6 +4,10 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author usuario
@@ -15,6 +19,46 @@ public class NuevoProducto extends javax.swing.JFrame {
      */
     public NuevoProducto() {
         initComponents();
+    }
+
+    public JButton getBtbuscarimagen() {
+        return btbuscarimagen;
+    }
+
+    public void setBtbuscarimagen(JButton btbuscarimagen) {
+        this.btbuscarimagen = btbuscarimagen;
+    }
+
+    public JTextField getTxtimagen() {
+        return txtimagen;
+    }
+
+    public void setTxtimagen(JTextField txtimagen) {
+        this.txtimagen = txtimagen;
+    }
+
+    public JTextArea getjTAdescriproduc() {
+        return jTAdescriproduc;
+    }
+
+    public void setjTAdescriproduc(JTextArea jTAdescriproduc) {
+        this.jTAdescriproduc = jTAdescriproduc;
+    }
+
+    public JTextField getTxtnombrepro() {
+        return txtnombrepro;
+    }
+
+    public void setTxtnombrepro(JTextField txtnombrepro) {
+        this.txtnombrepro = txtnombrepro;
+    }
+
+    public JButton getBtguardarnpro() {
+        return btguardarnpro;
+    }
+
+    public void setBtguardarnpro(JButton btguardarnpro) {
+        this.btguardarnpro = btguardarnpro;
     }
 
     /**
@@ -31,9 +75,11 @@ public class NuevoProducto extends javax.swing.JFrame {
         lbldescripcionproduc = new javax.swing.JLabel();
         lblimagenn = new javax.swing.JLabel();
         txtnombrepro = new javax.swing.JTextField();
-        txtdescripro = new javax.swing.JTextField();
         txtimagen = new javax.swing.JTextField();
         btguardarnpro = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTAdescriproduc = new javax.swing.JTextArea();
+        btbuscarimagen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,71 +92,97 @@ public class NuevoProducto extends javax.swing.JFrame {
 
         lblimagenn.setText("Imagen:");
 
+        txtimagen.setEditable(false);
+        txtimagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtimagenActionPerformed(evt);
+            }
+        });
+
         btguardarnpro.setText("Guardar");
+
+        jTAdescriproduc.setColumns(20);
+        jTAdescriproduc.setRows(5);
+        jScrollPane1.setViewportView(jTAdescriproduc);
+
+        btbuscarimagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblnombreproo)
+                            .addComponent(lblimagenn))
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtnombrepro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtimagen, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btbuscarimagen))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addComponent(btguardarnpro)))
+                .addGap(0, 318, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addComponent(lblnuevopro))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblnombreproo)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtnombrepro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(255, 255, 255)
+                        .addComponent(lbldescripcionproduc))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbldescripcionproduc)
-                            .addComponent(lblimagenn))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btguardarnpro)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtdescripro)
-                                .addComponent(txtimagen)))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblnuevopro)
-                                .addGap(41, 41, 41)
-                                .addComponent(lblnombreproo))
-                            .addComponent(txtnombrepro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addComponent(lbldescripcionproduc))
-                    .addComponent(txtdescripro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(lblnuevopro)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblnombreproo)
+                    .addComponent(txtnombrepro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblimagenn)
-                    .addComponent(txtimagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                    .addComponent(txtimagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btbuscarimagen))
+                .addGap(14, 14, 14)
+                .addComponent(lbldescripcionproduc)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(btguardarnpro)
-                .addGap(24, 24, 24))
+                .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtimagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtimagenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtimagenActionPerformed
+
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btbuscarimagen;
     private javax.swing.JButton btguardarnpro;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTAdescriproduc;
     private javax.swing.JLabel lbldescripcionproduc;
     private javax.swing.JLabel lblimagenn;
     private javax.swing.JLabel lblnombreproo;
     private javax.swing.JLabel lblnuevopro;
-    private javax.swing.JTextField txtdescripro;
     private javax.swing.JTextField txtimagen;
     private javax.swing.JTextField txtnombrepro;
     // End of variables declaration//GEN-END:variables

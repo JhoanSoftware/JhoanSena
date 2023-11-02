@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.ModeloProducto;
 import Modelo.ModeloUsuario;
 import Vista.NuevaFactura;
 import Vista.NuevaVenta;
@@ -36,6 +37,8 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
     NuevaFactura nufa = new NuevaFactura();
     NuevaVenta nuve= new NuevaVenta();
     ModeloUsuario mousu= new ModeloUsuario();
+    ControladorProducto conproduc = new ControladorProducto();
+    
     
 
     public ControladorPrincipal() {
@@ -116,19 +119,21 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         }
         
          if (e.getSource().equals(prin.getBtnuevopro())) {
-            nuproduc.setVisible(true);
-            
+            prin.setVisible(false);
+            conproduc.IniciarProducto();
            
         }
          
            if (e.getSource().equals(prin.getBtnuevafactura())) {
             nufa.setVisible(true);
+            nufa.setLocationRelativeTo(null);
             
            
         }
            
           if (e.getSource().equals(prin.getBtnuevoventa())) {
             nuve.setVisible(true);
+            nuve.setLocationRelativeTo(null);
             
            
         }
