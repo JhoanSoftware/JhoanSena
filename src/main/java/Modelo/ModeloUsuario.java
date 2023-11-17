@@ -192,7 +192,7 @@ public class ModeloUsuario {
         editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/descarga.png")));
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/borrar.png")));
         agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregarusuario.png")));
-
+        System.out.println(nomPesta);
         String[] titulo = {"Numero De Documento","Genero/Sexo","Cargo/Rol", "Nombre", "Telefono", "Correo", "Direccion", "Fecha De Nacimiento","Tipo De Documento",};
         int total = titulo.length;
         if (nomPesta.equals("Usuario")) {

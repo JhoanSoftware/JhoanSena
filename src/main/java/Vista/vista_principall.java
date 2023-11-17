@@ -104,6 +104,70 @@ public class vista_principall extends javax.swing.JFrame {
         this.tbfactura = tbfactura;
     }
 
+    public JTable getTbprovee() {
+        return tbprovee;
+    }
+
+    public void setTbprovee(JTable tbprovee) {
+        this.tbprovee = tbprovee;
+    }
+
+    public JTextField getTxtbuscarproo() {
+        return txtbuscarproo;
+    }
+
+    public void setTxtbuscarproo(JTextField txtbuscarproo) {
+        this.txtbuscarproo = txtbuscarproo;
+    }
+
+    public JTable getTbcliente() {
+        return tbcliente;
+    }
+
+    public void setTbcliente(JTable tbcliente) {
+        this.tbcliente = tbcliente;
+    }
+
+    public JTextField getTxtbuscarcli() {
+        return txtbuscarcli;
+    }
+
+    public void setTxtbuscarcli(JTextField txtbuscarcli) {
+        this.txtbuscarcli = txtbuscarcli;
+    }
+
+    public JTable getTbproducto() {
+        return tbproducto;
+    }
+
+    public void setTbproducto(JTable tbproducto) {
+        this.tbproducto = tbproducto;
+    }
+
+    public JTextField getTxtbuscarproducto() {
+        return txtbuscarproducto;
+    }
+
+    public void setTxtbuscarproducto(JTextField txtbuscarproducto) {
+        this.txtbuscarproducto = txtbuscarproducto;
+    }
+
+    public JPanel getJtProducto() {
+        return jtProducto;
+    }
+
+    public void setJtProducto(JPanel jtProducto) {
+        this.jtProducto = jtProducto;
+    }
+
+    public JTextField getTxtbusfactura() {
+        return txtbusfactura;
+    }
+
+    public void setTxtbusfactura(JTextField txtbusfactura) {
+        this.txtbusfactura = txtbusfactura;
+    }
+
    
 
     
@@ -121,7 +185,7 @@ public class vista_principall extends javax.swing.JFrame {
         btnuevopro = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbproducto = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        txtbuscarproducto = new javax.swing.JTextField();
         jtFactura = new javax.swing.JPanel();
         btnuevafactura = new javax.swing.JButton();
         txtbusfactura = new javax.swing.JTextField();
@@ -209,8 +273,8 @@ public class vista_principall extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tbproducto);
 
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("Buscar");
+        txtbuscarproducto.setForeground(new java.awt.Color(204, 204, 204));
+        txtbuscarproducto.setText("Buscar");
 
         javax.swing.GroupLayout jtProductoLayout = new javax.swing.GroupLayout(jtProducto);
         jtProducto.setLayout(jtProductoLayout);
@@ -223,7 +287,7 @@ public class vista_principall extends javax.swing.JFrame {
                     .addGroup(jtProductoLayout.createSequentialGroup()
                         .addComponent(btnuevopro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1020, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtbuscarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45))
         );
         jtProductoLayout.setVerticalGroup(
@@ -235,7 +299,7 @@ public class vista_principall extends javax.swing.JFrame {
                         .addComponent(btnuevopro))
                     .addGroup(jtProductoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtbuscarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(164, Short.MAX_VALUE))
@@ -510,7 +574,6 @@ public class vista_principall extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel jtCliente;
     private javax.swing.JPanel jtFactura;
     private javax.swing.JPanel jtProducto;
@@ -525,6 +588,7 @@ public class vista_principall extends javax.swing.JFrame {
     private javax.swing.JTable tbusuario;
     private javax.swing.JScrollPane tbventa;
     private javax.swing.JTextField txtbuscarcli;
+    private javax.swing.JTextField txtbuscarproducto;
     private javax.swing.JTextField txtbuscarproo;
     private javax.swing.JTextField txtbuscarusuario;
     private javax.swing.JTextField txtbuscarventa;

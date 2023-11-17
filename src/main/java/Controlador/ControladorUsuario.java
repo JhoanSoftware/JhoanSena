@@ -20,6 +20,7 @@ public class ControladorUsuario implements ActionListener {
 
     public ControladorUsuario() {
         nuevo.getBtguardar().addActionListener(this);
+        nuevo.getBtcancelar().addActionListener(this);
 //        nuevo.addWindowListener(this);
         nuevo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         nuevo.addWindowListener(new WindowAdapter() {
@@ -104,12 +105,16 @@ public class ControladorUsuario implements ActionListener {
                 } else {
                     usu.actualizarUsuario();
                     nuevo.setVisible(false);
-                    prin.getJtprincipal().setSelectedIndex(1);
-                    prin.setVisible(true);
-                    usu.mostrarTablaUsuario(prin.getTbusuario(), "", "Usuario");
+                    nuevo.dispose();
+//                    prin.getJtprincipal().setSelectedIndex(1);
+//                    prin.setVisible(true);
+//                    usu.mostrarTablaUsuario(prin.getTbusuario(), "", "Usuario");
 
                 }
             }
+        }
+        if(e.getSource().equals(nuevo.getBtcancelar())){
+            nuevo.dispose();
         }
     }
 

@@ -7,6 +7,7 @@ package Vista;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -109,6 +110,14 @@ public class NuevoCliente extends javax.swing.JFrame {
 
     public void setCbxtipodocumento(JComboBox<String> cbxtipodocumento) {
         this.cbxtipodocumento = cbxtipodocumento;
+    }
+
+    public JLabel getLblcliente() {
+        return lblcliente;
+    }
+
+    public void setLblcliente(JLabel lblcliente) {
+        this.lblcliente = lblcliente;
     }
 
     /**

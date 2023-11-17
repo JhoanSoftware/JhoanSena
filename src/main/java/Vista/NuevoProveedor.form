@@ -49,7 +49,6 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblfechadenacimientoo" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lbltipodepersona" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblproductos" min="-2" max="-2" attributes="0"/>
                               <Component id="lbldireccionn" min="-2" max="-2" attributes="0"/>
                               <Component id="lbltelefonoo" min="-2" max="-2" attributes="0"/>
                               <Component id="lblcorreoo" min="-2" max="-2" attributes="0"/>
@@ -66,7 +65,6 @@
                                       <Component id="txttelefonoo" max="32767" attributes="0"/>
                                       <Component id="txtdireccion" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cbxtipopersona" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtproductos" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -138,12 +136,7 @@
                               <Component id="lbldireccionn" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtdireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblproductos" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtproductos" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lbltipodepersona" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxtipopersona" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -158,13 +151,16 @@
                       <Component id="btguardarpro" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btcancelarpro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                  <EmptySpace pref="53" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy/MM/dd"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbltipodocumento">
           <Properties>
@@ -245,13 +241,6 @@
         <Component class="javax.swing.JLabel" name="lbldireccionn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Direcccion:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtproductos">
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblproductos">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Productos:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btguardarpro">

@@ -149,6 +149,14 @@ public class Tienda_com extends javax.swing.JFrame {
         this.lblnuevousuario = lblnuevousuario;
     }
 
+    public JButton getBtcancelar() {
+        return btcancelar;
+    }
+
+    public void setBtcancelar(JButton btcancelar) {
+        this.btcancelar = btcancelar;
+    }
+
     
     
     /**

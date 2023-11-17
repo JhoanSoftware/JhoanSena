@@ -7,6 +7,7 @@ package Vista;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -85,14 +86,7 @@ public class NuevoProveedor extends javax.swing.JFrame {
         this.txtnombree = txtnombree;
     }
 
-    public JTextField getTxtproductos() {
-        return txtproductos;
-    }
-
-    public void setTxtproductos(JTextField txtproductos) {
-        this.txtproductos = txtproductos;
-    }
-
+   
     public JTextField getTxttelefonoo() {
         return txttelefonoo;
     }
@@ -115,6 +109,14 @@ public class NuevoProveedor extends javax.swing.JFrame {
 
     public void setBtguardarpro(JButton btguardarpro) {
         this.btguardarpro = btguardarpro;
+    }
+
+    public JLabel getLblnuevoproveedor() {
+        return lblnuevoproveedor;
+    }
+
+    public void setLblnuevoproveedor(JLabel lblnuevoproveedor) {
+        this.lblnuevoproveedor = lblnuevoproveedor;
     }
 
    
@@ -144,8 +146,6 @@ public class NuevoProveedor extends javax.swing.JFrame {
         lbltelefonoo = new javax.swing.JLabel();
         txtdireccion = new javax.swing.JTextField();
         lbldireccionn = new javax.swing.JLabel();
-        txtproductos = new javax.swing.JTextField();
-        lblproductos = new javax.swing.JLabel();
         btguardarpro = new javax.swing.JButton();
         lbltipodepersona = new javax.swing.JLabel();
         btcancelarpro = new javax.swing.JButton();
@@ -153,6 +153,8 @@ public class NuevoProveedor extends javax.swing.JFrame {
         lblnuevoproveedor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jDateChooser1.setDateFormatString("yyyy/MM/dd");
 
         lbltipodocumento.setText("Tipo De Documento");
 
@@ -174,8 +176,6 @@ public class NuevoProveedor extends javax.swing.JFrame {
         lbltelefonoo.setText("Telefono:");
 
         lbldireccionn.setText("Direcccion:");
-
-        lblproductos.setText("Productos:");
 
         btguardarpro.setText("Guardar");
 
@@ -199,7 +199,6 @@ public class NuevoProveedor extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblfechadenacimientoo)
                             .addComponent(lbltipodepersona)
-                            .addComponent(lblproductos)
                             .addComponent(lbldireccionn)
                             .addComponent(lbltelefonoo)
                             .addComponent(lblcorreoo))
@@ -213,8 +212,7 @@ public class NuevoProveedor extends javax.swing.JFrame {
                                     .addComponent(txtcorreoo)
                                     .addComponent(txttelefonoo)
                                     .addComponent(txtdireccion)
-                                    .addComponent(cbxtipopersona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtproductos)))))
+                                    .addComponent(cbxtipopersona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbltipodocumento)
@@ -268,11 +266,7 @@ public class NuevoProveedor extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbldireccionn)
                             .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblproductos)
-                            .addComponent(txtproductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(52, 52, 52)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbltipodepersona)
                             .addComponent(cbxtipopersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -283,7 +277,7 @@ public class NuevoProveedor extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btguardarpro)
                     .addComponent(btcancelarpro))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -325,7 +319,6 @@ public class NuevoProveedor extends javax.swing.JFrame {
     private javax.swing.JLabel lblfechadenacimientoo;
     private javax.swing.JLabel lblnombree;
     private javax.swing.JLabel lblnuevoproveedor;
-    private javax.swing.JLabel lblproductos;
     private javax.swing.JLabel lblsexoo;
     private javax.swing.JLabel lbltelefonoo;
     private javax.swing.JLabel lbltipodepersona;
@@ -333,7 +326,6 @@ public class NuevoProveedor extends javax.swing.JFrame {
     private javax.swing.JTextField txtcorreoo;
     private javax.swing.JTextField txtdireccion;
     private javax.swing.JTextField txtnombree;
-    private javax.swing.JTextField txtproductos;
     private javax.swing.JTextField txttelefonoo;
     // End of variables declaration//GEN-END:variables
 }

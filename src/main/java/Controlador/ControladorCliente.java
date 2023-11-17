@@ -75,5 +75,45 @@ public class ControladorCliente implements ActionListener {
         }
 
     }
+public void actualizarCliente(int doc) {
+        mocli.buscarCliente(doc);
+        System.out.println(mocli.getDirecc());
+        
+             
 
+        nucli.getCbxtipodocumento().setEnabled(false);
+        nucli.getTxtdocumento().setText(String.valueOf(doc));
+        nucli.getCbxtipodocumento().setSelectedItem(mocli.getTipodocu());
+        nucli.getTxtcorreo().setText(mocli.getCor());
+        nucli.getTxtnombre().setText(mocli.getNom());
+        nucli.getTxtdireccion().setText(mocli.getDirecc());
+        nucli.getTxttelefono().setText(mocli.getTel());
+        nucli.getJdcfechanacimiento().setDate(mocli.getFec());
+ 
+
+        Map<String, Integer> pepe = mocli.llenarCombo("sexo");
+        for (String sexo : pepe.keySet()) {
+            nucli.getCbxsexo().addItem(sexo);
+        }
+//     Obtener el valor guardado en la base de datos
+        String valorSexo = mocli.obtenerSeleccion(pepe, mocli.getSex());
+        nucli.getCbxsexo().setSelectedItem(valorSexo);
+        
+        
+        nucli.getLblcliente().setText("Actualizar Cliente");
+          nucli.getBtguardarr().setText("Actualizar");
+        nucli.setLocationRelativeTo(null);
+        nucli.setVisible(true);
+        prin.setVisible(false);
+
+                }
+ public void eliminarCliente(int doc) {
+    int resp=JOptionPane.showConfirmDialog(null, "¿Desea eliminar al Cliente?\n"+doc, "Cliente Proveedor", JOptionPane.YES_OPTION);
+            if(resp==JOptionPane.YES_OPTION){
+                mocli.setDoc(doc);
+                mocli.eliminarCliente();
+                mocli.mostrarTablaCliente(prin.getTbcliente(), "Cliente Elimnado", "cliente");
+            }
+    
+}
 }

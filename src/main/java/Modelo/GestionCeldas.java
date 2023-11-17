@@ -3,6 +3,7 @@ package Modelo;
 
 import java.awt.Component;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -20,6 +21,14 @@ public class GestionCeldas extends DefaultTableCellRenderer {
             btn.setContentAreaFilled(false);
             return btn;
         }
+        if(value instanceof JLabel){
+            JLabel lbl = (JLabel)value;
+            lbl.setFont(new java.awt.Font("verdana", 0, 11));
+            table.setRowHeight(52);
+//            lbl.setText("No Tiene Imagen");
+            return lbl;
+        }
+        
         return c;
         }
 }

@@ -68,7 +68,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'',1,'hopnop','h','ihhiohioh','ndandop',1,'2005-12-01'),(123,'',1,'sdafsdfasd','1222312','sdASDSA','SDAFSDF',1,'2023-10-02'),(1223,'Tarjeta Identidad',1,'123','123','123','123',1,'2023-10-10'),(1234,'2',1,'webinnn','5435435','fgdgdg','ewff',1,'2000-08-07'),(65757,'',1,'ccggf','656565','fgcfgcfg','cvvbv',1,'2022-03-03'),(123454,'Tarjeta Identidad',1,'webin','232424','ssdfdsfd','fsdfsdf',1,'2023-10-01'),(123456789,'Pasaporte',3,'mulatico','214342','efsdfsdfdsfsd','dsdfdfsdfdsf',1,'2023-10-01');
+INSERT INTO `cliente` VALUES (1,'',1,'hopnop','h','ihhiohioh','ndandop',0,'2005-12-01'),(123,'',1,'sdafsdfasd','1222312','sdASDSA','SDAFSDF',0,'2023-10-02'),(1223,'Tarjeta Identidad',1,'123','123','123','123',0,'2023-10-10'),(1234,'2',1,'webinnn','5435435','fgdgdg','ewff',1,'2000-08-07'),(9978,'Cedula',2,'camilooo','4356466','dsfddfdf','dsfdfsdfdf',1,'2023-11-05'),(9999,'Cedula',2,'camilooo','4356466','dsfddfdf','dsfdfsdfdf',1,'2023-11-05'),(65757,'',1,'ccggf','656565','fgcfgcfg','cvvbv',1,'2022-03-03'),(123454,'Tarjeta Identidad',1,'webin','232424','ssdfdsfd','fsdfsdf',1,'2023-10-01'),(996765,'Cedula',2,'camilooo','4356466','dsfddfdf','dsfdfsdfdf',1,'2023-11-05'),(997878,'Cedula',2,'camilooo','4356466','dsfddfdf','dsfdfsdfdf',1,'2023-11-05'),(1223456,'Tarjeta Identidad',1,'123','123','123','123',1,'2023-10-10'),(9999999,'Cedula',2,'camilooo','4356466','dsfddfdf','dsfdfsdfdf',1,'2023-11-05'),(123456789,'Pasaporte',3,'mulatico','214342','efsdfsdfdsfsd','dsdfdfsdfdsf',0,'2023-10-01');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,7 +289,7 @@ SET @saved_cs_client     = @@character_set_client;
 /*!50001 CREATE VIEW `mostrar_proveedor` AS SELECT 
  1 AS `idproveedor`,
  1 AS `tipodocumento`,
- 1 AS `nombre`,
+ 1 AS `sexo`,
  1 AS `NombreProveedor`,
  1 AS `correo`,
  1 AS `telefono`,
@@ -365,7 +365,7 @@ CREATE TABLE `producto` (
   `ruta` varchar(500) DEFAULT NULL,
   `condicion` tinyint NOT NULL,
   PRIMARY KEY (`idproducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -374,7 +374,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,'computador','color gris',4,_binary '0',1500000,'',1),(7,'celular','color negro',2,NULL,700000,'',1),(8,'moto','color azul',1,NULL,3500000,'',1),(9,'carro','color rojo',1,NULL,23000000,'',1),(10,'papita','rizadas sabor pollo',6,NULL,20000,'',1),(11,'cable','azul',0,_binary '0',0,'',1);
+INSERT INTO `producto` VALUES (22,'papita ass','Color Verde',0,_binary '‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\0@\0\0\0@\0\0\0ªiq\Ş\0\0\0sBIT|dˆ\0\0\0	pHYs\0\0\Ø\0\0\Øú\\¦r\0\0\0tEXtSoftware\0www.inkscape.org›\î<\Z\0\0\Z\ÄIDATxœÍ›wtTÕ·\Ç?÷NI&…ôIH#!Ğ«¦ŠR|\"Å†ğ³wÅŠØ¢‚‚‚\"A@\éJ‘\ÒR ô:“™¹ï›I2Ì„¢ü\Şz{­Y+9wŸ²¿\çœ}v9G\à¿O^@\ĞB7À	ph\â©*€2 ­\é—\0Šÿ\Æx×©\'°H$k?;{G£›§·\Ñ\Í\Ó\Ûhg\ï`l‹H>zü7*\ÜÅ¶\Ús\Ù\È3\r@‡ Pº÷D§®1ø…\â«‡§\Õ\ÊJŠ\É\ÍH!73Ô„œ=~Pº–\ÙzŒiÀ7ÀJ \ênún\0\à,\æ!/k\"¢c9i:F\Ç\ÓÇ¯ÍŠµ\ÕUT*5¶vöVyŠó¯qd\ïöı²AJ¹t\Î4\Ş\n`ğ1ò¶ù\Çôo\09À»€›B©”FMš.Lûa\ÍL:m\ÉÎğ÷	’/œ!\ïjEy9T—›\ÛFc‡³«;‚B‹Š&,*š\îı›­–¬\Ô$6®ü„}[”z½\0\\^\0¾ŒÿB–;¦P\à$ 	‚(›>[\Úr:C:§•\çi¥?2+¤·Vo”™(©m5ûZe£‘\\ü%Ï\á’ox´\ä\ØI²wv·\àDQŠ¼§—ôşº­\Ím\Ï\ÓJ¿œJ—\ÆN)	‚`\â=„üAş\É\n˜|\r8‡Fvc\Ñ\ÒÏˆº§7\0¥%ü²ö+¶¬ıŠ\ê\ny†m\è\Ø=€\è>tˆ\ê[‡`\ìİ­6l4\è)\ÉN¥ -kIgI=ş¹,ü\âF\ÃÅƒ;ñ\r\èHhd7\0R/\ã\Ã\çH)\Ï\n@5ğ8°ñ¿€,‘—0k\Ñ+(”J\Z\êjùşóøi\Ígh\ë\ëP(Ut<®#&\Ò{(J•ÍŒÉŒ\n\Ó/\ãÑ gÙ„.hkª\Øv&\'WDƒ^Ïš_\ç‡/?B’$šÆ¸˜\Û\Ü·€\ZXLurq•^ûr½\Ğs\à0\0\ì\Ù\ÎòWQRp\rµÆ\Øñ\Òw\êœ¼d\åWWQ\Ê\Ş\Ï^B¯­¿ù@‘aO¼Š«_G«\ß\rúF\Î\îü†š*\Æ=¶ˆ\Æ\Ì3\ä$cò\ìù‚À©Cûy}şcue¹ü\Ìtw\05°\r¸\×Ë¯ƒô\É\Æ=‚pÚ†z>yùYvoüAˆ\Z6‘Qß¦§os\Åú\ê\n\Ö-O~Ê…\Û\èœ¼ü˜½b.~·\äı\ê‘\ä§^¤\×Àá¼´ü\\=½\È\ÉH\å™G‹òD`0[€p+\0D`05 4‚\å›ö\à\á\íKAn6‹Hvj\"\î>L~mA=šU¬«(e\í\Âq¦_fpl(/\Ì\Z~Ó¾\Ùq’Ÿö\Ã\ÅÇŸ\Ù_\í\ÅÉ»ıMù3ù\åµ9e&\á\æ\åÃ²vÑ…\â‚<~`”173Í´\æ&\Û\áV\0,òğ\í ­\ŞuTğğö%39g¦¥¬¸\Ğ\ŞÃ˜ôú*¥\Öz\æÅ†²\î\é\ØÚ¨\08v>“\Ş]Q)fuŒ’\ÄSlaóó8{w`öÊ½8{w¸\é\àôºv´˜³;¿Ç¡3\ï}»™\è>(.\Ècnü\0cqÁ5“\ŞZ\ÔVŠ¶>\0Sœİ¤[¾ş$_8\Ã\Â)#©*/¥\Ç\ÄYL~c\r6\Z³J7ş\×\ã‰<ò\Ê\Òr‹7°‹Y=A\Ù7œœü2\Î\'¤‘ö\ç>\"‡Œ\Ã\ÆÎ±\ÍŠ\n%\áq÷v\âw~ß±™\è\Şq‡G\Ñ{\È(\áÀ¶F¶¡/ŒlR\ß6\0!‚ \ìD\Ñ\æ5?	Q\İ{’—s…SFRSYÆ YKı\ä;‚x\Û\Â¸8\Úq\äl³\Æ÷!\Ô\ß\ÃR A`T¿²òJ9w1…\Ô\ã{‰<;\Ş\ÖÔ±{vN®¤\ÛË±}»\é?b,¡\á„Dtl\ß$£-@\é\í\0`R A_\Ìı<FUEOLFi\á5ú<ğ#¼iQ\éV\Â\Øk\ÔLK§\0ë¾€	„\Ñı:“yõ:\ç/¦ú\çoD\r¹õ-@h‹¡QGú©ƒüõû^FM™NpD´\rõB\Â\ß©X`-²\átS\0\æ¶\æıU\ß#Š\"¯\Í{„¤s\'ˆ2û^üA0W·#|koE¢ 0ªoIW\nI¸œFÆ©?ˆ\Z:•­\İM\ë\Å¤ôj™\çOPp5‡Ác\'Ñ½\Ï@\í\Ûi,¿^\ì\\\Î\ß\07v¢¨yq\Å&üÙ±~\r›V}‚‹_3–oA©67jn&|u•ÒŒ_P¨A2˜•iuz$IB!¶l)…(26.’\Ë\\JH&ó\ÔD€\ÊV\Ó&\0‚ \Òs	¿o!ù\ì	üƒ	\êFH\ç®ÂŸ¾\èƒl\Å6´À+Àˆ^\ãg0{\î”±ø‘	%xdù/¸ø˜1\×U”²vA<i—\Êwo>\Ô,üöC—˜ú\Â:\âb‚ñrk\'wf\çŠ[Ï™`4\ÒX•€®QÏœ77²\í\Ğ%\âD¢P˜ƒ0¦$\çS®qùr\nÎ®øw\í\İ&\0\0Jµ\r¾\á\Ñ\\Ø³‘\'2ş\á9t\èBÑµ\\\Ò/\ÚÀ!k-\Ö„y\n¥Š<|µô\Z\êj\è=\å	ü\"b,…ouÎ¯{ó!l\Ô-³Q@u­–‚\ë-n»\Â\Ö	A¥Ai\ßrlV\Ö4•WJAI%u\rÙ¨•|÷\æC,[4·&#b°à¹‘ºõ¡{üCT–•òÃ—\Èf»B)ir\ÛÁ\ÜX¼\ß=şa\Şû|\r™‰<:¬6n,\Úv[‡vÍŒ·»\çS²‹ô2+S\Ú{ ¯-1++*«F©qs²hMW\ì\×Ü‹ñ¦\'8T_/\à“\É1À\Ï%\ã\î\å\Ã;O\Ïa\ï\æõ&Y?h½Ag{xv*M«>E’Œôh‘™ğ­g~PÓ²o=ó­\éF\á\á¼\\[\Îú­/òş\Ú\ßo*œg1:zñ\à»\ß\ã\Ú>\È*£»}\îŸ\Ë\Ñ\ï?aû÷«™³ø5¦\Î}\ÆÀl\0¦\Ğ8\é×¹;\ïl>Š›¾‚‰=B@´\åù½I¨5ò\ÌÜ‰¶ÿ\'´óHó\Şı½\áöbN¾\ÌZñk› T\å±lBœ\İ=\ØúwJ¥Š™#z\Z\Ó/Š\È\Ç\âY“˜\n=úAœm\ìİ¼F]\áƒfÜ–ğ?8\Ï\Ç\ëšu®´sÃ©\ËY\ë7‘V§\ç‰w\"1³ M\á%	¾zñ\n§\Í_Á·y4¾•\Åù|;oe×®X\ÈË°~#)+.\ä\Ïı¿p\ïı3L2Oƒ%8 óÀxœ\Ô‡~İ\È\ä[\n_Y\ÓÀ«+~eù‡É¸Ú²¼B‡`\ë\Æ7º¹l\Ë\Øvğ¯­\ÜÓ¦ğ_<?…	CºP[¯\ã\Ã\ïş Qo®øA`\é“ñ·BÌ˜©\0ß¿€¸Q\ãLŸF€¬<pwÿ\Ü|ü¨*-\"\å\Â\ßhœ	‰\íj&|\ßHo‹e\ï\ä`\ËÆ¥RTVMH‡ó¶2q\'v~1\Ô]=\İ\\6mt,\ÕuZ¦k9Q\Ú\à¥/w³é·³4\ê\r¼8{„U\0\Ö\í:Å·ó\ÆX\İÁ=£Pª8yx?’$\á\İ\ŞŸ†‚«9‘€§\0„÷\Äa§8sô$ÉˆW§aˆ\nß¿z“ü”ô\é\ìÉ§óûZ\İó1\á\í\Õ7Â¬L\Òk©\Í9iÁûø¤~¸:\É\İÖƒyâŸU¯<h&<À³†3ih7<8À¢\ï>\Ï\ÔQ÷´¹l\ì\éĞ¥\å%E¤\'^ Ç€a\ndı\'\"glğ\rÁV%pùœ<cŞú\0r\È	\à\Ñá¡¨•\æ\ÎÏ¿¡Gxòı_\0øl\Éd\Æ\ÆEZğx¹:ò\å÷\Ó\ÎŞ¶\ÍvDA`Ù¢	7\İÑ²,i	²Ö¥y[F‰4%1\ÜıCP\n“€_g\ËDŒ\0\ì9DYeY¹\Ò\Î\r•³¹\ï®\Õ\é\Ùò\Ç\Å6…ok\Ùÿº•Nğ\îÀ•T\Ù#ö\îdú*\"‡¸q÷A!@vF\Z¢Bm\Ú2\Ññ\ÄB\æ¼ñ#S_X‡Á(U¢\Ò—\î\Óq‰~\0¥[3\ï‚÷73\é\Ï|·\ë´Y7Sx­•¨‰T\ŞeIW\n\ïH1zE4\Ô@s\â*L<Q\Ä\Ş\Å]}-\å%\Ø8ø¡RY.÷\ØPw†ö\ê\Ä\Ó\Ó5;.F}µ¹§h(¸Œ¾®\Åİ7%\Ş]‰\Õ\\f¶\ç_~ Yx­NÏ´¿c\ÜÓ«I\ËiÉ…\ÚöÃµ\ç,³“\äLR.ñO­\âñ·7a”\Ì<\Ûf0ex•\Åùœ\Ùñ\0\Î>ş\0\\/*À\Õ\Ã\Ë\ä\Ñz(µ­‚(RV\\ˆ$I(m]¬\Æ\Ê\Ô*‘õo?lQ^—{Ê¢,&¼=Û—=\Öü¿ÅoŒZI\ï.\ÔkÍ¬\ÂÆª|ŒºZô5- ø¸\â\ç\éL·0?«®µ(\ïİ‰\ÍZ¼^•­¢¨ ¶ªR\æE\Ô66FmCƒ£p0…ª+*LP¢7H7¶ıóh·³\ç_˜5œg¦2;eteY\\ÿk’¡\ÅIòpq`ßŠyh\îÀµ½µ\Õ-™\Æ\ŞÁ¨mhp4[\çZV®€€Á\Ò13%,H«\ÓSQm=\î\'\n\Ï\Ú+YÈo\"QTX¿\Ôh\ëª0ˆrÃ’d¤¡Î‚\0]CùÿMşü\ÄE_[œm	£3‘ Zzx\Öx­ñI’\Ôf»\0Úº\Z4ö-\Şf}m\0T‹@®¡\ÉhÄ ”\Ï\ÛÆ†Rj«e´Ä¦\0\Å\Æ\ÃWh\Ô)\ÏO³\0Á\Zµ¥ğ\ê\Zt<ğŸµ¼ıõ>3~‡ 8\\b¦›ù§.\ç\Ğ\ëá¹”–\×\\&*mq¹gv\í\ï1ş\Å/v3óµ\Ğ5\ê-Æ¢o\ÔbhÔ¡±—\ãŠFƒV«0P,Ô–—\à\è%ŸåºšBj+d4‡ş\ÏKx…søbÏ¬<…V§§</]½¼j\Ô*%_¿:•-\Ín¶ğZd¡ğ²òJI\Ì,à¯‹Yhuò`Q‰\Ú-¥ƒ;\ns3\ïÁ\Ói\ä—Tr&\éjs™\Ò\Ñ¥ƒ6\î¡Ğ¤+k\Z8z.ƒ„ô|ŠJ«-\0¨.‘µ¿»§|¤–]/6m‡%\Ä^\Ï\Í 0¦NnT––P]’CmUö.\Ìúr7\ß\Î\Ëñ\Ë)<»ò\Ë\æö¢<?\ß\Ô\ZGl\Ô\Êæ˜€i\Ù%‰÷³\Øó‘Á>lùxş\Ş.\Íu$£òó›Phœ\Ì4ş³†3(6„>][ò…ºò\\\Ê\Ïnùšö´³£†­Ï¡¦NKoÎ§^3\ë³øJ2\0¡\á\0\äf¦™>¥‰\È\×N¸›@p´s«)I ¼P6v\ì]<˜ùùN<\Â8~¹%kN£kl¤<?£y%˜\è\ãõ\ÑŒ¼7»cûX÷Ó£‚},\Ì[Iß€¾ºÈ‚·µğ&j¬\ÊG2š/u/WG‚\Û7eŒo8ÁJ²S(73\Õô)].\ä%Ÿ ¬¿œi©\Ìû‹’‚–À„ƒ›³V\ì\Æ# Œ\ÃXl¡ úª¤\"½qQ\Ş\Ü‚ÿ?¡¼\â\n–~»\0[Gy;\å^’í”ˆn²\ŞH½\Ôl#\\£€”uö\0ûŒDT()¿z„\Ò|#\Ú!Ü¼˜½r…N¨,Î¡8\ë•\ÅYH\Æ\Ğ\ê\Zô,Y¾ƒò*ó\ÓÁ>°¯…\ïpòR6Ÿm<bV&ª\ìh>\ZA\Ñr\ìI’\Ä[köY\rª\ä—T2\é¹o\È-,\'j\èúO_ˆ¡QÇ•3G\Ğ\Ø;Ğ¹{O\0N9 Gc\"ò=¼\äÒ«™T\åa\ç\ìFDÏÔ—gP]t™\ÂlóğÔ\Û\á\Ñğ\Ó\á+”U\ÖQ_UŠAß’^±\ã\"\ß\ï>Í›«k.S9µ\Ç!xNQ÷5gZ¹\ïüÄ»\ß\ì\çLRn\à¡C\Ñø\Å`Ø¯¹\ì\×\ãI|ù\ÓQ¼·\Ù\Ì\Î+®\à¾gÖ_F\×“™ò\Ö7ˆ\n%9O¢­«!ºWT*5Ws(Ê»ªD\Î›\ÔP ·³¯?\"c1t$İƒBm\Úy :)hmuª\íˆ2Ì¿‘••\Ëñ\ËElø#ƒ„¬rr‹kh\Ğ˜3º}º \Ø8ò\â\ì\Í\nÏ¨­B\Òk©\Ë=…¡A¶Ì”\n‘^]\é\ä\ÍØ¸–CW‹ Š\Ô^9’<a(\"‹gk\"\çW0\áÙ¯\É-,§\ëˆ\ÉLz}5b¸¿^Jaúe^¸„°¨höüü=§\0X\ì7‰\Õ8\å\ÃÜµ‡©¯®\àƒ{\Ã@\Ô\Ğs\æy¢9\ãh=P|%™{7qaÏT—¶hğŸ\Ã\É\ÅW\ßNV\ë\İ-\Ê/©dâ¢¯\É\Î/#j\è¦¼ù5¢B»¾ªœ\ã#P©T\ì<Ÿ­=\ëa\ÈL¾¤\0\îÎ™¤:\r¤\æ%Ÿ§øJ2\ZGgbã§¡\×VP˜¸+	zŒmj=ƒ\"1ÿ\rÛ•\Â#Ë·b\ï\Ò*\ëû_Öm-{ı½}\Úz†\ß÷\0¶vöd¦\\¦Iø\à˜g†¾8ş\Ã\ç\0ôŸñ\n¥š«g>¥²¤‚ì¤›gdDQAH\ï¡Ø»X¿Öš\Î$\åZ(FQm‡ªyB’$N\Ã\Zİ¨ğ&½¶ªyÙƒ\È=¾\áS”J\Ó\æ=ÀÆ¯–™>\Ó\Üo«6W—öıLEA.N\Şí‰¹÷A\Z\ë¯sõ\ïO\ÈJ\ÔS[uûSj”$ô\Ú:ôZsA\Òó¹\ÉZ¦,ş¶\ÙlD%.1\Óp\é>\r¥cK2\å­5¿1\í\Å\ïXµ\åO³6*«\ëo:ó\0G\×}L}U9c|¿€ òs²Ø¿u“„|³t•‰¯µW¡\ÚIFcœ®¾–ğ¸{ñ\íÍ¹\ë)¿v\nÿ¡\Ô\Öz\á,\"Šm;Æ—\ßJE\áU®T3$\Ú]}¶v\í•òQ\æ\ÒNÃ¹”k\íF\ßnM†’dDP¨õ\×\Î6+<G;N\\\Ê\æ\éiƒpsnqdllÔœ©òÀ\Æ;\ÄL\á™(?õ\";–>‰\ÆÎ·Vıˆ½ƒ#Ÿ½ş\é‰\äŒP³#r£$®@ª ˆî­\ŞG‡.=9·{\ÛŞÆ©#1ş„‘½­§\Â\0ª¯²v~<%9i\ê\æÃ‡õ\ÄF­\Â\Å/•,„Áh4K…7“ 4›·&j\Í{­¨‚¿\Ø\Å\ä—>¥È½7’ÑˆpC;z]+g¦(3‰%¬`\Üô\Ù\\:ı\'ó&I*:!\ß5,\Ó\ãõ@9H\ãòS/pÏ¸ø†G“—t–¢Œ³hkòP»AÀ\Õ\Ëú©`c\ç@\ä\ĞûH?q€Ä”l’s+\Zãƒ¾®µ];Jõm]’0Qk\Ş7Vÿ\ÆöC—¨R{;\Ğ\â¢ÀöwŸ$\ã\ÔAzÊ“¯„Á gñŒû¥%\"rf\Ø,Vo-\ÅzYSZ\ÜŞ¨o$¸\Ç ‚c’xp;¥9\'A’0ªú¢´pv·‚ZcO\çñ¤ı¹Ÿ”ô\Òóª\íCc+n$I’¨©\×Y\\¨\0(­¬\Å\ÆF\"\îqêƒğÈ³÷“\0}ı\'~Zw{>Z¿;{V¾û2\Çö\í¿€\'o¬c\r\0	8<’{é”­Ox7|Ã£	\é5„„ı¿Pšu•\Æ\rA¾¯ûoVBk\á_ø|\Ë\Ö\"~@\Z\Û\Ó7¿¤’ñO¯\æP\çÁÿƒ\×^V…?½õöñ*v,ß´¿€ N\Ü\Ç\Ç/=P	Œ\Êo\0š³€É™§>\à^<;\Ñ>ª	û·Pzeõ\×Áv\0\rµ\"n>\"Ö¶´ZcO\ä\àñ¤Ÿ8@rju¨\Ôv`4 IZ­u;O“[TÎ¸ş\á8·Ó€\ÑH~q9“Kv~ş\é<8\Şb\ÏK’\ÄÁ5\ï²ÿ‹W±\Õ\Øó\Î\×?\Ñ%¶\Ùi\É,z(\ŞĞ¨ÕŠÀ\àO\Ë\Ş:Î¹x\ÆÙ»=­>@;O_²\Îg\ã¦S_]“ooÂ†‰{ºöW\â\àl}5Ô”³vA<\ÅWR\è\åÍ²¹½,²L\ÚF\×+µø¹\ËA•\Âòz[vŒ«%µ‰ôºv,}†{\Ä\ÉÕ\×o§stŠòxlL?}iQøùò´Uº«²\ëixô³\í´óô¥\ì\Ú¾z¥×® *5ô|ÿ\ØùD¨\ê¢Da\åh}:\ÄuñfPWŸ6;•X·/k\×k-l{f$òó+S’•€O‡@–ı¸›A¡\äñä”‘†kY\é\n\àä«²m\Z0wtY\ÚÙ»=3>İ†G@5¥El{{>i\'\0\à\àM\Ç~¯\àGPg%~!\"¢Â¼ùš²b\ÖÎ§8+\å6º\Å\ê\Ì\ë\êkÙ¿òcNoşÉ¨§\çÀa¼ò\Ù:\\\Ü=\ÈJMæ©©÷\ZËŠòMw\ïC¾\Õ&\İ\ÉuùµÀ4;\'W&½¾š°>ò\å\çs»7ğ\Ûò©¯‘“\Î\âğ‹~¯ğ¡ø‡*ñ\í¨@\ã\Ø\ÒMõõB.\ì\İt\ë5öô˜8«y\æ\ëk\ê8´vg·}®®[=?ÿfóuùCûö°ô\é™R]U…€<ó3o%ü\0\0òvøxV\â~š¡¿Œ¨PRU’Ï¡5K9¿g#½Ü§\Æ9°‰x„\Ç\'47_W/N\î P\Ü^·µU)şM\â›\É>ûõe¢È±“˜ÿ\Ê{xú¶§N\ÛÈ²·^fßºOMÎ/Aİ–\İşO’=	\ïH\âÿó	ş]zPQx•?7,\çÌõ\èµ\Ílüpj\ßG¯\îØ»u\Â\É;_O4ö6(” T\Ê_mY1U%…”\æ$Q’}–²\ì\Ã4Tf`\ï\è\Ä\ÈIS¹ÿ±\'iL½^\âĞ‘c¬}ói\n2A~F÷8p\ë\åõ/\0FV}A f\Ìt\ÍZ\Ò|‘²¡º’Ô£¿’|p+\É\'a4X\Æ\ê\Í!ª\0\É\"\ĞickG¯Á\Ã~\ßô>…Ê†\ë\rF’\Ò2Ùºb)öl4\Íú_\È\Ê\Îú=™›õ}§Z‘ˆ¼Ï–\n¥’®#\ï§ß´…x5\å\ãAJ\ä\'¡4\ã…©\É\ËH¦²´„\Ú\êJó\ÆD>~ø‡„Ò‰˜>\é>`¥†\n­‘\n‘\Ô\ÄnøœKû~\Æh0€\Î{ù9\Ï?Š>Ü‡“.À³Àü¦¿ñ\íÔ\è{§1pl›Ô¢„TWF=ö\Øh4`$ôF¨\×K4\Z%*\nrI:¼‹‹¿m\"?õ’©z9ğ9ò“\Ú\n«\Ü&\İÍ§³´<mƒ¹µ\ïH\Ç{\àƒ»\î!8º[·ª¯p=\'ƒ\ë9\é\ä¥\\ \ë\ì©,/»õSõ\Ï*\ägrÿo)ùY\ëe\ä÷:\"m\ìŒn^FG7/£]›§È¯\È?B\á\İuº›+ -ò@¾‰…ùóyÀ\å¨E^Ö¥È©º\Ö\Ï\ç-\ï\Í\ÜEú_0–ÁE¥;\Z\0\0\0\0IEND®B`‚',0,'C:\\Users\\usuario\\OneDrive\\Documentos\\NetBeansProjects\\tienda_con\\target\\classes\\producto\\papitas-fritas.png',1),(23,'Celular','Iphone',0,_binary '‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\0@\0\0\0@\0\0\0ªiq\Ş\0\0\0sBIT|dˆ\0\0\0	pHYs\0\0»\0\0»:\ì\ã\â\0\0\0tEXtSoftware\0www.inkscape.org›\î<\Z\0\0\ÄIDATx\Ú\í›\ÛSW\Çu¦\Ó\éøĞ‡ö¥uú\Ğ\étú/\Ôi\ß\Z¼Lµ¨P„4‰‘*T\å&Š¶\"8¨\\ªTå¢”©Z²‰\\ \É!	/B\Æ \á¢ a·û[D&‹ƒt`\É\Ìw8ûûş\Ø=ç““³{v÷¬!b\Íb$LLÿR”!#\å!E,‘\àX28öbë¿¨NJ\Ê\Ù@V\äñ6|®C–\r€Hœ½ŒŸY‡\å \ÉÈŸ¯rûc$\Æ\à\à(D(:>\Û\ÂøC;‚÷)·m‹\Ğúx³ \0d–@BfÁ|•Ûº5\\\Ï\á„\Ñ1lGF‹u°=Ÿ ga½ ³€µ\0x‚£={\"øª8qú+\Ø&ÿN\ì	\ç+w\îF|	<\ÈY1\0–F\0,\0p$wHx¬È¶”‚c²€\àô\Í\æıµb)\Ç\0\0\0`\0Ô”§±‰Qº:¥š$¹¡|~µõ&N»?Â‹G\é‚x*·õm\è4j\ÖwQº6šÌŠ·\0n°€¤\Ş4@tó_R\è/ Sò\Ç\í\"†Œùxó¾Y\Óm ¾0(ûªN\å*R*J\Ô\ëmúqˆ…\Éı¬\í\Ér=\Æ ©\åw\n@\Ù\Ù\Z\0ğ \ç«3²\Î\Şòj*–?0\ã5ıvL	\0B\ä6lU\0‘U\è\Î\å¹W€¬ºQœ\Ë÷\Ìx\Ò5\ëÀ@\Ç@©/¤\0\\:W«g\0\ä|­7ScÀ&DnmMMU•œQ|jVS=\0HVŸw¤ª½F\×K{œ%­A\ë_x£cx„Ÿ`ôrI&ˆ9»\Zl\Îuv£e­Ã€\Ñõq‡I¸\0`9€¢ö]©5\ÙC×•\Îg\\ƒ\Ö~d¥y0h[„•\Ã	õ\Ğ1ğ \çx•\Ò\á-\rsâ¥¡º•\Ç\èX\r@Po\è-µJ‰›Ö¤§O\ìB\Ä\ã8¤¹×•€B,Gs™\Z\Ã2+o‹9ªk9Q\ZBøÒ‘jm/{\È\r4\Ö\ã4ÏŒş¸ƒ7z\Õzd8Gs\é5€«\Ó\0¤e\'K\ÖJ	\Ê€«€¦kÙŒ\0’«µ\ë~6\ë2\Ø&6\Òmz\Ê\Ék$\è‚ØŠ\Ğ\ç\"oz@7¿·\Ì*õ\Î\í?D\Õs\âU^	=€_\ß\æ\0dƒ§šlb]—]„TZ¥ƒ\Ëj.§\0\ìÉ­ne\ZÀƒœ\Æ\ÊÓŒ\0$5†VŸ`°+j\Ë\Ğ\Ñu=¥\â‘pÀ®²ÿ•„l\İ«¥b\àA¸\Ú\èzT!R¹\ËcµtÁ\à\È\ê\ép\à:`Z\ŞÈ›].º¢«\í£ô\Ê¬\ëz)‘™\\tAlV\ë{F%\r=.º¸·^Vˆ®±O\å+œsGxR\ãšQÈ‘’3Fr`ôÌ,A<\È9§\éE\Éıs>^œp\Æ\Ş\îd-€}7¬˜\ÆS\n.\ÖMO‡•\ät˜a\Æux8ŒŸ\ä»1\Öh\ïR\â81@\Ê561i	/n\ê_0€\çCıÄ¡xÁ¸¸3t2O\é7\0¦¦ğ~ú·–ZcF\0mGg\İ/\à\núı@Dqsÿ™;V\í™;]:\Éu“\å½6»…P\Ş\×*µ–p»\Ù ²\Êöœlì¤¯1`wI«\nr\n\îı\Ó\Æ\0<È‘\ÙUCÀdœ\Ü9\È\ê\Ó`Xª\Û^ØŒĞµó¢!\Ïc\à\Ç\Ô:pYó•Ù”‹\Ğ1ğ ‡W÷`L\áBÚ\Î\Ò\ã€.pC$\0ÀD^C\İôm\è\ê zL$\ïqû\0~ş_MQU6\Ï|\nM¯P“3>|ÿD#lskƒ^\Ç@P†˜ö\Ép#¹_¼u©ßµ?8&k\0\ìM»\Ü\ÌtøF‰%&NP¨›s KE\İ\0\Ék\ÄG\'&\ÛAP†X¥Ö©\Â	\Â}¬¶\İô®ıÁ1ıÀÿ¬\0\0¶øD­U¬³´¢t}Ø¦\×|Wˆô¿9_ñb\ïõ\Îû\ä\ï¥b\àA\Î/Ù²¾^^¢f\è€¥K+JW¼p‰}\0¾?\ß8\0\Ï\ï|i\ã]\r9?\é¨w\0×™Ÿ\Ã; (C<È©O\ÌG˜†g\ËûY\Û6]@0&\0Ÿ5N¾¨§®\æ\Æl\"ó\Ì%0”!\äÜ‘\ä0Ø—U‡ù=\0_O‘!¶j\0À·=\á\Úg\Z\å\Ñ` cğù¿¯\ë¨w\0R\äºGS6‚2€ô \çoI.#\0 Y}\Ø`Ô«\×\Ú\r]X[-\ß^Dœ\Ógd˜õ\ä\ì£b\àA7\ë–s,Vhñrù]=©:p\0\0À>\0\ÂÄ“C±\ÉgmK)8f`Á„?8b\Ö ¼\ê\0l\Ù\Ö6óXÊ«\nÀ!aZ\ß\Üw \æ\0Ş±pr>mş¹{¦ñP~\ï°¬\'±tö \à\×°Re¿\\:»\êO¯„\åóÿæ±…\éİ¶{\ï\0\0\0\0IEND®B`‚',0,'C:\\Users\\usuario\\OneDrive\\Documentos\\NetBeansProjects\\tienda_con\\target\\classes\\producto\\cable-hdmi.png',0),(24,'22','Moto',0,_binary '‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\0@\0\0\0@\0\0\0ªiq\Ş\0\0\0sBIT|dˆ\0\0\0	pHYs\0\0\Ø\0\0\Øú\\¦r\0\0\0tEXtSoftware\0www.inkscape.org›\î<\Z\0\0	IDATxœ\í—}Œ\åWY\Ç?\çü\Ş\ï\Ë\Ü{gfgw^ö‚[–¢e\×h º\Ô±\Ù-JcM[Z\r!SÅˆü#ŠC›˜!Æ \Æô%\n(­ZÛ‚+Ú”JSú²\ì\Î\î¼\Ï\ÎÎ;w\î\ë\ï÷;\ç<ş1Ã”\İv\Û\İmQ\ï\'9¹79\ç÷ü\ç{\ßy0`À€0`À€øÿ„º\Ò\ç*£ã‡”ó*dü\n\'¬)E%\'oÿ½}ö\ì\Êúòª¸tö\í‹kMs%7Š_Î„?\êş5‘_\îK»\"vÍŠiXq³¹ø©H\Ã\\O¸§?\×lÎº\\›W\Ê\Ë\nP.OŒz¡º1P\êf+¼K‰ø‡¾¹!ñ\Ã7FšgS\Ç#}\ËI#ˆ% \Ä\Ñ2B*€VŠj\è¡DP\"x(*¢¦\ã\âšH3¬sFør+O§3%¾şv/sw­¯/|\ï\\€ò\è\Äm9ú\Ş-ÆºC¡¯eo%Q×•Bu0\Ïxº›óH\Ï2“ZŠQ@y´HRŒ©V+‹:.\Ï<5 ø¾¢\Û\Îy\Û;®Ek\Åúz“N§‹5“;ò^J»Ù£—[&›\Ë>\Õ]\Ã\Ü\×qrjv…P«¿\êö\İGZ­…úS\0¯V\Ê;\Zju[\ê\ÜD9\n\Ü\ë†ú]ÅcI@1¹wµ\Ë\'O¿ğ™UŒ\ì(\'!•Z€‰\É]\×ø\Ûş\å\ç$Ÿ…\Ó-~ıƒ7\áy\Z€Å…e\Ö\Ö\Z\ç9\Ñ\ïe\ÔÏµ¨/6\È2\Ë{k1\ÑÁıü\ã÷gec£»aŒ»½\ÑXøÚE€;¦sÇ®«j%\Ş:>¢~qj\×\Ô*\è(­·\æ™\åûk\ëL·:œnv8³\Ş\â\Ôz‹fšó\Ù#of\Î¾2·Â©¾¥^o\á0\Äõs)wş\Æ1\ßÛ¶µ´¸L½\Şx‘3\"\Â\Új›\Å\é\"c¹}ÿÿV,ñ\ä÷NI\à©²<ø\ÍFcºùš\nP”¼a’ƒå˜‚µüT\àƒ\ä\Ù\Ö\ÈÁº\Í¢Ä¨¤€Š#ˆ¼B‚Y®ó\È\ìY[8\ËJ7EŠ\Ê#Uª\Ãeª\Ãe*\ÕiÚ§\Ûë¼¤S\Î	‹³u–\æV¹¾²\ç-ø\Êw§¥\Û\í­õ­ı\Õf}ñŸ_3FG¦œ_\Ê~{8\â}•ğòù>*\ÑI‚Šc\æ\ædfh)\ÍL/eº\Ñ\æ\Í6K.\Æ\n\çQ\n½‹\Ú\ëd†\Ì:ö\Æw_w€O­tx\â\é3¢\á\ï\È\Ù\×´Dd¥\ÎZ{uunñ}¨\Ö&0\î«\×ùo\á“\çQ?á«»‹x\êJÛ„Íÿ\áÑ®e§¯\Øx\ì+%\ì*\â\'	‹J3“	\çróŠ¶v%1o\ß=†ò}_\İ\à3K\Èkr\ëX\ëõe­Ÿ\Ê\ÌF—\Ü\è²\ç-·ıœ\Ö\ê3õúü\Â%	ğ_ş+¿¥+|bgÂ‘‚Ùgvr\î[Ï˜1–7‰£…b	M\ĞÀNO±\'P\ì=ö»C\Å^_³\Ó×¯dş’pÀ©\ÌñŸ=Ã—Zy¶˜[\Ï\Óê‹‚ÿ»««3K?ºöE–&•ã‰\áHÁg\Ã	\ßl\ç\ï[–T4\n<\Ş]ö\Ùs\Ãu+\Ü>ß¦+\Â;]Æ‡$e·=¿fQi–ŒÇ²\Ñ<Ÿz<*+(,+\Øhöš½Ç¾@³;\Ô\ìó}ñl|ªoy°cx6úû|\Å;bŸ[†Bn­„\á\ã=Ã§\ë\é{§9Z©M~¸\ÙXøK6“ô\Åğ\Å¿Å§t‘û\'‹œ\Ê,w¯¥8­(\r—ˆ’g6\İNÆ­Cw\Õ\"¼-\ßR;Ú”r\ÃG\\\rø¾\ÏH­Lc\Ésƒ±–<·k1ÆZ\áŠå±„\æ,K\Úg	Ms+\×G4\ì4¿7šğúpSø–>v.\åx\ÏP.ke<O\Ñ\ë\æ¬\×[Œ(ÅŸ\Å5V\àoZ^O\r¨‡R\Ãû66\æ\×\Ô\Ø\È\Ôwr‘\Ã\Z\å\ïŒ}\Zıœ‡®5w\×3ªc1•‘µuxG!)u…“\Ï-òöXq\Ïh²\İQ\Í\ZÇn°}~Eú¾\Ï\Ô\Ä‚\àâŸ“Ál	’ƒ1c\ÆXÖe\Î8D³¬<\Ş?YeW\è\Ó\á×–z,+™*D›‡©R…1qX`şLµ³M>;^\àM‘¦xV<\î>½b\Î\×\Û9r‡ªO\Ê{\Ê!ã¾¢\ê)\"\Í]‚’cx¬HFl¬¥\Ø”Êµˆb)!\Ğ	\Ï<9\ÃGGB–‚í€¾\Ó3|h¹\Ç]\Ò\ág%\Çó<¦\ÆG‰¢Ë¯,\Û\"9A)A©\Í\İÿ“\Õ>_\ï\å”F 6R£\ß3t›Ji‚X1T©U˜?\ÓÀ®¶ø\êdûö\\\Íg{|\Ûf©\'Cü;#7–\Şy=ş¢‘qR,a\Ña°¶dP\Î\çÀıh\æO\×Ñ|\Â0\äøj‡Û†‚\í,˜\n4(ø|\ß\ã°\ä”\Å\Ò\Üè°¶\Şb½Ù¦\İ\î\Ò\íõ\éõS\Ò4\ÇX‡s\"hO¿\äE)µ…u+ü\ÑjJP¶ ıbm¹\Ç\ä\ÄNö\îb~v•´cĞ¡al\×0óMvh8¦Rn\Z\å\Öñ*O¶R\Óròw/™—w\r^aóğ\ê5¡Pˆy\Ï-7\à{\Z¥`\æù	û\ÖwIŠ]j£U\æÎ¬29®\n_8\ß_x6uüA·Ì°r€‚‰I\æH2¡€¡@N>E„Š²¯òß§\àyøG\à{ø¾O\ïP‚\Î*:Í”ë®¿–«\î\à\']\ÅııM6\Z)QÔ£66\Ä\Ã\Í¿\Ô\ëR\êuy.³<\×\é{J\Ô=>€•ªj*Ğ±B²ÕŸ\Ø\\3ºgˆ,Mñ	\"0¹ŒşC&‹‘¢Á÷ó\æ|4p\ÏX\Âñ¡i…¶\Ú\Ú\Î\Ñq›X\İ:\ÚZ\â¶\æ6Kvk¤((ŠP \'!\å\İ%Ÿ¢ıú§ˆ£øGJ¶\Óp\íµxú™dYJR™©¿\ãš¹\rQ\ÇW\ZóOù	<ş\é\åöOÔµ•`P(]Am­\×\n¬u,/eß¾=hO\Ó\í¦[i	\Æ\ZœÀ\Ê\Ò*\'\È_”M“[\ãR\é=4\İ\í_EGmş\ï (nôYVDÑ¦€uv«M³¹A¥2À\ê\Ú:\"A°\Ö\"\Ær\â\Ô\0Óº¬3ü‡|\ã\Çf¬<ÿ\İ\æzø%ôŒB‚ò-KókT‡‹\äù)J\å2O?yš¸\à‡V\ç„	\ìe„yqb \ÆQøaqA\Û\×\\®/²caf€õ¡\rl\'Ÿa\Çd€õ6\ÜKwœ\n 22ñó¨‡®\Æ\â\Ëh\êZ©BÍ€‚¬b2¡XŠ\é÷2”V\ì˜LˆŸúB‡~3\åu¸»\Ó\Ë\æ¹=¬Œl ø3‰/Z7pO…EK&\ÓdmŸ òñ}M·2TO°¹0{¢\ÉnœT¶”œFÓ¯¯-~|ûÀ­LÜ¤\à­\0\"$J\ë‘M\Â\â\æ.\ØL\ã(OğCQPdu)%Ü‹RÓ¯V\0\Ñöš«KOŒ–‹?ürk•’\Ã(nL*FiÄ\ÉôfV\Ï\í{¤­ ÏºvÜ—¶tÊ‰¯>¿qnş\äEû\Ë\ê\è\Ôõ8ù§ ?,:”>ƒ³&\ï*õ‡ú\Â\'^mğW€®N~\rø…¨\è”¹ó&­¬í‰µjE9ù™Fcqö¥Œ¼\ìu¯2:q\Èı€yƒ€Ò¢\Ä\æ\nN°Ñ˜¿ÿ5\éòñª\ÃSù}­ñt \n\çg”\ÒJ=\äiÿ\Îs\ç\Î,_\ÌÀ¥\Üwuµºû\ç\ĞöˆB£dİ‰~¼»o,..v_\Ã`®˜Ri\×?\ÔGA½Q\àf5\Ş\×¹§ÿ·}0`À€0`À€0`Àÿ-ş^t:¡òd¶^\0\0\0\0IEND®B`‚',0,'C:\\Users\\usuario\\OneDrive\\Documentos\\NetBeansProjects\\tienda_con\\target\\classes\\producto\\carro-deportivo.png',0),(25,'Carrro','Rojoo',0,_binary '‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\0@\0\0\0@\0\0\0ªiq\Ş\0\0\0sBIT|dˆ\0\0\0	pHYs\0\0\Ø\0\0\Øú\\¦r\0\0\0tEXtSoftware\0www.inkscape.org›\î<\Z\0\0	IDATxœ\í—}Œ\åWY\Ç?\çü\Ş\ï\Ë\Ü{gfgw^ö‚[–¢e\×h º\Ô±\Ù-JcM[Z\r!SÅˆü#ŠC›˜!Æ \Æô%\n(­ZÛ‚+Ú”JSú²\ì\Î\î¼\Ï\ÎÎ;w\î\ë\ï÷;\ç<ş1Ã”\İv\Û\İmQ\ï\'9¹79\ç÷ü\ç{\ßy0`À€0`À€øÿ„º\Ò\ç*£ã‡”ó*dü\n\'¬)E%\'oÿ½}ö\ì\Êúòª¸tö\í‹kMs%7Š_Î„?\êş5‘_\îK»\"vÍŠiXq³¹ø©H\Ã\\O¸§?\×lÎº\\›W\Ê\Ë\nP.OŒz¡º1P\êf+¼K‰ø‡¾¹!ñ\Ã7FšgS\Ç#}\ËI#ˆ% \Ä\Ñ2B*€VŠj\è¡DP\"x(*¢¦\ã\âšH3¬sFør+O§3%¾şv/sw­¯/|\ï\\€ò\è\Äm9ú\Ş-ÆºC¡¯eo%Q×•Bu0\Ïxº›óH\Ï2“ZŠQ@y´HRŒ©V+‹:.\Ï<5 ø¾¢\Û\Îy\Û;®Ek\Åúz“N§‹5“;ò^J»Ù£—[&›\Ë>\Õ]\Ã\Ü\×qrjv…P«¿\êö\İGZ­…úS\0¯V\Ê;\Zju[\ê\ÜD9\n\Ü\ë†ú]ÅcI@1¹wµ\Ë\'O¿ğ™UŒ\ì(\'!•Z€‰\É]\×ø\Ûş\å\ç$Ÿ…\Ó-~ıƒ7\áy\Z€Å…e\Ö\Ö\Z\ç9\Ñ\ïe\ÔÏµ¨/6\È2\Ë{k1\ÑÁıü\ã÷gec£»aŒ»½\ÑXøÚE€;¦sÇ®«j%\Ş:>¢~qj\×\Ô*\è(­·\æ™\åûk\ëL·:œnv8³\Ş\â\Ôz‹fšó\Ù#of\Î¾2·Â©¾¥^o\á0\Äõs)wş\Æ1\ßÛ¶µ´¸L½\Şx‘3\"\Â\Új›\Å\é\"c¹}ÿÿV,ñ\ä÷NI\à©²<ø\ÍFcºùš\nP”¼a’ƒå˜‚µüT\àƒ\ä\Ù\Ö\ÈÁº\Í¢Ä¨¤€Š#ˆ¼B‚Y®ó\È\ìY[8\ËJ7EŠ\Ê#Uª\Ãeª\Ãe*\ÕiÚ§\Ûë¼¤S\Î	‹³u–\æV¹¾²\ç-ø\Êw§¥\Û\í­õ­ı\Õf}ñŸ_3FG¦œ_\Ê~{8\â}•ğòù>*\ÑI‚Šc\æ\ædfh)\ÍL/eº\Ñ\æ\Í6K.\Æ\n\çQ\n½‹\Ú\ëd†\Ì:ö\Æw_w€O­tx\â\é3¢\á\ï\È\Ù\×´Dd¥\ÎZ{uunñ}¨\Ö&0\î«\×ùo\á“\çQ?á«»‹x\êJÛ„Íÿ\áÑ®e§¯\Øx\ì+%\ì*\â\'	‹J3“	\çróŠ¶v%1o\ß=†ò}_\İ\à3K\Èkr\ëX\ëõe­Ÿ\Ê\ÌF—\Ü\è²\ç-·ıœ\Ö\ê3õúü\Â%	ğ_ş+¿¥+|bgÂ‘‚Ùgvr\î[Ï˜1–7‰£…b	M\ĞÀNO±\'P\ì=ö»C\Å^_³\Ó×¯dş’pÀ©\ÌñŸ=Ã—Zy¶˜[\Ï\Óê‹‚ÿ»««3K?ºöE–&•ã‰\áHÁg\Ã	\ßl\ç\ï[–T4\n<\Ş]ö\Ùs\Ãu+\Ü>ß¦+\Â;]Æ‡$e·=¿fQi–ŒÇ²\Ñ<Ÿz<*+(,+\Øhöš½Ç¾@³;\Ô\ìó}ñl|ªoy°cx6úû|\Å;bŸ[†Bn­„\á\ã=Ã§\ë\é{§9Z©M~¸\ÙXøK6“ô\Åğ\Å¿Å§t‘û\'‹œ\Ê,w¯¥8­(\r—ˆ’g6\İNÆ­Cw\Õ\"¼-\ßR;Ú”r\ÃG\\\rø¾\ÏH­Lc\Ésƒ±–<·k1ÆZ\áŠå±„\æ,K\Úg	Ms+\×G4\ì4¿7šğúpSø–>v.\åx\ÏP.ke<O\Ñ\ë\æ¬\×[Œ(ÅŸ\Å5V\àoZ^O\r¨‡R\Ãû66\æ\×\Ô\Ø\È\Ôwr‘\Ã\Z\å\ïŒ}\Zıœ‡®5w\×3ªc1•‘µuxG!)u…“\Ï-òöXq\Ïh²\İQ\Í\ZÇn°}~Eú¾\Ï\Ô\Ä‚\àâŸ“Ál	’ƒ1c\ÆXÖe\Î8D³¬<\Ş?YeW\è\Ó\á×–z,+™*D›‡©R…1qX`şLµ³M>;^\àM‘¦xV<\î>½b\Î\×\Û9r‡ªO\Ê{\Ê!ã¾¢\ê)\"\Í]‚’cx¬HFl¬¥\Ø”Êµˆb)!\Ğ	\Ï<9\ÃGGB–‚í€¾\Ó3|h¹\Ç]\Ò\ág%\Çó<¦\ÆG‰¢Ë¯,\Û\"9A)A©\Í\İÿ“\Õ>_\ï\å”F 6R£\ß3t›Ji‚X1T©U˜?\ÓÀ®¶ø\êdûö\\\Íg{|\Ûf©\'Cü;#7–\Şy=ş¢‘qR,a\Ña°¶dP\Î\çÀıh\æO\×Ñ|\Â0\äøj‡Û†‚\í,˜\n4(ø|\ß\ã°\ä”\Å\Ò\Üè°¶\Şb½Ù¦\İ\î\Ò\íõ\éõS\Ò4\ÇX‡s\"hO¿\äE)µ…u+ü\ÑjJP¶ ıbm¹\Ç\ä\ÄNö\îb~v•´cĞ¡al\×0óMvh8¦Rn\Z\å\Öñ*O¶R\Óròw/™—w\r^aóğ\ê5¡Pˆy\Ï-7\à{\Z¥`\æù	û\ÖwIŠ]j£U\æÎ¬29®\n_8\ß_x6uüA·Ì°r€‚‰I\æH2¡€¡@N>E„Š²¯òß§\àyøG\à{ø¾O\ïP‚\Î*:Í”ë®¿–«\î\à\']\ÅııM6\Z)QÔ£66\Ä\Ã\Í¿\Ô\ëR\êuy.³<\×\é{J\Ô=>€•ªj*Ğ±B²ÕŸ\Ø\\3ºgˆ,Mñ	\"0¹ŒşC&‹‘¢Á÷ó\æ|4p\ÏX\Âñ¡i…¶\Ú\Ú\Î\Ñq›X\İ:\ÚZ\â¶\æ6Kvk¤((ŠP \'!\å\İ%Ÿ¢ıú§ˆ£øGJ¶\Óp\íµxú™dYJR™©¿\ãš¹\rQ\ÇW\ZóOù	<ş\é\åöOÔµ•`P(]Am­\×\n¬u,/eß¾=hO\Ó\í¦[i	\Æ\ZœÀ\Ê\Ò*\'\È_”M“[\ãR\é=4\İ\í_EGmş\ï (nôYVDÑ¦€uv«M³¹A¥2À\ê\Ú:\"A°\Ö\"\Ær\â\Ô\0Óº¬3ü‡|\ã\Çf¬<ÿ\İ\æzø%ôŒB‚ò-KókT‡‹\äù)J\å2O?yš¸\à‡V\ç„	\ìe„yqb \ÆQøaqA\Û\×\\®/²caf€õ¡\rl\'Ÿa\Çd€õ6\ÜKwœ\n 22ñó¨‡®\Æ\â\Ëh\êZ©BÍ€‚¬b2¡XŠ\é÷2”V\ì˜LˆŸúB‡~3\åu¸»\Ó\Ë\æ¹=¬Œl ø3‰/Z7pO…EK&\ÓdmŸ òñ}M·2TO°¹0{¢\ÉnœT¶”œFÓ¯¯-~|ûÀ­LÜ¤\à­\0\"$J\ë‘M\Â\â\æ.\ØL\ã(OğCQPdu)%Ü‹RÓ¯V\0\Ñöš«KOŒ–‹?ürk•’\Ã(nL*FiÄ\ÉôfV\Ï\í{¤­ ÏºvÜ—¶tÊ‰¯>¿qnş\äEû\Ë\ê\è\Ôõ8ù§ ?,:”>ƒ³&\ï*õ‡ú\Â\'^mğW€®N~\rø…¨\è”¹ó&­¬í‰µjE9ù™Fcqö¥Œ¼\ìu¯2:q\Èı€yƒ€Ò¢\Ä\æ\nN°Ñ˜¿ÿ5\éòñª\ÃSù}­ñt \n\çg”\ÒJ=\äiÿ\Îs\ç\Î,_\ÌÀ¥\Üwuµºû\ç\ĞöˆB£dİ‰~¼»o,..v_\Ã`®˜Ri\×?\ÔGA½Q\àf5\Ş\×¹§ÿ·}0`À€0`À€0`Àÿ-ş^t:¡òd¶^\0\0\0\0IEND®B`‚',0,'C:\\Users\\usuario\\OneDrive\\Documentos\\NetBeansProjects\\tienda_con\\target\\classes\\producto\\carro-deportivo.png',1);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -430,7 +430,7 @@ CREATE TABLE `proveedor` (
   PRIMARY KEY (`idproveedor`),
   KEY `idsexo_idx` (`idsexo`),
   CONSTRAINT `idsexo` FOREIGN KEY (`idsexo`) REFERENCES `sexo` (`idsexo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -439,7 +439,7 @@ CREATE TABLE `proveedor` (
 
 LOCK TABLES `proveedor` WRITE;
 /*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-INSERT INTO `proveedor` VALUES (4,'',1,'hjjaidowjiowj','jowadjoiwjiw','jiowio','jowidiojjoiw','Persona juridica',1,'2023-10-03'),(5,'',1,'sdsadsad','saddsadasd','54353453','sdffsdfsdf','Persona juridica',1,'2023-10-02'),(6,'',1,'Bismar','bismar@gmail.com','342342342','safsdfsdf','Persona juridica',1,'2023-10-01'),(7,'',1,'emeregildo','dsadasdsd','23232323','sadsdsadasd','Persona juridica',1,'2017-10-03'),(8,'',1,'carmelino','dfsddfsdf','23232424','sdasfsdf','Persona juridica',1,'2023-10-01'),(9,'Pasaporte',3,'webin','sfdfsdfsdf','243431','dsfdfsdf','Persona juridica',1,'2023-10-03'),(10,'Nit',1,'123','123','1233','ad','Persona natural',1,'2023-10-10'),(11,'Pasaporte',3,'webiiin','sdfdf','3423423','ewwfwef','Persona natural',1,'2023-10-03'),(12,'Cedula de ciudadania',1,'fsdffsdfsdf','sadfsafs','242424','sadsd','Persona natural',1,'2023-10-01'),(13,'Nit',2,'bismar','safdasfdsf','3542354345','dasdsaf','Persona natural',1,'2023-10-01'),(14,'1',2,'bismar','sfdfdsf','43434','sff','2',1,'2000-10-10'),(15,'Pasaporte',1,'webiinnn','dasfdsdfa','5253535','dsfsdfsdfd','Persona juridica',1,'2023-10-01'),(16,'Cedula de ciudadania',1,'camilooo','sadsadafd','3232323','sadsf','Persona natural',1,'2023-10-01');
+INSERT INTO `proveedor` VALUES (9,'Pasaporte',3,'webin','sfdfsdfsdf','243431','dsfdfsdf','Persona juridica',0,'2023-10-03'),(10,'Nit',1,'123','123','1233','ad','Persona natural',0,'2023-10-10'),(11,'Pasaporte',3,'webiiin','sdfdf','3423423','ewwfwef','Persona natural',0,'2023-10-03'),(12,'Cedula de ciudadania',1,'fsdffsdfsdf','sadfsafs','242424','sadsd','Persona natural',1,'2023-10-01'),(13,'Nit',2,'bismar','safdasfdsf','3542354345','dasdsaf','Persona natural',1,'2023-10-01'),(15,'Pasaporte',1,'webiinnn','dasfdsdfa','5253535','dsfsdfsdfd','Persona juridica',1,'2023-10-01'),(16,'Cedula de ciudadania',1,'camilooo','sadsadafd','3232323','sadsf','Persona natural',1,'2023-10-01'),(17,'Cedula de ciudadania',1,'camilo marmolejo','camilo@gmail.com','3253534','dasdasfsad','Persona natural',1,'2023-11-01'),(18,'Cedula de ciudadania',3,'camilo','fsdfdsf','423432','eefdsfsdf','Persona natural',1,'2001-02-02'),(19,'Tarjeta de identidad',3,'camilo','fsdfdsf','423432','eefdsfsdf','Persona juridica',1,'2001-02-02'),(20,'Tarjeta de identidad',1,'123','123','1233','ad','Persona juridica',1,'2023-10-10'),(21,'Pasaporte',2,'webin','sfdfsdfsdf','243431','dsfdfsdf','Persona juridica',1,'2023-10-03'),(22,'Pasaporte',3,'webin','sfdfsdfsdf','243431','dsfdfsdf','Persona juridica',1,'2023-10-03'),(23,'Pasaporte',3,'BE,BARYAO','sfdfsdfsdf','243431','dsfdfsdf','Persona juridica',1,'2023-10-03');
 /*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -502,7 +502,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Cedula','Juan',1,1,'11','ae@gmail.com','as','123','123',1,'2005-12-20'),(12,'Cedula','webin',3,2,'23423423','ebinefdsf','wefsdfsdf','1234','1234',1,'2020-09-10'),(111,'Cedula','Camilo',2,1,'111','1','1','123','123',1,'2023-10-03'),(112,'','2233',1,2,'eeerrrr','ggfgfh','ghhh','hjgug','fcg',0,'2023-10-01'),(9898,'','19891',1,3,'89189','18901890','10890','113','123',0,'2023-10-05'),(83838,'Cedula','BEMBARAYO',2,1,'U9129U','IONOI','NIONIONIO','NIONOI','NOIIION',1,'2003-11-12'),(111222,'Pasaporte','Pepe',1,3,'12337','ghnjkl','vbnm,.','pepe','123',1,'2023-10-04'),(123999,'Pasaporte','Cesar',1,1,'12345','cesar@','ooj','123','123',1,'2023-10-17'),(123546456,'Pasaporte','mulatico',3,3,'5345435','mulaticooo','dsdfdsf','9923','1234',1,'2023-10-01'),(1234567676,'Tarjeta identidad','Yey',1,2,'43454353','yey@hotmail.com','barrio san judas','987','765',1,'2001-08-13');
+INSERT INTO `usuario` VALUES (1,'Cedula','Juan',1,1,'11','ae@gmail.com','as','123','123',0,'2005-12-20'),(12,'Cedula','webin',3,2,'23423423','ebinefdsf','wefsdfsdf','1234','1234',0,'2020-09-10'),(111,'Cedula','Camilo',2,1,'111','1','1','123','123',1,'2023-10-03'),(112,'','2233',1,2,'eeerrrr','ggfgfh','ghhh','hjgug','fcg',0,'2023-10-01'),(9898,'','19891',1,3,'89189','18901890','10890','113','123',0,'2023-10-05'),(83838,'Cedula','BEMBARAYO',2,1,'U9129U','IONOI','NIONIONIO','NIONOI','NOIIION',1,'2003-11-12'),(100392,'Cedula','camilo asa',1,2,'3254352351','camilo@gmail.com','zona sur','1234','1234',1,'2023-11-01'),(111222,'Pasaporte','Pepe',1,3,'12337','ghnjkl','vbnm,.','pepe','123',1,'2023-10-04'),(123999,'Pasaporte','Cesar',1,1,'12345','cesar@','ooj','123','123',1,'2023-10-17'),(123546456,'Pasaporte','mulatico',3,3,'5345435','mulaticooo','dsdfdsf','9923','1234',1,'2023-10-01'),(1234567676,'Tarjeta identidad','Yeyy',1,2,'43454353','yey@hotmail.com','barrio san judas','987','765',1,'2001-08-13');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -519,9 +519,9 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Actualizar_Cliente`(in ced int, in nom varchar(45), in tele varchar(15), in corr varchar(45), in dire varchar(45), in fecha date, in sexo int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Actualizar_Cliente`(in ced int,in tipodo varchar(45), in nom varchar(45), in tele varchar(15), in corr varchar(45), in dire varchar(45), in fecha date, in sexo int)
 BEGIN
-update cliente set nombre = nom, telefono = tele, correo = corr, direccion = dire, fechanacimiento = fecha, idsexo = sexo where cedula = ced;
+update cliente set nombre = nom,tipodocumento=tipodo, telefono = tele, correo = corr, direccion = dire, fechanacimiento = fecha, idsexo = sexo where cedula = ced;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -538,9 +538,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Actualizar_Producto`(in nom varchar(45),in descrip varchar(45),in img longblob,in rut varchar(500))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Actualizar_Producto`(in idpro int, in nom varchar(45),in descrip varchar(45),in img longblob,in rut varchar(500))
 BEGIN
-update producto set nombre=nom,descripcion=descrip,imagen=img,ruta=rut;
+update producto set nombre=nom,descripcion=descrip,imagen=img,ruta=rut where idproducto = idpro;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -557,9 +557,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Actualizar_Proveedor`(in ced int, in nom varchar(45), in tele varchar(45), in corr varchar(30), in dire varchar(45), in fecha date, in sexo int,in tipoper varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Actualizar_Proveedor`(in ced int,in tipodocu varchar (45), in nom varchar(45), in tele varchar(45), in corr varchar(30), in dire varchar(45), in fecha date, in sexo int,in tipoper varchar(45))
 BEGIN
-update proveedor set nombre = nom, telefono = tele, correo = corr, direccion = dire, fechanacimiento = fecha, idsexo = sexo,tipodepersona=tipoper where idproveedor = ced;
+update proveedor set nombre = nom,tipodocumento=tipodocu, telefono = tele, correo = corr, direccion = dire, fechanacimiento = fecha, idsexo = sexo,tipodepersona=tipoper where idproveedor = ced;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -623,6 +623,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Cliente_buscar` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Cliente_buscar`(in valor int)
+BEGIN
+select * from cliente where cedula=valor;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `cli_ente` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -642,6 +661,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `consultar_cliente` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `consultar_cliente`(in valor varchar(45))
+BEGIN
+select * from  mostrar_cliente where cedula  like concat('%',valor,'%') || tipodocumento like concat('%',valor,'%') || sexos like concat('%',valor,'%') || nombre like concat('%',valor,'%')|| telefono like concat('%',valor,'%')|| correo like concat('%',valor,'%')|| direccion like concat('%',valor,'%') || fechanacimiento like concat('%',valor,'%');
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `consultar_producto` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -654,7 +692,26 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `consultar_producto`(in valor varchar(45))
 BEGIN
-select * from  mostrar_producto where Identificador  like concat('%',valor,'%') || NombreDelProducto like concat('%',valor,'%') || DescripcionDelProducto like concat('%',valor,'%') || PrecioDelProducto like concat('%',valor,'%'); 
+select * from  mostrar_producto where Identificar  like concat('%',valor,'%') || NombreDelProducto like concat('%',valor,'%') || DescripcionDelProducto like concat('%',valor,'%') || PrecioDelProducto like concat('%',valor,'%'); 
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `consultar_proveedor` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `consultar_proveedor`(in valor varchar(45))
+BEGIN
+select * from  mostrar_proveedor where idproveedor  like concat('%',valor,'%') || tipodocumento like concat('%',valor,'%') || sexo like concat('%',valor,'%') || NombreProveedor like concat('%',valor,'%')|| correo like concat('%',valor,'%')|| telefono like concat('%',valor,'%')|| direccion like concat('%',valor,'%')|| tipodepersona like concat('%',valor,'%')|| fechanacimiento like concat('%',valor,'%');
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -844,7 +901,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Insertar_Producto`(in nom varchar(45),in descrip varchar(45), in img longblob,in rut varchar(500))
 BEGIN
-insert into producto(nombre,descripcion,imagen,precio,condicion,ruta) values (nom,descrip,'0',img,'0','1',rut);
+insert into producto(nombre,descripcion,cantidad,imagen,precio,condicion,ruta) values (nom,descrip,'0',img,'0','1',rut);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -921,6 +978,25 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `new_usua`(in idusu int,in tipodocu varchar(45), in nom varchar(45), in sex int,in idcar int, in tele varchar(45),in corre varchar (45), in direcc varchar(45), in log varchar(45), in cla varchar(25),in fechanaci date )
 BEGIN
 insert into usuario  values (idusu,tipodocu,nom,sex,idcar,tele,corre,direcc,log,cla, '1', fechanaci);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Proveedor_buscar` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proveedor_buscar`(in valor int)
+BEGIN
+select * from proveedor where idproveedor=valor;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1033,7 +1109,7 @@ DELIMITER ;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `mostrar_proveedor` AS select `proveedor`.`idproveedor` AS `idproveedor`,`proveedor`.`tipodocumento` AS `tipodocumento`,`sexo`.`nombre` AS `nombre`,`proveedor`.`nombre` AS `NombreProveedor`,`proveedor`.`correo` AS `correo`,`proveedor`.`telefono` AS `telefono`,`proveedor`.`direccion` AS `direccion`,`proveedor`.`tipodepersona` AS `tipodepersona`,`proveedor`.`fechanacimiento` AS `fechanacimiento` from (`proveedor` join `sexo` on((`sexo`.`idsexo` = `proveedor`.`idsexo`))) where (`proveedor`.`condicion` = '1') */;
+/*!50001 VIEW `mostrar_proveedor` AS select `proveedor`.`idproveedor` AS `idproveedor`,`proveedor`.`tipodocumento` AS `tipodocumento`,`sexo`.`nombre` AS `sexo`,`proveedor`.`nombre` AS `NombreProveedor`,`proveedor`.`correo` AS `correo`,`proveedor`.`telefono` AS `telefono`,`proveedor`.`direccion` AS `direccion`,`proveedor`.`tipodepersona` AS `tipodepersona`,`proveedor`.`fechanacimiento` AS `fechanacimiento` from (`proveedor` join `sexo` on((`sexo`.`idsexo` = `proveedor`.`idsexo`))) where (`proveedor`.`condicion` = '1') */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1101,4 +1177,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-02 12:12:46
+-- Dump completed on 2023-11-17 12:19:49
