@@ -177,30 +177,6 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
 
     public void gestionarFactura() {
 
-//        mousu.mostrarTablaUsuario(prin.getTbfactura(), "", "Factura");
-//        prin.getTxtbuscarusuario().addMouseListener(new MouseAdapter() {
-//            public void mouseClicked(MouseEvent e) {
-//                prin.getTxtbuscarusuario().setText("");
-//                prin.getTxtbuscarusuario().setForeground(Color.BLUE);
-//
-//            }
-//        });
-//
-//        prin.getTbfactura().addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                int fila = prin.getTbfactura().rowAtPoint(e.getPoint());
-//                int columna = prin.getTbfactura().columnAtPoint(e.getPoint());
-//                mousu.setDoc(Integer.parseInt(prin.getTbusuario().getValueAt(fila, 0).toString()));
-//                if (columna == 9) {
-//                    prin.setVisible(false);
-//                    control.actualizarUsuario(mousu.getDoc());
-//                }
-//                if (columna == 9) {
-//
-//                }
-//            }
-//        });
     }
 
     public void gestionarProveedor() {
