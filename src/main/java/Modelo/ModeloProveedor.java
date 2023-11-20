@@ -1,4 +1,3 @@
-
 package Modelo;
 
 import Controlador.Conexion;
@@ -24,19 +23,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
-
 public class ModeloProveedor {
-     private int sex,ced;
-    private String nom, dir, tel, cor, lo, indo,doc, tipoper,tipodocumento;
+
+    private int sex, ced;
+    private String nom, dir, tel, cor, tipoper, tipodocumento;
     private Date fec;
 
-    public String getDoc() {
-        return doc;
-    }
-
-    public void setDoc(String doc) {
-        this.doc = doc;
-    }
+   
 
     public int getSex() {
         return sex;
@@ -53,8 +46,6 @@ public class ModeloProveedor {
     public void setCed(int ced) {
         this.ced = ced;
     }
-
-    
 
     public String getNom() {
         return nom;
@@ -88,23 +79,6 @@ public class ModeloProveedor {
         this.cor = cor;
     }
 
-    public String getLo() {
-        return lo;
-    }
-
-    public void setLo(String lo) {
-        this.lo = lo;
-    }
-
-    public String getIndo() {
-        return indo;
-    }
-
-    public void setIndo(String indo) {
-        this.indo = indo;
-    }
-
-
     public Date getFec() {
         return fec;
     }
@@ -128,8 +102,6 @@ public class ModeloProveedor {
     public void setTipodocumento(String tipodocumento) {
         this.tipodocumento = tipodocumento;
     }
-
-  
 
     public Map<String, Integer> llenarCombo(String valor) {
         Conexion conect = new Conexion();
@@ -155,15 +127,16 @@ public class ModeloProveedor {
         String sql = "Call pro_veedor(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setString(1, getTipodocumento());
-         ps.setInt(2, getSex());
-          ps.setString(3, getNom());
-          ps.setString(4, getCor());
-          ps.setString(5, getTel());
-          ps.setString(6, getDir());
-          ps.setString(7, getTipoper());
-          ps.setDate(8, (java.sql.Date) getFec());
-          ps.executeUpdate();
+            ps.setInt(1, getCed());
+            ps.setString(2, getTipodocumento());
+            ps.setInt(8, getSex());
+            ps.setString(3, getNom());
+            ps.setString(5, getCor());
+            ps.setString(4, getTel());
+            ps.setString(6, getDir());
+            ps.setString(9, getTipoper());
+            ps.setDate(7, (java.sql.Date) getFec());
+            ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Registro almacenamiento", "registro", sex);
             cn.close();
         } catch (SQLException e) {
@@ -171,7 +144,8 @@ public class ModeloProveedor {
         }
         conect.cerrarConexion();
     }
-     public String obtenerSeleccion(Map<String, Integer> pepe, int valor) {
+
+    public String obtenerSeleccion(Map<String, Integer> pepe, int valor) {
         for (Map.Entry<String, Integer> seleccion : pepe.entrySet()) {
             if (seleccion.getValue() == valor) {
                 return seleccion.getKey();
@@ -180,8 +154,8 @@ public class ModeloProveedor {
         return null;
 
     }
-     
-     public void buscarProveedor(int valor) {
+
+    public void buscarProveedor(int valor) {
         Conexion cone = new Conexion();
         Connection cn = cone.iniciarConexion();
         String sql = "call Proveedor_buscar(" + valor + ")";
@@ -189,7 +163,7 @@ public class ModeloProveedor {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-               
+
                 setTipodocumento(rs.getString(2));
                 setNom(rs.getString(4));
                 setSex(rs.getInt(3));
@@ -198,6 +172,7 @@ public class ModeloProveedor {
                 setTipoper(rs.getString(8));
                 setDir(rs.getString(7));
                 setFec(rs.getDate(10));
+                setCed(rs.getInt(1));
 
             }
 
@@ -205,12 +180,13 @@ public class ModeloProveedor {
             e.printStackTrace();
         }
     }
-      public void actualizarProveedor() {
+
+    public void actualizarProveedor() {
         Conexion cone = new Conexion();
         Connection cn = cone.iniciarConexion();
         String sql = "call Actualizar_Proveedor(?,?,?,?,?,?,?,?,?)";
         try {
-            PreparedStatement ps= cn.prepareStatement(sql);
+            PreparedStatement ps = cn.prepareStatement(sql);
             ps.setInt(1, getCed());
             ps.setString(2, getTipodocumento());
             ps.setString(3, getNom());
@@ -223,45 +199,46 @@ public class ModeloProveedor {
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Registro almacenamiento");
             cn.close();
-                
-          
-        }catch (SQLException e) {
-             e.printStackTrace();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        
-                }
-     public void eliminarProveedor(){
-         Conexion con= new Conexion();
-         Connection cn= con.iniciarConexion();
-         
-         String eliminarPro = "Call Eliminar_Proveedor(?)";
-         try{
-             PreparedStatement ps= cn.prepareStatement(eliminarPro);
-             ps.setInt(1, getCed());
-             ps.executeUpdate();
-             Icon icono = new ImageIcon(getClass().getResource("/img/eliminar.png"));
-             JOptionPane.showMessageDialog(null, "Eliminado", "Proveedors Eliminado", JOptionPane.PLAIN_MESSAGE, (Icon) icono);
-         }catch (SQLException e){
-           e.printStackTrace();  
-         }
-             
-         
-     }
-     public void limpiar (Component[] panel) {
-        for (Object control : panel){
-            if (control instanceof JTextField){
+
+    }
+
+    public void eliminarProveedor() {
+        Conexion con = new Conexion();
+        Connection cn = con.iniciarConexion();
+
+        String eliminarPro = "Call Eliminar_Proveedor(?)";
+        try {
+            PreparedStatement ps = cn.prepareStatement(eliminarPro);
+            ps.setInt(1, getCed());
+            ps.executeUpdate();
+            Icon icono = new ImageIcon(getClass().getResource("/img/eliminar.png"));
+            JOptionPane.showMessageDialog(null, "Eliminado", "Proveedors Eliminado", JOptionPane.PLAIN_MESSAGE, (Icon) icono);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void limpiar(Component[] panel) {
+        for (Object control : panel) {
+            if (control instanceof JTextField) {
                 ((JTextField) control).setText("");
-                
+
             }
-            if (control instanceof JComboBox){
-                ((JComboBox)control).setSelectedItem("Seleccione...");
+            if (control instanceof JComboBox) {
+                ((JComboBox) control).setSelectedItem("Seleccione...");
             }
-            if (control instanceof JDateChooser){
+            if (control instanceof JDateChooser) {
                 ((JDateChooser) control).setDate(null);
-}
+            }
         }
-     }
-     public void mostrarTablaProveedor(JTable tabla, String valor, String nomPesta) {
+    }
+
+    public void mostrarTablaProveedor(JTable tabla, String valor, String nomPesta) {
         Conexion conect = new Conexion();
         Connection cn = conect.iniciarConexion();
         JTableHeader encabezado = tabla.getTableHeader();
@@ -271,20 +248,17 @@ public class ModeloProveedor {
 
         JButton editar = new JButton();
         JButton eliminar = new JButton();
-        
 
         editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/descarga.png")));
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/borrar.png")));
-    
 
-        String[] titulo = {"Id Proveedor","Tipo De Documento","Genero/Sexo", "Nombre", "Correo","Telefono", "Direccion","Tipo De Persona", "Fecha De Nacimiento",};
+        String[] titulo = {"Id Proveedor", "Tipo De Documento", "Genero/Sexo", "Nombre", "Correo", "Telefono", "Direccion", "Tipo De Persona", "Fecha De Nacimiento",};
         int total = titulo.length;
         if (nomPesta.equals("proveedor")) {
             titulo = Arrays.copyOf(titulo, titulo.length + 2);
             titulo[titulo.length - 2] = "Editar";
             titulo[titulo.length - 1] = "Eliminar";
         }
-      
 
         DefaultTableModel tablaProveedor = new DefaultTableModel(null, titulo) {
             public boolean isCellEditable(int row, int column) {
@@ -310,11 +284,11 @@ public class ModeloProveedor {
                 }
                 Object[] fila = {dato[0], dato[1], dato[2], dato[3], dato[4], dato[5], dato[6], dato[7], dato[8]};
                 if (nomPesta.equals("proveedor")) {
-                    fila= Arrays.copyOf(fila, fila.length+2);
-                    fila[fila.length - 2]=editar;
-                    fila[fila.length - 1]=eliminar;
+                    fila = Arrays.copyOf(fila, fila.length + 2);
+                    fila[fila.length - 2] = editar;
+                    fila[fila.length - 1] = eliminar;
 
-                } 
+                }
                 tablaProveedor.addRow(fila);
             }
             cn.close();
@@ -324,7 +298,7 @@ public class ModeloProveedor {
         tabla.setModel(tablaProveedor);
         //Darle tamaño a cada columna
         int numColumnas = tabla.getColumnCount();
-        int[] tamanos = {180,80,80,100,80,100,100,100,200,50,70};
+        int[] tamanos = {180, 80, 80, 100, 80, 100, 100, 100, 200, 50, 70};
         for (int i = 0; i < numColumnas; i++) {
             TableColumn columna = tabla.getColumnModel().getColumn(i);
             columna.setPreferredWidth(tamanos[i]);
@@ -332,5 +306,5 @@ public class ModeloProveedor {
         conect.cerrarConexion();
 
     }
-     
+
 }

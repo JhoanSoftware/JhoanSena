@@ -51,7 +51,7 @@ public class ControladorProveedor implements ActionListener {
             if ((((nupro.getCbxtipodocumento().getSelectedItem().equals("Seleccione...")) || (nupro.getCbxsexoo().getSelectedItem().equals("Seleccione..."))) || (nupro.getTxtnombree().getText().isEmpty()) || (nupro.getTxtcorreoo().getText().isEmpty()) || (nupro.getTxttelefonoo().getText().isEmpty()) || (nupro.getTxtdireccion().getText().isEmpty()) || (nupro.getCbxtipopersona().getSelectedItem().equals("Seleccione...")) || (nupro.getjDateChooser1().getDate() == null))) {
                 JOptionPane.showMessageDialog(null, "Falta Informacion");
             } else {
-                JOptionPane.showMessageDialog(null, "Exito");
+//                JOptionPane.showMessageDialog(null, "Exito");
                 String valorSexo = nupro.getCbxsexoo().getSelectedItem().toString();
                 int sexo = mopro.llenarCombo("sexo").get(valorSexo);
                 java.util.Date fec = nupro.getjDateChooser1().getDate();
@@ -67,8 +67,18 @@ public class ControladorProveedor implements ActionListener {
                 mopro.setTipoper(nupro.getCbxtipopersona().getSelectedItem().toString());
                 mopro.setTipodocumento(nupro.getCbxtipodocumento().getSelectedItem().toString());
 
-                mopro.insertarProveedor();
-                mopro.limpiar(nupro.getjPanel1().getComponents());
+                
+                if (nupro.getBtguardarpro().getText().equals("Guardar")) {
+                    mopro.insertarProveedor();
+                    mopro.limpiar(nupro.getjPanel1().getComponents());
+                    nupro.dispose();
+
+                } else {
+
+                    mopro.actualizarProveedor();
+                    nupro.setVisible(false);
+                    nupro.dispose();
+                }
             }
         }
     }

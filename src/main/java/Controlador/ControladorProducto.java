@@ -63,16 +63,13 @@ public class ControladorProducto implements ActionListener {
             modu.limpiarProducto(nuprodu.getjPanel1().getComponents());
                 nuprodu.dispose();
             
-        }else if(nuprodu.getBtguardarnpro().getText().equals("Actualizar"))   {
+        }else {
             
             modu.actualizarProdcuto();
             nuprodu.setVisible(false);
             prin.getJtprincipal().setSelectedIndex(1);
             modu.mostrarTablaProducto(prin.getTbproducto(), "", "producto");
                nuprodu.dispose();
-           
-        }else{
-            modu.eliminarProducto();
         }
         }  
     

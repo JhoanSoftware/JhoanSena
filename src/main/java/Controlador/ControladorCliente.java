@@ -67,19 +67,28 @@ public class ControladorCliente implements ActionListener {
                 mocli.setFec(fecha);
                 mocli.setTipodocu(nucli.getCbxtipodocumento().getSelectedItem().toString());
                 System.out.println(mocli.getFec());
-                mocli.insertarCliente();
-                mocli.limpiar(nucli.getjPanel1().getComponents());
-                
+      
+
+                if (nucli.getBtguardarr().getText().equals("Guardar")) {
+                    mocli.insertarCliente();
+                    mocli.limpiar(nucli.getjPanel1().getComponents());
+                    nucli.dispose();
+
+                } else {
+
+                    mocli.actualizarCliente();
+                    nucli.setVisible(false);
+                    nucli.dispose();
+                }
 
             }
         }
 
     }
-public void actualizarCliente(int doc) {
+
+    public void actualizarCliente(int doc) {
         mocli.buscarCliente(doc);
         System.out.println(mocli.getDirecc());
-        
-             
 
         nucli.getCbxtipodocumento().setEnabled(false);
         nucli.getTxtdocumento().setText(String.valueOf(doc));
@@ -89,7 +98,6 @@ public void actualizarCliente(int doc) {
         nucli.getTxtdireccion().setText(mocli.getDirecc());
         nucli.getTxttelefono().setText(mocli.getTel());
         nucli.getJdcfechanacimiento().setDate(mocli.getFec());
- 
 
         Map<String, Integer> pepe = mocli.llenarCombo("sexo");
         for (String sexo : pepe.keySet()) {
@@ -98,22 +106,22 @@ public void actualizarCliente(int doc) {
 //     Obtener el valor guardado en la base de datos
         String valorSexo = mocli.obtenerSeleccion(pepe, mocli.getSex());
         nucli.getCbxsexo().setSelectedItem(valorSexo);
-        
-        
+
         nucli.getLblcliente().setText("Actualizar Cliente");
-          nucli.getBtguardarr().setText("Actualizar");
+        nucli.getBtguardarr().setText("Actualizar");
         nucli.setLocationRelativeTo(null);
         nucli.setVisible(true);
         prin.setVisible(false);
 
-                }
- public void eliminarCliente(int doc) {
-    int resp=JOptionPane.showConfirmDialog(null, "¿Desea eliminar al Cliente?\n"+doc, "Cliente Proveedor", JOptionPane.YES_OPTION);
-            if(resp==JOptionPane.YES_OPTION){
-                mocli.setDoc(doc);
-                mocli.eliminarCliente();
-                mocli.mostrarTablaCliente(prin.getTbcliente(), "Cliente Elimnado", "cliente");
-            }
-    
-}
+    }
+
+    public void eliminarCliente(int doc) {
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea eliminar al Cliente?\n" + doc, "Cliente Proveedor", JOptionPane.YES_OPTION);
+        if (resp == JOptionPane.YES_OPTION) {
+            mocli.setDoc(doc);
+            mocli.eliminarCliente();
+            mocli.mostrarTablaCliente(prin.getTbcliente(), "Cliente Elimnado", "cliente");
+        }
+
+    }
 }
