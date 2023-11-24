@@ -248,9 +248,11 @@ public class ModeloProveedor {
 
         JButton editar = new JButton();
         JButton eliminar = new JButton();
+        JButton agregar = new JButton();
 
         editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/descarga.png")));
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/borrar.png")));
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregarusuario.png")));
 
         String[] titulo = {"Id Proveedor", "Tipo De Documento", "Genero/Sexo", "Nombre", "Correo", "Telefono", "Direccion", "Tipo De Persona", "Fecha De Nacimiento",};
         int total = titulo.length;
@@ -258,6 +260,9 @@ public class ModeloProveedor {
             titulo = Arrays.copyOf(titulo, titulo.length + 2);
             titulo[titulo.length - 2] = "Editar";
             titulo[titulo.length - 1] = "Eliminar";
+        }else{
+            titulo = Arrays.copyOf(titulo, titulo.length + 1);
+            titulo[titulo.length - 1] = "Agregar";
         }
 
         DefaultTableModel tablaProveedor = new DefaultTableModel(null, titulo) {
@@ -288,6 +293,9 @@ public class ModeloProveedor {
                     fila[fila.length - 2] = editar;
                     fila[fila.length - 1] = eliminar;
 
+                }else{
+                    fila = Arrays.copyOf(fila, fila.length + 1);
+                    fila[fila.length - 1] = agregar;
                 }
                 tablaProveedor.addRow(fila);
             }

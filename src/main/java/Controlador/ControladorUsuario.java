@@ -20,8 +20,6 @@ public class ControladorUsuario implements ActionListener {
 
     public ControladorUsuario() {
         nuevo.getBtguardar().addActionListener(this);
-        nuevo.getBtcancelar().addActionListener(this);
-//        nuevo.addWindowListener(this);
         nuevo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         nuevo.addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent e) {
@@ -98,23 +96,25 @@ public class ControladorUsuario implements ActionListener {
                 usu.setCl(contrasena);
                 usu.setTipodoc(nuevo.getCbxseleccdo().getSelectedItem().toString());
 
-               
-                if (nuevo.getBtguardar().getText().equals("Guardar")) {
-                    usu.insertarUsuario();
-                    usu.limpiar(nuevo.getJpnuevousu().getComponents());
-                } else {
-                    usu.actualizarUsuario();
-                    nuevo.setVisible(false);
-                    nuevo.dispose();
-//                    prin.getJtprincipal().setSelectedIndex(1);
-//                    prin.setVisible(true);
-//                    usu.mostrarTablaUsuario(prin.getTbusuario(), "", "Usuario");
+                ControladorPrincipal prin = new ControladorPrincipal();
+                if (prin.validarCorreo(usu.getCor()) == true) {
 
+                    if (nuevo.getBtguardar().getText().equals("Guardar")) {
+                        usu.insertarUsuario();
+                        usu.limpiar(nuevo.getJpnuevousu().getComponents());
+
+                    } else {
+                        usu.actualizarUsuario();
+                        nuevo.setVisible(false);
+                        nuevo.dispose();
+
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error Al Ingresar Correo");
                 }
             }
-        }
-        if(e.getSource().equals(nuevo.getBtcancelar())){
-            nuevo.dispose();
+        
         }
     }
 
@@ -155,17 +155,15 @@ public class ControladorUsuario implements ActionListener {
         prin.setVisible(false);
 
     }
+
     public void eliminarUsuario(int doc) {
-    int resp=JOptionPane.showConfirmDialog(null, "¿Desea eliminar al usuario?\n"+doc, "Eliminar Usuario", JOptionPane.YES_OPTION);
-            if(resp==JOptionPane.YES_OPTION){
-                usu.setDoc(doc);
-                usu.eliminarUsuario();
-                usu.mostrarTablaUsuario(prin.getTbusuario(), "Usuario Elimnado", "Usuario");
-            }
-    
-}
-    
-   
-}
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea eliminar al usuario?\n" + doc, "Eliminar Usuario", JOptionPane.YES_OPTION);
+        if (resp == JOptionPane.YES_OPTION) {
+            usu.setDoc(doc);
+            usu.eliminarUsuario();
+            usu.mostrarTablaUsuario(prin.getTbusuario(), "Usuario Elimnado", "Usuario");
+        }
 
+    }
 
+}

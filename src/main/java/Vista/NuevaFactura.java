@@ -5,6 +5,9 @@
 package Vista;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -58,6 +61,30 @@ public class NuevaFactura extends javax.swing.JFrame {
 
     public void setTxtidusu(JTextField txtidusu) {
         this.txtidusu = txtidusu;
+    }
+
+    public JComboBox<String> getCbxtipopago() {
+        return cbxtipopago;
+    }
+
+    public void setCbxtipopago(JComboBox<String> cbxtipopago) {
+        this.cbxtipopago = cbxtipopago;
+    }
+
+    public JLabel getLblnuevafactura() {
+        return lblnuevafactura;
+    }
+
+    public void setLblnuevafactura(JLabel lblnuevafactura) {
+        this.lblnuevafactura = lblnuevafactura;
+    }
+
+    public JPanel getjPanelnewfact() {
+        return jPanelnewfact;
+    }
+
+    public void setjPanelnewfact(JPanel jPanelnewfact) {
+        this.jPanelnewfact = jPanelnewfact;
     }
 
     /**

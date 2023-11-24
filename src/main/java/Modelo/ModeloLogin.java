@@ -44,9 +44,13 @@ public boolean validar(String usuario, String pass){
        while (rs.next()) {
           result= true;
        }
-       cn.close();
-       conect.cerrarConexion();
+       System.out.println(result);
+       if(result== true){
+           cn.close();
+           conect.cerrarConexion();
+       }
    } catch (SQLException e){
+       e.printStackTrace();
        
    }
    return result;  

@@ -95,14 +95,6 @@ public class NuevoProveedor extends javax.swing.JFrame {
         this.txttelefonoo = txttelefonoo;
     }
 
-    public JButton getBtcancelarpro() {
-        return btcancelarpro;
-    }
-
-    public void setBtcancelarpro(JButton btcancelarpro) {
-        this.btcancelarpro = btcancelarpro;
-    }
-
     public JButton getBtguardarpro() {
         return btguardarpro;
     }
@@ -148,7 +140,6 @@ public class NuevoProveedor extends javax.swing.JFrame {
         lbldireccionn = new javax.swing.JLabel();
         btguardarpro = new javax.swing.JButton();
         lbltipodepersona = new javax.swing.JLabel();
-        btcancelarpro = new javax.swing.JButton();
         lblfechadenacimientoo = new javax.swing.JLabel();
         lblnuevoproveedor = new javax.swing.JLabel();
 
@@ -181,8 +172,6 @@ public class NuevoProveedor extends javax.swing.JFrame {
 
         lbltipodepersona.setText("Tipo De Persona");
 
-        btcancelarpro.setText("Cancelar");
-
         lblfechadenacimientoo.setText("Fecha De Nacimiento");
 
         lblnuevoproveedor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -204,15 +193,19 @@ public class NuevoProveedor extends javax.swing.JFrame {
                             .addComponent(lblcorreoo))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtcorreoo)
                                     .addComponent(txttelefonoo)
                                     .addComponent(txtdireccion)
-                                    .addComponent(cbxtipopersona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(cbxtipopersona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btguardarpro)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbltipodocumento)
@@ -228,12 +221,6 @@ public class NuevoProveedor extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblnuevoproveedor)
                 .addGap(81, 81, 81))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(btguardarpro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btcancelarpro)
-                .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,11 +260,9 @@ public class NuevoProveedor extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblfechadenacimientoo))
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btguardarpro)
-                    .addComponent(btcancelarpro))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(btguardarpro)
+                .addGap(49, 49, 49))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -307,7 +292,6 @@ public class NuevoProveedor extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btcancelarpro;
     private javax.swing.JButton btguardarpro;
     private javax.swing.JComboBox<String> cbxsexoo;
     private javax.swing.JComboBox<String> cbxtipodocumento;

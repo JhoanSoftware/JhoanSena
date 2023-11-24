@@ -4,6 +4,7 @@ import Modelo.ModeloCliente;
 import Modelo.ModeloProducto;
 import Modelo.ModeloProveedor;
 import Modelo.ModeloUsuario;
+import Modelo.Modelo_Factura_Compra;
 import Vista.NuevaFactura;
 import Vista.NuevaVenta;
 import Vista.NuevoCliente;
@@ -19,6 +20,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -44,6 +47,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
     ModeloCliente mocli = new ModeloCliente();
     ModeloProducto produ = new ModeloProducto();
     Controlador_Factura_Compra confactcom = new Controlador_Factura_Compra();
+    Modelo_Factura_Compra mofacom = new Modelo_Factura_Compra();
 
     public ControladorPrincipal() {
         prin.getBtnNuevo().addActionListener(this);
@@ -59,6 +63,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         prin.getJtprincipal().addChangeListener(this);
         prin.getBtnuevopro().addActionListener(this);
         nuproduc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
 
         prin.getBtnuevafactura().addActionListener(this);
         nufa.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -66,10 +71,13 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         prin.getBtnuevoventa().addActionListener(this);
         nuve.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+       
         prin.getTxtbuscarusuario().getDocument().addDocumentListener(this);
         prin.getTxtbuscarproo().getDocument().addDocumentListener(this);
         prin.getTxtbuscarproducto().getDocument().addDocumentListener(this);
         prin.getTxtbuscarcli().getDocument().addDocumentListener(this);
+        prin.getTxtbusfactura().getDocument().addDocumentListener(this);
+        
 
         nufa.getjButtonbuscarusu().addActionListener(this);
     }
@@ -84,16 +92,6 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         prin.getJtprincipal().setSelectedIndex(valor);
     }
 
-    public void gestionPestaña() {
-        if (prin.getJtprincipal().getSelectedIndex() == 3) {
-
-        }
-
-        if (prin.getJtprincipal().getSelectedIndex() == 2) {
-            gestionarFactura();
-        }
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) { //Valida los eventos
         if (e.getSource().equals(prin.getBtnNuevo())) {
@@ -104,6 +102,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         }
         if (e.getSource().equals(prin.getBtnuevocliente())) {
             nucli.addWindowListener(new WindowAdapter() {
+                @Override
                 public void windowClosed(WindowEvent e) {
                     nucli.setVisible(false);
                 }
@@ -115,6 +114,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
 
         if (e.getSource().equals(prin.getBtnuevoproveedor())) {
             nupro.addWindowListener(new WindowAdapter() {
+                @Override
                 public void windowClosed(WindowEvent e) {
                     nupro.setVisible(false);
                 }
@@ -149,12 +149,14 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
 
         mousu.mostrarTablaUsuario(prin.getTbusuario(), "", "Usuario");
         prin.getTxtbuscarusuario().addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
                 prin.getTxtbuscarusuario().setText("");
                 prin.getTxtbuscarusuario().setForeground(Color.BLUE);
 
             }
         });
+        
 
         prin.getTbusuario().addMouseListener(new MouseAdapter() {
             @Override
@@ -176,13 +178,39 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
     }
 
     public void gestionarFactura() {
+         mofacom.mostrarTablaFactura_compra(prin.getTbfactura(), "", "Factura_compra");
+        prin.getTxtbusfactura().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                prin.getTxtbusfactura().setText("");
+                prin.getTxtbusfactura().setForeground(Color.BLUE);
 
+            }
+        });
+        
+
+        prin.getTbfactura().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila = prin.getTbfactura().rowAtPoint(e.getPoint());
+                int columna = prin.getTbfactura().columnAtPoint(e.getPoint());
+                mofacom.setIdfac(Integer.parseInt(prin.getTbfactura().getValueAt(fila, 0).toString()));
+                if (columna == 7) {
+                    prin.setVisible(false);
+                    confactcom.actualizarFactura_compra(mofacom.getIdfac());
+                    
+                }
+            }
+        });
     }
+
+    
 
     public void gestionarProveedor() {
 
         mopro.mostrarTablaProveedor(prin.getTbprovee(), "", "proveedor");
         prin.getTxtbuscarproo().addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
                 prin.getTxtbuscarproo().setText("");
                 prin.getTxtbuscarproo().setForeground(Color.BLUE);
@@ -213,6 +241,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
 
         produ.mostrarTablaProducto(prin.getTbproducto(), "", "producto");
         prin.getTxtbuscarproducto().addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
                 prin.getTxtbuscarproducto().setText("");
                 prin.getTxtbuscarproducto().setForeground(Color.BLUE);
@@ -242,6 +271,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
 
         mocli.mostrarTablaCliente(prin.getTbcliente(), "", "cliente");
         prin.getTxtbuscarcli().addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
                 prin.getTxtbuscarcli().setText("");
                 prin.getTxtbuscarcli().setForeground(Color.BLUE);
@@ -267,15 +297,21 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         });
     }
 
+    public boolean validarCorreo (String correo) {
+        String valicorre = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+.[A-Z|a-z]{2,}$";
+        Pattern validar= Pattern.compile(valicorre);
+        Matcher cor = validar.matcher(correo);
+        return cor.matches();
+
+        
+    }
+
     @Override
     public void stateChanged(ChangeEvent e) {
         int seleccion = prin.getJtprincipal().getSelectedIndex();
         if (seleccion == 3) {
             gestionarUsuario();
 
-        }
-        if (seleccion == 2) {
-            gestionPestaña();
         }
         if (seleccion == 0) {
             gestionarProveedor();
@@ -286,6 +322,9 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         if (seleccion == 1) {
             gestionarProducto();
         }
+        if (seleccion == 2) {
+            gestionarFactura();
+        }
     }
 
     @Override
@@ -294,6 +333,8 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         mopro.mostrarTablaProveedor(prin.getTbprovee(), prin.getTxtbuscarproo().getText(), "proveedor");
         produ.mostrarTablaProducto(prin.getTbproducto(), prin.getTxtbuscarproducto().getText(), "producto");
         mocli.mostrarTablaCliente(prin.getTbcliente(), prin.getTxtbuscarcli().getText(), "cliente");
+        mofacom.mostrarTablaFactura_compra(prin.getTbfactura(), prin.getTxtbusfactura().getText(), "Factura_compra");
+        
     }
 
     @Override
@@ -302,6 +343,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         mopro.mostrarTablaProveedor(prin.getTbprovee(), prin.getTxtbuscarproo().getText(), "proveedor");
         produ.mostrarTablaProducto(prin.getTbproducto(), prin.getTxtbuscarproducto().getText(), "producto");
         mocli.mostrarTablaCliente(prin.getTbcliente(), prin.getTxtbuscarcli().getText(), "cliente");
+        mofacom.mostrarTablaFactura_compra(prin.getTbfactura(), prin.getTxtbusfactura().getText(), "Factura_compra");
     }
 
     @Override
@@ -310,5 +352,6 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         mopro.mostrarTablaProveedor(prin.getTbprovee(), prin.getTxtbuscarproo().getText(), "proveedor");
         produ.mostrarTablaProducto(prin.getTbproducto(), prin.getTxtbuscarproducto().getText(), "producto");
         mocli.mostrarTablaCliente(prin.getTbcliente(), prin.getTxtbuscarcli().getText(), "cliente");
+        mofacom.mostrarTablaFactura_compra(prin.getTbfactura(), prin.getTxtbusfactura().getText(), "Factura_compra");
     }
 }

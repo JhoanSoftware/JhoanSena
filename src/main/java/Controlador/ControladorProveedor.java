@@ -51,7 +51,7 @@ public class ControladorProveedor implements ActionListener {
             if ((((nupro.getCbxtipodocumento().getSelectedItem().equals("Seleccione...")) || (nupro.getCbxsexoo().getSelectedItem().equals("Seleccione..."))) || (nupro.getTxtnombree().getText().isEmpty()) || (nupro.getTxtcorreoo().getText().isEmpty()) || (nupro.getTxttelefonoo().getText().isEmpty()) || (nupro.getTxtdireccion().getText().isEmpty()) || (nupro.getCbxtipopersona().getSelectedItem().equals("Seleccione...")) || (nupro.getjDateChooser1().getDate() == null))) {
                 JOptionPane.showMessageDialog(null, "Falta Informacion");
             } else {
-//                JOptionPane.showMessageDialog(null, "Exito");
+
                 String valorSexo = nupro.getCbxsexoo().getSelectedItem().toString();
                 int sexo = mopro.llenarCombo("sexo").get(valorSexo);
                 java.util.Date fec = nupro.getjDateChooser1().getDate();
@@ -66,6 +66,9 @@ public class ControladorProveedor implements ActionListener {
                 mopro.setFec(fecha);
                 mopro.setTipoper(nupro.getCbxtipopersona().getSelectedItem().toString());
                 mopro.setTipodocumento(nupro.getCbxtipodocumento().getSelectedItem().toString());
+                
+                ControladorPrincipal prin = new ControladorPrincipal();
+                if (prin.validarCorreo(mopro.getCor()) == true) {
 
                 
                 if (nupro.getBtguardarpro().getText().equals("Guardar")) {
@@ -79,10 +82,12 @@ public class ControladorProveedor implements ActionListener {
                     nupro.setVisible(false);
                     nupro.dispose();
                 }
-            }
+            }else{
+                    JOptionPane.showMessageDialog(null, "Correo Invalido");
+                }
         }
     }
-
+    }
     public void actualizarProveedor(int doc) {
         mopro.buscarProveedor(doc);
         nupro.getTxtnombree().setText(mopro.getNom());

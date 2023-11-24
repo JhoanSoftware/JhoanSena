@@ -149,13 +149,7 @@ public class Tienda_com extends javax.swing.JFrame {
         this.lblnuevousuario = lblnuevousuario;
     }
 
-    public JButton getBtcancelar() {
-        return btcancelar;
-    }
 
-    public void setBtcancelar(JButton btcancelar) {
-        this.btcancelar = btcancelar;
-    }
 
     
     
@@ -193,7 +187,6 @@ public class Tienda_com extends javax.swing.JFrame {
         Jcvsexo = new javax.swing.JComboBox<>();
         lbldireccion = new javax.swing.JLabel();
         lblobligatorio = new javax.swing.JLabel();
-        btcancelar = new javax.swing.JButton();
         lblobligatorio0 = new javax.swing.JLabel();
         txtdireccion = new javax.swing.JTextField();
         lblobligatorio1 = new javax.swing.JLabel();
@@ -266,8 +259,6 @@ public class Tienda_com extends javax.swing.JFrame {
         lblobligatorio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblobligatorio.setForeground(new java.awt.Color(255, 51, 51));
         lblobligatorio.setText("*");
-
-        btcancelar.setText("Cancelar");
 
         lblobligatorio0.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblobligatorio0.setForeground(new java.awt.Color(255, 51, 51));
@@ -347,10 +338,8 @@ public class Tienda_com extends javax.swing.JFrame {
                                     .addComponent(Jcvsexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(JpnuevousuLayout.createSequentialGroup()
-                                        .addComponent(btguardar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btcancelar)
-                                        .addGap(20, 20, 20)))))
+                                        .addGap(52, 52, 52)
+                                        .addComponent(btguardar)))))
                         .addGap(18, 18, 18)
                         .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblobligatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -440,9 +429,7 @@ public class Tienda_com extends javax.swing.JFrame {
                     .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(JpnuevousuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btguardar)
-                    .addComponent(btcancelar))
+                .addComponent(btguardar)
                 .addContainerGap())
         );
 
@@ -484,7 +471,6 @@ public class Tienda_com extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CbxCargo;
     private javax.swing.JComboBox<String> Jcvsexo;
     private javax.swing.JPanel Jpnuevousu;
-    private javax.swing.JButton btcancelar;
     private javax.swing.JButton btguardar;
     private javax.swing.JButton btojito;
     private javax.swing.JComboBox<String> cbxseleccdo;

@@ -51,7 +51,6 @@ public class ControladorCliente implements ActionListener {
             if (((nucli.getTxtdocumento().getText().isEmpty()) || (nucli.getCbxtipodocumento().getSelectedItem().equals("Seleccione...")) || (nucli.getCbxsexo().getSelectedItem().equals("Seleccione...")) || (nucli.getTxtnombre().getText().isEmpty()) || (nucli.getTxttelefono().getText().isEmpty()) || (nucli.getTxtcorreo().getText().isEmpty()) || (nucli.getTxtdireccion().getText().isEmpty()) || (nucli.getJdcfechanacimiento().getDate() == null))) {
                 JOptionPane.showMessageDialog(null, "Falta Informacion");
             } else {
-                JOptionPane.showMessageDialog(null, "Exito");
                 String valorSexo = nucli.getCbxsexo().getSelectedItem().toString();
                 int sexo = mocli.llenarCombo("sexo").get(valorSexo);
                 java.util.Date fec = nucli.getJdcfechanacimiento().getDate();
@@ -67,6 +66,9 @@ public class ControladorCliente implements ActionListener {
                 mocli.setFec(fecha);
                 mocli.setTipodocu(nucli.getCbxtipodocumento().getSelectedItem().toString());
                 System.out.println(mocli.getFec());
+                
+                ControladorPrincipal prin = new ControladorPrincipal();
+                if (prin.validarCorreo(mocli.getCor()) == true) {
       
 
                 if (nucli.getBtguardarr().getText().equals("Guardar")) {
@@ -81,11 +83,13 @@ public class ControladorCliente implements ActionListener {
                     nucli.dispose();
                 }
 
-            }
+            }else{
+                    JOptionPane.showMessageDialog(null, "Invalido");
+                }
         }
 
     }
-
+    }
     public void actualizarCliente(int doc) {
         mocli.buscarCliente(doc);
         System.out.println(mocli.getDirecc());
