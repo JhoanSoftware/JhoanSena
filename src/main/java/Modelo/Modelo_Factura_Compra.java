@@ -23,7 +23,7 @@ import javax.swing.table.TableColumn;
 
 public class Modelo_Factura_Compra {
 
-    private int idfac, ced, idusu;
+    private int idfac, ced, idusu, idprodu, cantidadcompra, preciouni, numero_comprobante;
     private String tipopago;
     private float impu, totalfactu, descu;
     private Date fec;
@@ -92,15 +92,68 @@ public class Modelo_Factura_Compra {
         this.descu = descu;
     }
 
+    public int getIdprodu() {
+        return idprodu;
+    }
+
+    public void setIdprodu(int idprodu) {
+        this.idprodu = idprodu;
+    }
+
+    public int getCantidadcompra() {
+        return cantidadcompra;
+    }
+
+    public void setCantidadcompra(int cantidadcompra) {
+        this.cantidadcompra = cantidadcompra;
+    }
+
+    public int getPreciouni() {
+        return preciouni;
+    }
+
+    public void setPreciouni(int preciouni) {
+        this.preciouni = preciouni;
+    }
+
+    public int getNumero_comprobante() {
+        return numero_comprobante;
+    }
+
+    public void setNumero_comprobante(int numero_comprobante) {
+        this.numero_comprobante = numero_comprobante;
+    }
+
+    public void insertarFacturaComProducto() {
+        Conexion conect = new Conexion();
+        Connection cn = conect.iniciarConexion();
+        String sql = "call Insertar_Factura_compra_producto(?,?,?,?)";
+        try {
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setInt(1, getIdfac());
+            ps.setInt(2, getIdprodu());
+            ps.setInt(3, getCantidadcompra());
+            ps.setInt(4, getPreciouni());
+            JOptionPane.showMessageDialog(null, "Registro Almacenado");
+            ps.executeUpdate();
+            cn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        conect.cerrarConexion();
+
+    }
+
     public void insertarFacturaCom() {
         Conexion conect = new Conexion();
         Connection cn = conect.iniciarConexion();
-        String sql = "call Insertar_Factura_compra(?,?,?)";
+        String sql = "call Insertar_Factura_compra(?,?,?,?)";
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setInt(1, getCed());
             ps.setInt(2, getIdusu());
             ps.setString(3, getTipopago());
+            ps.setInt(4, getNumero_comprobante());
             JOptionPane.showMessageDialog(null, "Registro Almacenado");
             ps.executeUpdate();
             cn.close();
@@ -137,6 +190,7 @@ public class Modelo_Factura_Compra {
                 setTotalfactu(rs.getFloat(5));
                 setDescu(rs.getFloat(6));
                 setTipopago(rs.getString(7));
+                setNumero_comprobante(rs.getInt(8));
             }
 
         } catch (Exception e) {
@@ -204,15 +258,15 @@ public class Modelo_Factura_Compra {
 
         JButton agregar = new JButton();
         JButton editar = new JButton();
-JButton imprimir = new JButton();
-JButton detalle = new JButton();
+        JButton imprimir = new JButton();
+        JButton detalle = new JButton();
 
         editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/descarga.png")));
         agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar.png")));
-imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imprimir.png")));
-detalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/detalle.png")));
+        imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imprimir.png")));
+        detalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/detalle.png")));
 
-        String[] titulo = {"Id Factura Compra", "Id Proveedor", "Id Usuario", "Fecha", "Total Compra", "Descuento", "Tipo De Pago"};
+        String[] titulo = {"Id Factura Compra", "Id Proveedor", "Id Usuario", "Fecha", "Total Compra", "Descuento", "Tipo De Pago", "Numero Comprobante"};
         int total = titulo.length;
         if (nomPesta.equals("Factura_compra")) {
             titulo = Arrays.copyOf(titulo, titulo.length + 4);
@@ -220,8 +274,6 @@ detalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/detalle.p
             titulo[titulo.length - 2] = "Agregar";
             titulo[titulo.length - 3] = "Imprimir";
             titulo[titulo.length - 4] = "Editar";
-            
-            
 
         }
 
@@ -248,15 +300,13 @@ detalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/detalle.p
                 for (int i = 0; i < total; i++) {
                     dato[i] = rs.getString(i + 1);
                 }
-                Object[] fila = {dato[0], dato[1], dato[2], dato[3], dato[4], dato[5], dato[6]};
+                Object[] fila = {dato[0], dato[1], dato[2], dato[3], dato[4], dato[5], dato[6], dato[7]};
                 if (nomPesta.equals("Factura_compra")) {
                     fila = Arrays.copyOf(fila, fila.length + 4);
                     fila[fila.length - 1] = detalle;
                     fila[fila.length - 2] = agregar;
                     fila[fila.length - 3] = imprimir;
                     fila[fila.length - 4] = editar;
-                    
-                    
 
                 }
                 tablaFactura_compra.addRow(fila);
@@ -268,7 +318,123 @@ detalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/detalle.p
         tabla.setModel(tablaFactura_compra);
         //Darle tamaño a cada columna
         int numColumnas = tabla.getColumnCount();
-        int[] tamanos = {180, 80, 80, 100, 80, 100, 100, 100, 50,50,50,50};
+        int[] tamanos = {180, 80, 80, 100, 80, 100, 100, 100, 50, 50, 50, 50, 50};
+        for (int i = 0; i < numColumnas; i++) {
+            TableColumn columna = tabla.getColumnModel().getColumn(i);
+            columna.setPreferredWidth(tamanos[i]);
+        }
+        conect.cerrarConexion();
+
+    }
+
+    public boolean chulito(JTable tabla) {
+        int c= tabla.getColumnCount()-1;
+        System.out.println(c);
+        for (int i = 0; i < tabla.getRowCount(); i++) {
+            
+            Boolean chuli = (Boolean) tabla.getValueAt(i, c);
+            if (chuli != null && chuli) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void agregarDatos(JTable tablaProd, JTable tablaDeta) {
+        JTableHeader encabezado = tablaDeta.getTableHeader();
+        encabezado.setDefaultRenderer(new GestionEncabezado());
+        tablaDeta.setTableHeader(encabezado);
+        tablaDeta.setDefaultRenderer(Object.class, new GestionCeldas());
+
+        Object[] titulo = {"Codigo", "Nombre", "Descripcion", "Cantidad", "Precio"};
+
+        DefaultTableModel tablaAñadirprodu = new DefaultTableModel(null, titulo) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+
+                return column == 3 || column == 4;
+            }
+
+        };
+        if (chulito(tablaProd)) {
+            System.out.println(tablaProd.getRowCount());
+            for (int i = 0; i < tablaProd.getRowCount(); i++) {
+                Boolean chuli = (Boolean) tablaProd.getValueAt(i, 6);
+                if (chuli != null && chuli) {
+                    Object dato[] = new Object[titulo.length];
+                    dato [0]=tablaProd.getValueAt(i, 0);
+                    dato [1]=tablaProd.getValueAt(i, 1);
+                    dato [2]=tablaProd.getValueAt(i, 3);
+                    Object fila []= {dato[0],dato[1],dato[2]};
+                    tablaAñadirprodu.addRow(fila);
+
+                }
+
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe Seleccionar un campo");
+        }
+        tablaDeta.setModel(tablaAñadirprodu);
+    }
+
+    public void mostrarDetalleFactura(JTable tabla, String valor, String nomPesta) {
+        Conexion conect = new Conexion();
+        Connection cn = conect.iniciarConexion();
+
+        JButton agregar = new JButton();
+
+        JTableHeader encabezado = tabla.getTableHeader();
+        encabezado.setDefaultRenderer(new GestionEncabezado());
+        tabla.setTableHeader(encabezado);
+        tabla.setDefaultRenderer(Object.class, new GestionCeldas());
+
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregarusuario.png")));
+
+        String[] titulo = {"IdFacturaCompra", "Producto", "CantidadComprada", "PrecioUnitario", "PrecioTotal"};
+        int total = titulo.length;
+
+        if (nomPesta.equals("DetalleFactura")) {
+            titulo = Arrays.copyOf(titulo, titulo.length + 1);
+            titulo[titulo.length - 1] = "Agregar";
+        }
+
+        DefaultTableModel tablaProvedor = new DefaultTableModel(null, titulo) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String sqlProvedor;
+        if (valor.equals("")) {
+            sqlProvedor = "SELECT * FROM tienda_con.mostrardetallefacturacompra";
+        } else {
+            sqlProvedor = "call Provedor_buscar('" + valor + "')";
+        }
+        try {
+            String[] dato = new String[titulo.length];
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sqlProvedor);
+            while (rs.next()) {
+                for (int i = 0; i < total; i++) {
+                    dato[i] = rs.getString(i + 1);
+                }
+
+                Object[] fila = {dato[0], dato[1], dato[2], dato[3], dato[4]};
+                if (nomPesta.equals("DetalleFactura")) {
+                    fila = Arrays.copyOf(fila, fila.length + 1);
+                    fila[fila.length - 1] = agregar;
+                }
+                tablaProvedor.addRow(fila);
+            }
+            cn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        tabla.setModel(tablaProvedor);
+
+        int numColumnas = tabla.getColumnCount();
+        int[] tamanos = {100, 100, 100, 100, 100, 80};
         for (int i = 0; i < numColumnas; i++) {
             TableColumn columna = tabla.getColumnModel().getColumn(i);
             columna.setPreferredWidth(tamanos[i]);

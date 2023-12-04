@@ -242,10 +242,12 @@ public void eliminarCliente(){
 
         JButton editar = new JButton();
         JButton eliminar = new JButton();
+         JButton agregar = new JButton();
         
 
         editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/descarga.png")));
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/borrar.png")));
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar.png")));
     
 
         String[] titulo = {"Cedula","Tipo De Documento","Genero/Sexo", "Nombre","Telefono","Correo", "Direccion", "Fecha De Nacimiento",};
@@ -254,6 +256,10 @@ public void eliminarCliente(){
             titulo = Arrays.copyOf(titulo, titulo.length + 2);
             titulo[titulo.length - 2] = "Editar";
             titulo[titulo.length - 1] = "Eliminar";
+        } else {
+            titulo = Arrays.copyOf(titulo, titulo.length + 1);
+            titulo[titulo.length - 1] = "Agregar";
+
         }
       
 
@@ -285,7 +291,12 @@ public void eliminarCliente(){
                     fila[fila.length - 2]=editar;
                     fila[fila.length - 1]=eliminar;
 
-                } 
+                }else {
+                    fila= Arrays.copyOf(fila, fila.length+1);
+                    fila[fila.length - 1]=agregar;
+                    
+
+                }
                 tablaCliente.addRow(fila);
             }
             cn.close();

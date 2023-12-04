@@ -49,6 +49,14 @@ public class vista_principall extends javax.swing.JFrame {
     public void setJtprincipal(JTabbedPane jtprincipal) {
         this.jtprincipal = jtprincipal;
     }
+
+    public JPanel getJtFactura() {
+        return jtFactura;
+    }
+
+    public void setJtFactura(JPanel jtFactura) {
+        this.jtFactura = jtFactura;
+    }
     
 
    
@@ -168,6 +176,22 @@ public class vista_principall extends javax.swing.JFrame {
         this.txtbusfactura = txtbusfactura;
     }
 
+    public JTable getjTableventa() {
+        return jTableventa;
+    }
+
+    public void setjTableventa(JTable jTableventa) {
+        this.jTableventa = jTableventa;
+    }
+
+    public JTextField getTxtbuscarventa() {
+        return txtbuscarventa;
+    }
+
+    public void setTxtbuscarventa(JTextField txtbuscarventa) {
+        this.txtbuscarventa = txtbuscarventa;
+    }
+
    
 
     
@@ -205,14 +229,14 @@ public class vista_principall extends javax.swing.JFrame {
         btnuevoventa = new javax.swing.JButton();
         txtbuscarventa = new javax.swing.JTextField();
         tbventa = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableventa = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnuevoproveedor.setText("NuevoPro");
+        btnuevoproveedor.setText("Nuevo Proveedor");
 
         tbprovee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -236,24 +260,28 @@ public class vista_principall extends javax.swing.JFrame {
             jtProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtProveedorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jtProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jtProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane4)
                     .addGroup(jtProveedorLayout.createSequentialGroup()
                         .addComponent(btnuevoproveedor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtbuscarproo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 961, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(708, 708, 708)
+                        .addComponent(txtbuscarproo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(342, Short.MAX_VALUE))
         );
         jtProveedorLayout.setVerticalGroup(
             jtProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtProveedorLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jtProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnuevoproveedor)
-                    .addComponent(txtbuscarproo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jtProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jtProveedorLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(txtbuscarproo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE))
+                    .addGroup(jtProveedorLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnuevoproveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)))
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGap(166, 166, 166))
         );
 
         jtprincipal.addTab("Proveedor", jtProveedor);
@@ -293,16 +321,13 @@ public class vista_principall extends javax.swing.JFrame {
         jtProductoLayout.setVerticalGroup(
             jtProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtProductoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jtProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jtProductoLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(btnuevopro))
-                    .addGroup(jtProductoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtbuscarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtbuscarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnuevopro, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         jtprincipal.addTab("Producto", jtProducto);
@@ -342,12 +367,12 @@ public class vista_principall extends javax.swing.JFrame {
             jtFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtFacturaLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jtFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnuevafactura)
-                    .addComponent(txtbusfactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jtFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtbusfactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnuevafactura, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGap(99, 99, 99))
         );
 
         jtprincipal.addTab("Factura", jtFactura);
@@ -403,7 +428,7 @@ public class vista_principall extends javax.swing.JFrame {
 
         jtprincipal.addTab("Usuario", jtUsuario);
 
-        btnuevocliente.setText("NuevoCliente");
+        btnuevocliente.setText("Nuevo Cliente");
 
         tbcliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -426,16 +451,16 @@ public class vista_principall extends javax.swing.JFrame {
         jtClienteLayout.setHorizontalGroup(
             jtClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtClienteLayout.createSequentialGroup()
-                .addGroup(jtClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jtClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jtClienteLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(btnuevocliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(699, 699, 699)
                         .addComponent(txtbuscarcli, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jtClienteLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 928, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(354, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 958, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         jtClienteLayout.setVerticalGroup(
             jtClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,12 +476,12 @@ public class vista_principall extends javax.swing.JFrame {
 
         jtprincipal.addTab("Cliente", jtCliente);
 
-        btnuevoventa.setText("Nuevo Producto");
+        btnuevoventa.setText("Nueva Venta");
 
         txtbuscarventa.setForeground(new java.awt.Color(204, 204, 204));
         txtbuscarventa.setText("Buscar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableventa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -467,7 +492,7 @@ public class vista_principall extends javax.swing.JFrame {
 
             }
         ));
-        tbventa.setViewportView(jTable1);
+        tbventa.setViewportView(jTableventa);
 
         javax.swing.GroupLayout jtventaLayout = new javax.swing.GroupLayout(jtventa);
         jtventa.setLayout(jtventaLayout);
@@ -475,24 +500,22 @@ public class vista_principall extends javax.swing.JFrame {
             jtventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtventaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jtventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tbventa, javax.swing.GroupLayout.PREFERRED_SIZE, 716, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jtventaLayout.createSequentialGroup()
-                        .addComponent(btnuevoventa)
-                        .addGap(544, 544, 544)
-                        .addComponent(txtbuscarventa, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(571, Short.MAX_VALUE))
+                .addComponent(tbventa, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(324, Short.MAX_VALUE))
+            .addGroup(jtventaLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(btnuevoventa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtbuscarventa, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(341, 341, 341))
         );
         jtventaLayout.setVerticalGroup(
             jtventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jtventaLayout.createSequentialGroup()
-                .addGroup(jtventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jtventaLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(btnuevoventa))
-                    .addGroup(jtventaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtbuscarventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22)
+                .addGroup(jtventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnuevoventa)
+                    .addComponent(txtbuscarventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addComponent(tbventa, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(113, Short.MAX_VALUE))
@@ -573,7 +596,7 @@ public class vista_principall extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableventa;
     private javax.swing.JPanel jtCliente;
     private javax.swing.JPanel jtFactura;
     private javax.swing.JPanel jtProducto;

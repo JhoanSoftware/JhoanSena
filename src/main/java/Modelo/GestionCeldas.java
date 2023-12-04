@@ -17,6 +17,7 @@ public class GestionCeldas extends DefaultTableCellRenderer {
 
         if (value instanceof JButton) {
             JButton btn = (JButton) value;
+//            table.setRowHeight(52);
             btn.setBorderPainted(false);
             btn.setContentAreaFilled(false);
             return btn;

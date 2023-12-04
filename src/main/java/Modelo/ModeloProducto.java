@@ -226,9 +226,11 @@ public class ModeloProducto {
 
         JButton editar = new JButton();
         JButton eliminar = new JButton();
+        JButton agregar = new JButton();
 
         editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/descarga.png")));
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/borrar.png")));
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar.png")));
 
         String[] titulo = {"Codigo", "nombre", "descripcion", "cantidad", "imagen", "precio"};
         int total = titulo.length;
@@ -245,8 +247,13 @@ public class ModeloProducto {
 
         DefaultTableModel tablaProducto = new DefaultTableModel(null, titulo) {
             public boolean isCellEditable(int row, int column) {
+                if(nomPesta.equals("")){
+                    return column == 6;
+                }else{
+                   return false; 
+                }
 
-                return false;
+                
             }
 
         };
@@ -284,6 +291,9 @@ public class ModeloProducto {
                     fila[fila.length - 2] = editar;
                     fila[fila.length - 1] = eliminar;
 
+                }else{
+                    fila = Arrays.copyOf(fila, fila.length + 1);
+                    fila[fila.length - 1] = false;
                 }
 
                 tablaProducto.addRow(fila);
@@ -294,8 +304,15 @@ public class ModeloProducto {
             e.printStackTrace();
         }
         tabla.setModel(tablaProducto);
-        //Darle tamaño a cada columna
+        
         int numColumnas = tabla.getColumnCount();
+        if (!nomPesta.equals("producto")) {
+        int col = numColumnas-1;
+        TableColumn tc= tabla.getColumnModel().getColumn(col);
+        tc.setCellEditor(tabla.getDefaultEditor(Boolean.class));
+        tc.setCellRenderer(tabla.getDefaultRenderer(Boolean.class));
+        }
+        //Darle tamaño a cada columna
         int[] tamanos = {180, 80, 80, 100, 80, 100, 100, 100};
         for (int i = 0; i < numColumnas; i++) {
             TableColumn columna = tabla.getColumnModel().getColumn(i);

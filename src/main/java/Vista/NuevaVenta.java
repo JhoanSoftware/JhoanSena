@@ -4,6 +4,12 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author usuario
@@ -17,6 +23,90 @@ public class NuevaVenta extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtguarnuventa() {
+        return btguarnuventa;
+    }
+
+    public void setBtguarnuventa(JButton btguarnuventa) {
+        this.btguarnuventa = btguarnuventa;
+    }
+
+  
+
+    public JComboBox<String> getBxtipopago() {
+        return bxtipopago;
+    }
+
+    public void setBxtipopago(JComboBox<String> bxtipopago) {
+        this.bxtipopago = bxtipopago;
+    }
+
+    public JTextField getTxtcedulacli() {
+        return txtcedulacli;
+    }
+
+    public void setTxtcedulacli(JTextField txtcedulacli) {
+        this.txtcedulacli = txtcedulacli;
+    }
+
+    public JTextField getTxtidentificacion() {
+        return txtidentificacion;
+    }
+
+    public void setTxtidentificacion(JTextField txtidentificacion) {
+        this.txtidentificacion = txtidentificacion;
+    }
+
+    public JLabel getLblnuevaventa() {
+        return lblnuevaventa;
+    }
+
+    public void setLblnuevaventa(JLabel lblnuevaventa) {
+        this.lblnuevaventa = lblnuevaventa;
+    }
+
+    public JButton getBtcancelar() {
+        return btcancelar;
+    }
+
+    public void setBtcancelar(JButton btcancelar) {
+        this.btcancelar = btcancelar;
+    }
+
+    public JButton getjButtoncecli() {
+        return jButtoncecli;
+    }
+
+    public void setjButtoncecli(JButton jButtoncecli) {
+        this.jButtoncecli = jButtoncecli;
+    }
+
+    public JButton getjButtonide() {
+        return jButtonide;
+    }
+
+    public void setjButtonide(JButton jButtonide) {
+        this.jButtonide = jButtonide;
+    }
+
+    public JPanel getjPanelnewventa() {
+        return jPanelnewventa;
+    }
+
+    public void setjPanelnewventa(JPanel jPanelnewventa) {
+        this.jPanelnewventa = jPanelnewventa;
+    }
+
+    public JTextField getTxtnumerocom() {
+        return txtnumerocom;
+    }
+
+    public void setTxtnumerocom(JTextField txtnumerocom) {
+        this.txtnumerocom = txtnumerocom;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,94 +116,195 @@ public class NuevaVenta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelnewventa = new javax.swing.JPanel();
         lblnuevaventa = new javax.swing.JLabel();
         jbtipopa = new javax.swing.JLabel();
         bxtipopago = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         lblcedulacli = new javax.swing.JLabel();
         txtcedulacli = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         lblidentificacion = new javax.swing.JLabel();
         txtidentificacion = new javax.swing.JTextField();
         btguarnuventa = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        btcancelar = new javax.swing.JButton();
+        jButtoncecli = new javax.swing.JButton();
+        jButtonide = new javax.swing.JButton();
+        lblnumerocom = new javax.swing.JLabel();
+        txtnumerocom = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblnuevaventa.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblnuevaventa.setText("NUEVA VENTA");
 
-        jbtipopa.setText("Tipo De Pago");
+        jbtipopa.setText("Tipo De Pago:");
 
         bxtipopago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione....", "Efectivo", "Tarjeta", "Tranferencia" }));
 
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setText("*");
+
         lblcedulacli.setText("Cedula Del Cliente:");
 
-        lblidentificacion.setText("Identificacion Venta");
+        txtcedulacli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcedulacliActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("*");
+
+        lblidentificacion.setText("Id Usuario");
+
+        txtidentificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidentificacionActionPerformed(evt);
+            }
+        });
 
         btguarnuventa.setText("Guardar");
+
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setText("*");
+
+        btcancelar.setText("Cancelar");
+
+        jButtoncecli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
+
+        jButtonide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
+
+        lblnumerocom.setText("Numero Comprobante:");
+
+        javax.swing.GroupLayout jPanelnewventaLayout = new javax.swing.GroupLayout(jPanelnewventa);
+        jPanelnewventa.setLayout(jPanelnewventaLayout);
+        jPanelnewventaLayout.setHorizontalGroup(
+            jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelnewventaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanelnewventaLayout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(lblnuevaventa))
+                    .addGroup(jPanelnewventaLayout.createSequentialGroup()
+                        .addGroup(jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanelnewventaLayout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addComponent(btguarnuventa)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btcancelar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelnewventaLayout.createSequentialGroup()
+                                .addGroup(jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanelnewventaLayout.createSequentialGroup()
+                                        .addComponent(jbtipopa)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(bxtipopago, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelnewventaLayout.createSequentialGroup()
+                                        .addComponent(lblcedulacli)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtcedulacli, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelnewventaLayout.createSequentialGroup()
+                                        .addComponent(lblidentificacion)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtoncecli)
+                            .addComponent(jButtonide)))
+                    .addGroup(jPanelnewventaLayout.createSequentialGroup()
+                        .addComponent(lblnumerocom)
+                        .addGap(29, 29, 29)
+                        .addComponent(txtnumerocom)))
+                .addContainerGap(246, Short.MAX_VALUE))
+        );
+        jPanelnewventaLayout.setVerticalGroup(
+            jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelnewventaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblnuevaventa)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtipopa)
+                    .addComponent(bxtipopago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblcedulacli)
+                        .addComponent(txtcedulacli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtoncecli)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblidentificacion)
+                    .addComponent(txtidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jButtonide))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblnumerocom)
+                    .addComponent(txtnumerocom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addGroup(jPanelnewventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btguarnuventa)
+                    .addComponent(btcancelar))
+                .addGap(19, 19, 19))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(lblnuevaventa))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblcedulacli)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtcedulacli))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jbtipopa)
-                                    .addGap(36, 36, 36)
-                                    .addComponent(bxtipopago, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblidentificacion)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btguarnuventa)
-                                    .addComponent(txtidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanelnewventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(lblnuevaventa)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtipopa)
-                    .addComponent(bxtipopago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblcedulacli)
-                    .addComponent(txtcedulacli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblidentificacion)
-                    .addComponent(txtidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(btguarnuventa)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jPanelnewventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtidentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidentificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidentificacionActionPerformed
+
+    private void txtcedulacliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcedulacliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcedulacliActionPerformed
+
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btcancelar;
     private javax.swing.JButton btguarnuventa;
     private javax.swing.JComboBox<String> bxtipopago;
+    private javax.swing.JButton jButtoncecli;
+    private javax.swing.JButton jButtonide;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanelnewventa;
     private javax.swing.JLabel jbtipopa;
     private javax.swing.JLabel lblcedulacli;
     private javax.swing.JLabel lblidentificacion;
     private javax.swing.JLabel lblnuevaventa;
+    private javax.swing.JLabel lblnumerocom;
     private javax.swing.JTextField txtcedulacli;
     private javax.swing.JTextField txtidentificacion;
+    private javax.swing.JTextField txtnumerocom;
     // End of variables declaration//GEN-END:variables
 }

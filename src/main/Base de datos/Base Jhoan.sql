@@ -88,13 +88,14 @@ CREATE TABLE `fact_com` (
   `descuento` float NOT NULL,
   `tipode_pago` varchar(45) NOT NULL,
   `condicion` tinyint NOT NULL,
+  `numero_comprobante` int NOT NULL,
   PRIMARY KEY (`idfact_com`),
   KEY `idproveedor` (`idproveedor`),
   KEY `idusuario_idx` (`id_usuario`),
   KEY `idusuario` (`id_usuario`),
   CONSTRAINT `idproveedor` FOREIGN KEY (`idproveedor`) REFERENCES `proveedor` (`idproveedor`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`idusuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,7 +104,7 @@ CREATE TABLE `fact_com` (
 
 LOCK TABLES `fact_com` WRITE;
 /*!40000 ALTER TABLE `fact_com` DISABLE KEYS */;
-INSERT INTO `fact_com` VALUES (31,18,1234567676,'2023-11-22',0,0.2,'Transaccion ',1),(32,25,123546456,'2023-11-23',0,0,'Tarjeta ',1),(35,21,83838,'2023-11-24',0,0,'Transaccion ',1),(36,20,111222,'2023-11-24',0,0,'Efectivo',1);
+INSERT INTO `fact_com` VALUES (31,25,1234567676,'2023-11-22',0,0.2,'Transaccion ',1,0),(32,25,123546456,'2023-11-23',0,0,'Efectivo',1,0),(35,21,83838,'2023-11-24',0,0,'Transaccion ',1,0),(36,20,111222,'2023-11-24',0,0,'Efectivo',1,0),(37,15,1234567676,'2023-11-28',0,0,'Seleccione....',1,0),(38,16,423432,'2023-12-04',0,0,'Efectivo',1,0);
 /*!40000 ALTER TABLE `fact_com` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +127,7 @@ CREATE TABLE `fact_com_prod` (
   KEY `factura_com_idx` (`idfact_com`),
   CONSTRAINT `factura_com` FOREIGN KEY (`idfact_com`) REFERENCES `fact_com` (`idfact_com`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `idpro` FOREIGN KEY (`idpro`) REFERENCES `producto` (`idproducto`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,6 +136,7 @@ CREATE TABLE `fact_com_prod` (
 
 LOCK TABLES `fact_com_prod` WRITE;
 /*!40000 ALTER TABLE `fact_com_prod` DISABLE KEYS */;
+INSERT INTO `fact_com_prod` VALUES (1,31,23,1,1,1),(4,31,23,11,11,0),(5,31,25,111,111,0);
 /*!40000 ALTER TABLE `fact_com_prod` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -147,7 +149,7 @@ UNLOCK TABLES;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `nuevo` BEFORE INSERT ON `fact_com_prod` FOR EACH ROW BEGIN
-set new.pre_total= new.cantidad_com * new.pre_total;
+set new.pre_total= new.cantidad_com * new.pre_uni;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -164,7 +166,7 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `Actualizar` AFTER INSERT ON `fact_com_prod` FOR EACH ROW begin 
-update producto inner join fact_com_prod set cantidad = cantidad - NEW.cantidad_com where NEW.cantidad_com=producto.idproducto;
+update producto inner join fact_com_prod on fact_com_prod.idpro = producto.idproducto set cantidad = cantidad + NEW.cantidad_com, precio = new.pre_uni+ (new.pre_uni*0.20) where idpro = producto.idproducto;
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -188,6 +190,7 @@ CREATE TABLE `factura` (
   `cedula` int NOT NULL,
   `idusuario` int NOT NULL,
   `condicion` tinyint NOT NULL,
+  `numero_comprobante` int NOT NULL,
   PRIMARY KEY (`idfactura`),
   KEY `cedula_idx` (`cedula`),
   KEY `idusuario_idx` (`idusuario`),
@@ -202,7 +205,7 @@ CREATE TABLE `factura` (
 
 LOCK TABLES `factura` WRITE;
 /*!40000 ALTER TABLE `factura` DISABLE KEYS */;
-INSERT INTO `factura` VALUES (14,'2023-10-26','Efectivo',0.19,0,1,1,1);
+INSERT INTO `factura` VALUES (1,'2003-12-10','w',1,1,1,1,1,1);
 /*!40000 ALTER TABLE `factura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,7 +280,8 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `fecha`,
  1 AS `total_comp`,
  1 AS `descuento`,
- 1 AS `tipode_pago`*/;
+ 1 AS `tipode_pago`,
+ 1 AS `numero_comprobante`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -348,6 +352,41 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `direccion`,
  1 AS `fechadenacimiento`,
  1 AS `tipodedocumento`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `mostrar_venta`
+--
+
+DROP TABLE IF EXISTS `mostrar_venta`;
+/*!50001 DROP VIEW IF EXISTS `mostrar_venta`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `mostrar_venta` AS SELECT 
+ 1 AS `idfactura`,
+ 1 AS `fecha`,
+ 1 AS `tipopago`,
+ 1 AS `impuesto`,
+ 1 AS `totalfactura`,
+ 1 AS `Cliente`,
+ 1 AS `Usuario`,
+ 1 AS `numero_comprobante`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `mostrardetallefacturacompra`
+--
+
+DROP TABLE IF EXISTS `mostrardetallefacturacompra`;
+/*!50001 DROP VIEW IF EXISTS `mostrardetallefacturacompra`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `mostrardetallefacturacompra` AS SELECT 
+ 1 AS `idfact_com`,
+ 1 AS `nombre`,
+ 1 AS `cantidad_com`,
+ 1 AS `pre_uni`,
+ 1 AS `pre_total`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -458,7 +497,7 @@ CREATE TABLE `proveedor` (
 
 LOCK TABLES `proveedor` WRITE;
 /*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-INSERT INTO `proveedor` VALUES (9,'Cedula',2,'Camilo','Camilo@gmail.com','435455','fdsffsdf','Juridica',1,'2000-02-02'),(10,'Nit',1,'123','123','1233','ad','Persona natural',0,'2023-10-10'),(11,'Pasaporte',3,'webiiin','sdfdf','3423423','ewwfwef','Persona natural',0,'2023-10-03'),(12,'Cedula de ciudadania',1,'fsdffsdfsdf','sadfsafs','242424','sadsd','Persona natural',0,'2023-10-01'),(13,'Nit',2,'bismar','safdasfdsf','3542354345','dasdsaf','Persona natural',0,'2023-10-01'),(15,'Pasaporte',1,'webiinnn','dasfdsdfa','5253535','dsfsdfsdfd','Persona juridica',1,'2023-10-01'),(16,'Cedula de ciudadania',1,'camilooo','sadsadafd','3232323','sadsf','Persona natural',1,'2023-10-01'),(17,'Cedula de ciudadania',1,'camilo marmolejo','camilo@gmail.com','3253534','dasdasfsad','Persona natural',1,'2023-11-01'),(18,'Cedula de ciudadania',3,'camilo','fsdfdsf','423432','eefdsfsdf','Persona natural',1,'2001-02-02'),(19,'Tarjeta de identidad',3,'camilo','fsdfdsf','423432','eefdsfsdf','Persona juridica',1,'2001-02-02'),(20,'Tarjeta de identidad',1,'123','123','1233','qqwwee','Persona juridica',1,'2023-10-10'),(21,'Pasaporte',2,'webin','sssssssssss','243431','dsfdfsdf','Persona juridica',1,'2023-10-03'),(22,'Pasaporte',3,'webin','sfdfsdfsdf','243431','dsfdfsdf','Persona juridica',1,'2023-10-03'),(23,'Pasaporte',3,'BE,BARYAO','sfdfsdfsdf','243431','dsfdfsdf','Persona juridica',0,'2023-10-03'),(24,'Nit',1,'camilooo','sadsadafd','3232323','sadsf','Persona natural',1,'2023-10-01'),(25,'Cedula de ciudadania',1,'Cesar antonio','sadfsafs','242424','sadsd','Persona natural',1,'2023-10-01'),(26,'Cedula de ciudadania',1,'Cesar antonio','sadfsafs','5435345345','sadsd','Persona natural',0,'2023-10-01'),(27,'Cedula',2,'edwar','sdfff','34234234','horizonte','Juridica',0,'2000-02-02');
+INSERT INTO `proveedor` VALUES (9,'Cedula',2,'Camilo','Camilo@gmail.com','435455','fdsffsdf','Juridica',1,'2000-02-02'),(10,'Nit',1,'123','123','1233','ad','Persona natural',0,'2023-10-10'),(11,'Pasaporte',3,'webiiin','sdfdf','3423423','ewwfwef','Persona natural',0,'2023-10-03'),(12,'Cedula de ciudadania',1,'fsdffsdfsdf','sadfsafs','242424','sadsd','Persona natural',0,'2023-10-01'),(13,'Nit',2,'bismar','safdasfdsf','3542354345','dasdsaf','Persona natural',0,'2023-10-01'),(15,'Pasaporte',1,'Bismar','bismar@gmail.com','5253535','dsfsdfsdfd','Persona juridica',1,'2023-10-01'),(16,'Cedula de ciudadania',1,'camilooo','sadsadafd','3232323','sadsf','Persona natural',1,'2023-10-01'),(17,'Cedula de ciudadania',1,'camilo marmolejo','camilo@gmail.com','3253534','dasdasfsad','Persona natural',1,'2023-11-01'),(18,'Cedula de ciudadania',3,'camilo','fsdfdsf','423432','eefdsfsdf','Persona natural',1,'2001-02-02'),(19,'Tarjeta de identidad',3,'camilo','fsdfdsf','423432','eefdsfsdf','Persona juridica',1,'2001-02-02'),(20,'Tarjeta de identidad',1,'123','123','1233','qqwwee','Persona juridica',1,'2023-10-10'),(21,'Pasaporte',2,'webin','sssssssssss','243431','dsfdfsdf','Persona juridica',1,'2023-10-03'),(22,'Pasaporte',3,'webin','sfdfsdfsdf','243431','dsfdfsdf','Persona juridica',1,'2023-10-03'),(23,'Pasaporte',3,'BE,BARYAO','sfdfsdfsdf','243431','dsfdfsdf','Persona juridica',0,'2023-10-03'),(24,'Nit',1,'camilooo','sadsadafd','3232323','sadsf','Persona natural',1,'2023-10-01'),(25,'Cedula de ciudadania',1,'Cesar antonio','sadfsafs','242424','sadsd','Persona natural',1,'2023-10-01'),(26,'Cedula de ciudadania',1,'Cesar antonio','sadfsafs','5435345345','sadsd','Persona natural',0,'2023-10-01'),(27,'Cedula',2,'edwar','sdfff','34234234','horizonte','Juridica',0,'2000-02-02');
 /*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -521,7 +560,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Cedula','Juan',1,1,'11','ae@gmail.com','as','123','123',1,'2005-12-20'),(12,'Cedula','webin',3,2,'23423423','ebinefdsf','wefsdfsdf','1234','1234',0,'2020-09-10'),(111,'Cedula','Camilo',2,1,'111','1','1','123','123',0,'2023-10-03'),(112,'','2233',1,2,'eeerrrr','ggfgfh','ghhh','hjgug','fcg',0,'2023-10-01'),(3434,'Cedula','dsdd',1,2,'5454','fasfsdfd','ddsfdsf','765','765',0,'2023-11-01'),(9898,'','19891',1,3,'89189','18901890','10890','113','123',0,'2023-10-05'),(83838,'Cedula','BEMBARAYOoo',2,1,'U9129U','IONOI','NIONIONIO','NIONOI','NOIIION',1,'2003-11-12'),(100392,'Cedula','camilo asa',1,2,'3254352351','camilo@gmail.com','zona sur','1234','1234',1,'2023-11-01'),(111222,'Pasaporte','Pepe',1,3,'12337','ghnjkl','vbnm,.','pepe','123',1,'2023-10-04'),(123999,'Pasaporte','Cesar',1,1,'12345','cesar@gmail.com','ooj','123','123',1,'2023-10-17'),(423432,'Cedula','webon',1,2,'3432434','xdxzc@gmail.com','dssadsd','12345','12345',1,'2023-11-01'),(123546456,'Pasaporte','mulatico',3,3,'5345435','mulaticooo','dsdfdsf','9923','1234',1,'2023-10-01'),(1234567676,'Tarjeta identidad','Yeyy',1,2,'43454353','yey@hotmail.com','barrio san judas','987','765',1,'2001-08-13'),(1321321324,'Tarjeta identidad','yeiner',1,2,'34343','webin@hotmail.com','dfgdsgdfgdfg','123455','123456',1,'2023-11-01');
+INSERT INTO `usuario` VALUES (1,'Cedula','Juan',1,1,'11','ae@gmail.com','as','123','123',1,'2005-12-20'),(12,'Cedula','webin',3,2,'23423423','ebinefdsf','wefsdfsdf','1234','1234',0,'2020-09-10'),(111,'Cedula','Camilo',2,1,'111','1','1','123','123',0,'2023-10-03'),(112,'','2233',1,2,'eeerrrr','ggfgfh','ghhh','hjgug','fcg',0,'2023-10-01'),(3434,'Cedula','dsdd',1,2,'5454','fasfsdfd','ddsfdsf','765','765',0,'2023-11-01'),(9898,'','19891',1,3,'89189','18901890','10890','113','123',0,'2023-10-05'),(83838,'Cedula','BEMBARAYOoo',2,1,'U9129U','IONOI','NIONIONIO','NIONOI','NOIIION',1,'2003-11-12'),(100392,'Cedula','camilo asa',1,2,'3254352351','camilo@gmail.com','zona sur','1234','1234',1,'2023-11-01'),(111222,'Pasaporte','Pepe',1,3,'12337','ghnjkl','vbnm,.','pepe','123',1,'2023-10-04'),(123444,'Cedula','11',1,2,'1','1@gmail.com','bembarat','1','',0,'2023-11-02'),(123999,'Pasaporte','Cesar',1,1,'12345','cesar@gmail.com','ooj','123','123',1,'2023-10-17'),(423432,'Cedula','webon',1,2,'3432434','xdxzc@gmail.com','dssadsd','12345','12345',1,'2023-11-01'),(123546456,'Pasaporte','mulatico',3,3,'5345435','mulaticooo','dsdfdsf','9923','1234',1,'2023-10-01'),(1234567676,'Tarjeta identidad','Yeyy',1,2,'43454353','yey@hotmail.com','barrio san judas','987','765',1,'2001-08-13'),(1321321324,'Tarjeta identidad','yeiner',1,2,'34343','webin@hotmail.com','dfgdsgdfgdfg','123455','123456',1,'2023-11-01');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -623,6 +662,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Actualizar_Venta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Actualizar_Venta`(in idfact int, in tipodepago varchar(45), in idusu int, in idcliente int )
+BEGIN
+update factura set tipodepago= tipopago, idusuario = idusu, cliente= idcliente where idfact=idfactura;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `BuscarRegistro` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -636,6 +694,25 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `BuscarRegistro`(in valor int)
 BEGIN
 select * from usuario where idusuario = valor;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `BuscarRegistro_venta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `BuscarRegistro_venta`(in idventa int)
+BEGIN
+select * from factura where idventa= idfactura;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -749,7 +826,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Consultar_factura_compra`(in valor varchar(45))
 BEGIN
-select * from mostrar_factura_compra where idfact_com  like concat('%',valor,'%') || idproveedor like concat('%',valor,'%') || id_usuario like concat('%',valor,'%') || fecha like concat('%',valor,'%')|| total_comp like concat('%',valor,'%')||  descuento like concat('%',valor,'%') || tipode_pago like concat('%',valor,'%');
+select * from mostrar_factura_compra where idfact_com  like concat('%',valor,'%') || idproveedor like concat('%',valor,'%') || id_usuario like concat('%',valor,'%') || fecha like concat('%',valor,'%')|| total_comp like concat('%',valor,'%')||  descuento like concat('%',valor,'%') || tipode_pago like concat('%',valor,'%')|| numero_comprobante like concat('%',valor,'%');
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -813,6 +890,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Consultar_venta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Consultar_venta`(in idventa varchar(45))
+BEGIN
+select * from mostrar_venta where idfactura like concat('%',valor,'%') || fecha like concat('%',valor,'%') || tipopago like concat('%',valor,'%')|| totalfactura like concat('%',valor,'%')|| cedula like concat('%',valor,'%')|| idusuario like concat('%',valor,'%')|| numero_comprobante like concat('%',valor,'%');
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `Eliminar_Cliente` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -826,6 +922,25 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Eliminar_Cliente`(in ced int)
 BEGIN
 update cliente set condicion='0' where cedula = ced;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Eliminar_Detalle_Factura_Compra` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Eliminar_Detalle_Factura_Compra`(in valor int)
+BEGIN
+delete from fact_com_prod where idfact_com_prod = valor;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -994,9 +1109,28 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Insertar_Factura_compra`(in idprovee int,in idusu int,in tipopago varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Insertar_Factura_compra`(in idprovee int,in idusu int,in tipopago varchar(45),in numerocom int)
 BEGIN
-insert into fact_com (idproveedor,id_usuario,fecha,total_comp,descuento,tipode_pago,condicion) values (idprovee,idusu,current_date(),'0','0',tipopago,'1');
+insert into fact_com (idproveedor,id_usuario,fecha,total_comp,descuento,tipode_pago,condicion,numero_comprobante) values (idprovee,idusu,current_date(),'0','0',tipopago,'1',numerocom);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Insertar_Factura_compra_producto` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Insertar_Factura_compra_producto`(in idfactura_com int, in idprodu int,in cantidad_compr int,in precio_uni int )
+BEGIN
+insert into fact_com_prod(idfact_com,idpro,cantidad_com,pre_uni,pre_total) values (idfactura_com,idprodu,cantidad_compr,precio_uni, '0');
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1016,6 +1150,25 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Insertar_Producto`(in nom varchar(45),in descrip varchar(45), in img longblob,in rut varchar(500))
 BEGIN
 insert into producto(nombre,descripcion,cantidad,imagen,precio,condicion,ruta) values (nom,descrip,'0',img,'0','1',rut);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Insertar_venta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Insertar_venta`(in tipodepago varchar(45),in CC int,in idusu int,in numerocomprobante int)
+BEGIN
+insert into factura (fecha,tipopago,impuesto,totalfactura,cedula,idusuario,condicion,numero_comprobante) values(current_date(),tipodepago,'0,19',totalfactura,CC,idusu,'1',numerocomprobante);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1205,7 +1358,7 @@ DELIMITER ;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `mostrar_factura_compra` AS select `fact_com`.`idfact_com` AS `idfact_com`,`fact_com`.`idproveedor` AS `idproveedor`,`fact_com`.`id_usuario` AS `id_usuario`,`fact_com`.`fecha` AS `fecha`,`fact_com`.`total_comp` AS `total_comp`,`fact_com`.`descuento` AS `descuento`,`fact_com`.`tipode_pago` AS `tipode_pago` from ((`fact_com` join `proveedor` on((`fact_com`.`idproveedor` = `proveedor`.`idproveedor`))) join `usuario` on((`usuario`.`idusuario` = `fact_com`.`id_usuario`))) where (`fact_com`.`condicion` = 1) */;
+/*!50001 VIEW `mostrar_factura_compra` AS select `fact_com`.`idfact_com` AS `idfact_com`,`fact_com`.`idproveedor` AS `idproveedor`,`fact_com`.`id_usuario` AS `id_usuario`,`fact_com`.`fecha` AS `fecha`,`fact_com`.`total_comp` AS `total_comp`,`fact_com`.`descuento` AS `descuento`,`fact_com`.`tipode_pago` AS `tipode_pago`,`fact_com`.`numero_comprobante` AS `numero_comprobante` from ((`fact_com` join `proveedor` on((`fact_com`.`idproveedor` = `proveedor`.`idproveedor`))) join `usuario` on((`usuario`.`idusuario` = `fact_com`.`id_usuario`))) where (`fact_com`.`condicion` = 1) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1283,6 +1436,42 @@ DELIMITER ;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `mostrar_venta`
+--
+
+/*!50001 DROP VIEW IF EXISTS `mostrar_venta`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `mostrar_venta` AS select `factura`.`idfactura` AS `idfactura`,`factura`.`fecha` AS `fecha`,`factura`.`tipopago` AS `tipopago`,`factura`.`impuesto` AS `impuesto`,`factura`.`totalfactura` AS `totalfactura`,`cliente`.`nombre` AS `Cliente`,`usuario`.`nombre` AS `Usuario`,`factura`.`numero_comprobante` AS `numero_comprobante` from ((`factura` join `cliente` on((`factura`.`cedula` = `cliente`.`cedula`))) join `usuario` on((`factura`.`idusuario` = `usuario`.`idusuario`))) where (`factura`.`condicion` = '1') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `mostrardetallefacturacompra`
+--
+
+/*!50001 DROP VIEW IF EXISTS `mostrardetallefacturacompra`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `mostrardetallefacturacompra` AS select `fact_com`.`idfact_com` AS `idfact_com`,`producto`.`nombre` AS `nombre`,`fact_com_prod`.`cantidad_com` AS `cantidad_com`,`fact_com_prod`.`pre_uni` AS `pre_uni`,`fact_com_prod`.`pre_total` AS `pre_total` from ((`fact_com_prod` join `producto` on((`fact_com_prod`.`idpro` = `producto`.`idproducto`))) join `fact_com` on((`fact_com_prod`.`idfact_com` = `fact_com`.`idfact_com`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `pato`
 --
 
@@ -1309,4 +1498,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-24 11:51:27
+-- Dump completed on 2023-12-04 13:46:55

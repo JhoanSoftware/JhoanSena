@@ -1,10 +1,13 @@
 package Controlador;
 
+import Modelo.ModeloProducto;
 import Modelo.ModeloProveedor;
 import Modelo.ModeloUsuario;
 import Modelo.Modelo_Factura_Compra;
+import Vista.Agregar_Detalle_factura;
 import Vista.BuscarProveedor;
 import Vista.BuscarUsuario;
+import Vista.Buscar_Producto;
 import Vista.NuevaFactura;
 import Vista.vista_principall;
 import static java.awt.Color.BLUE;
@@ -14,6 +17,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
@@ -28,6 +32,8 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
     ModeloProveedor mopro = new ModeloProveedor();
     BuscarProveedor buspro = new BuscarProveedor();
     Modelo_Factura_Compra mofaco = new Modelo_Factura_Compra();
+    Buscar_Producto busprod = new Buscar_Producto();
+    Agregar_Detalle_factura agredefac = new Agregar_Detalle_factura();
 
     public Controlador_Factura_Compra() {
         newfac.getjButtonbuscarprove().addActionListener(this);
@@ -35,6 +41,7 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
         bususu.getTxtbuscarusuariofac().getDocument().addDocumentListener(this);
         buspro.getTxtbuscarnewpro().getDocument().addDocumentListener(this);
         newfac.getBtguarnufac().addActionListener(this);
+        agredefac.getBtproductos().addActionListener(this);
         bususu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         newfac.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         buspro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -83,7 +90,7 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
                     bususu.getTxtbuscarusuariofac().setForeground(BLUE);
                     Object idusu = usu.getDoc();
                     newfac.getTxtidusu().setText(idusu.toString());
-                    JOptionPane.showMessageDialog(null, "usuario agregado");
+
                 }
 
             }
@@ -114,7 +121,7 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
                     newfac.setVisible(true);
                     Object idfac = mopro.getCed();
                     newfac.getTxtcedufac().setText(idfac.toString());
-                    JOptionPane.showMessageDialog(null, "proveedor agregado");
+
                 }
 
             }
@@ -151,8 +158,37 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
         prin.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
+    public void detalleFactura() {
+        agredefac.setVisible(true);
+        agredefac.setLocationRelativeTo(null);
+        agredefac.setTitle("Agregar Detalle Factura | Ventana");
+        agredefac.getTxtidfacom().setText(String.valueOf(mofaco.getIdfac()));
+        mofaco.mostrarDetalleFactura(agredefac.getjTableagredefa(), "", "");
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(agredefac.getBtproductos())) {
+            JButton agr = new JButton("Añadir");
+            agr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar.png")));
+            agr.setBounds(05, 20, 120, 30);
+            busprod.getjPanel1().add(agr);
+            busprod.setVisible(true);
+            busprod.setLocationRelativeTo(null);
+            ModeloProducto produ = new ModeloProducto();
+            produ.mostrarTablaProducto(busprod.getjTablebuscarpro(), "", "");
+
+            agr.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mofaco.agregarDatos(busprod.getjTablebuscarpro(), agredefac.getjTableagredefa());
+                    buspro.setVisible(false);
+                }
+
+            });
+
+        }
         if (e.getSource().equals(newfac.getjButtonbuscarusu())) {
             newfac.setVisible(false);
             bususu.setLocationRelativeTo(null);
@@ -186,12 +222,14 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
                 } else {
                     mofaco.Actualizar_Factura_Compra();
                     newfac.setVisible(false);
-                    newfac.dispose();
                     mofaco.mostrarTablaFactura_compra(prin.getTbfactura(), "", "Factura");
+                    newfac.dispose();
 
                 }
+
             }
         }
+
     }
 
     @Override
