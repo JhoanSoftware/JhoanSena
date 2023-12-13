@@ -23,9 +23,9 @@ import javax.swing.table.TableColumn;
 
 public class Modelo_Factura_Compra {
 
-    private int idfac, ced, idusu, idprodu, cantidadcompra, preciouni, numero_comprobante;
+    private int idfac, ced, idusu, idprodu, cantidadcompra, numero_comprobante;
     private String tipopago;
-    private float impu, totalfactu, descu;
+    private float impu, descu,preciouni;
     private Date fec;
 
     public int getCed() {
@@ -76,13 +76,6 @@ public class Modelo_Factura_Compra {
         this.tipopago = tipopago;
     }
 
-    public float getTotalfactu() {
-        return totalfactu;
-    }
-
-    public void setTotalfactu(float totalfactu) {
-        this.totalfactu = totalfactu;
-    }
 
     public float getDescu() {
         return descu;
@@ -108,11 +101,11 @@ public class Modelo_Factura_Compra {
         this.cantidadcompra = cantidadcompra;
     }
 
-    public int getPreciouni() {
+    public float getPreciouni() {
         return preciouni;
     }
 
-    public void setPreciouni(int preciouni) {
+    public void setPreciouni(float preciouni) {
         this.preciouni = preciouni;
     }
 
@@ -133,7 +126,7 @@ public class Modelo_Factura_Compra {
             ps.setInt(1, getIdfac());
             ps.setInt(2, getIdprodu());
             ps.setInt(3, getCantidadcompra());
-            ps.setInt(4, getPreciouni());
+            ps.setFloat(4, getPreciouni());
             JOptionPane.showMessageDialog(null, "Registro Almacenado");
             ps.executeUpdate();
             cn.close();
@@ -147,7 +140,7 @@ public class Modelo_Factura_Compra {
     public void insertarFacturaCom() {
         Conexion conect = new Conexion();
         Connection cn = conect.iniciarConexion();
-        String sql = "call Insertar_Factura_compra(?,?,?,?)";
+        String sql = "Insertar_Factura_compra(?,?,?,?)";
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setInt(1, getCed());
@@ -187,7 +180,7 @@ public class Modelo_Factura_Compra {
                 setCed(rs.getInt(2));
                 setIdusu(rs.getInt(3));
                 setFec(rs.getDate(4));
-                setTotalfactu(rs.getFloat(5));
+                setPreciouni(rs.getFloat(5));
                 setDescu(rs.getFloat(6));
                 setTipopago(rs.getString(7));
                 setNumero_comprobante(rs.getInt(8));
@@ -328,13 +321,19 @@ public class Modelo_Factura_Compra {
     }
 
     public boolean chulito(JTable tabla) {
-        int c= tabla.getColumnCount()-1;
-        System.out.println(c);
+        int c = tabla.getColumnCount() - 1;
+
         for (int i = 0; i < tabla.getRowCount(); i++) {
-            
+
             Boolean chuli = (Boolean) tabla.getValueAt(i, c);
             if (chuli != null && chuli) {
-                return true;
+                Object can = tabla.getValueAt(i, 4);
+                Object val = tabla.getValueAt(i, 5);
+                if ((can == null || !can.toString().equals("0"))
+                        && (val == null || !val.toString().equals("0"))) {
+                    return true;
+                }
+
             }
         }
         return false;
@@ -346,7 +345,7 @@ public class Modelo_Factura_Compra {
         tablaDeta.setTableHeader(encabezado);
         tablaDeta.setDefaultRenderer(Object.class, new GestionCeldas());
 
-        Object[] titulo = {"Codigo", "Nombre", "Descripcion", "Cantidad", "Precio"};
+        Object[] titulo = {"Codigo", "Nombre", "Imagen", "Cantidad", "Precio"};
 
         DefaultTableModel tablaAñadirprodu = new DefaultTableModel(null, titulo) {
             @Override
@@ -357,15 +356,17 @@ public class Modelo_Factura_Compra {
 
         };
         if (chulito(tablaProd)) {
-            System.out.println(tablaProd.getRowCount());
+
             for (int i = 0; i < tablaProd.getRowCount(); i++) {
                 Boolean chuli = (Boolean) tablaProd.getValueAt(i, 6);
                 if (chuli != null && chuli) {
                     Object dato[] = new Object[titulo.length];
-                    dato [0]=tablaProd.getValueAt(i, 0);
-                    dato [1]=tablaProd.getValueAt(i, 1);
-                    dato [2]=tablaProd.getValueAt(i, 3);
-                    Object fila []= {dato[0],dato[1],dato[2]};
+                    dato[0] = tablaProd.getValueAt(i, 0);
+                    dato[1] = tablaProd.getValueAt(i, 2);
+                    dato[2] = tablaProd.getValueAt(i, 3);
+                    dato[3] = tablaProd.getValueAt(i, 4);
+                    dato[4] = tablaProd.getValueAt(i, 5);
+                    Object fila[] = {dato[0], dato[1], dato[2],dato[3],dato[4]};
                     tablaAñadirprodu.addRow(fila);
 
                 }
@@ -440,6 +441,58 @@ public class Modelo_Factura_Compra {
             columna.setPreferredWidth(tamanos[i]);
         }
         conect.cerrarConexion();
+
+    }
+    
+    public String[] buscarFacturaDetalle(int fact, JTable tabla) {
+        Conexion cone = new Conexion();
+        Connection cn = cone.iniciarConexion();
+        tabla.setDefaultRenderer(Object.class, new GestionCeldas());
+        Object[] titulo = {"COD","Producto", "Descripcion", "Cantidad", "Valor Unitario", 
+            "Total"};
+        int tot = titulo.length;
+
+        DefaultTableModel tablaDetalle = new DefaultTableModel(null, titulo) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        //Desactiva las lineas de las celdas
+        tabla.setShowGrid(false);
+        tabla.setBorder(null);
+
+        String sql = "call Mostrar_Detalle_Factura(" + fact + ")";
+        String[] dato = null;
+
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            //Conocer el total de columnas de un registro de la base de datos
+            int total = rs.getMetaData().getColumnCount();
+            dato = new String[total];
+            while (rs.next()) {
+                for (int i = 0; i < total; i++) {
+                    dato[i] = rs.getString(i + 1);
+                }
+                Object[] fila = {dato[8], dato[9], dato[10], dato[11],dato[12],dato[13]};
+                tablaDetalle.addRow(fila);
+            }
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+      
+        tabla.setModel(tablaDetalle);
+        //Darle tamaño a cada columna
+        int numColumnas = tabla.getColumnCount();
+        int[] tamanos = {5, 20, 55, 6, 20,40};
+
+        for (int i = 0; i < numColumnas; i++) {
+            TableColumn columna = tabla.getColumnModel().getColumn(i);
+            columna.setPreferredWidth(tamanos[i]);
+        }
+        cone.cerrarConexion();
+        return dato;
 
     }
 }

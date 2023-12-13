@@ -8,13 +8,14 @@ import Modelo.ModeloVenta;
 import Modelo.Modelo_Factura_Compra;
 import Vista.Agregar_Detalle_factura;
 import Vista.Buscar_Producto;
-import Vista.MostrarDetalleFactura;
 import Vista.NuevaFactura;
 import Vista.NuevaVenta;
 import Vista.NuevoCliente;
 import Vista.NuevoProducto;
 import Vista.NuevoProveedor;
 import Vista.Tienda_com;
+import Vista.Ver_Detalle_Fac;
+import Vista.Ver_Detalle_Venta;
 import Vista.ini_secion;
 import Vista.vista_principall;
 import java.awt.Color;
@@ -27,9 +28,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
@@ -56,12 +55,12 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
     Controlador_Factura_Compra confactcom = new Controlador_Factura_Compra();
     Agregar_Detalle_factura agredefac = new Agregar_Detalle_factura();
     Buscar_Producto buspro = new Buscar_Producto();
-    MostrarDetalleFactura mosdefac = new MostrarDetalleFactura();
-//    MdlDetalleFacom modefacom = new MdlDetalleFacom();
     Modelo_Factura_Compra mofaco = new Modelo_Factura_Compra();
     ModeloVenta moven = new ModeloVenta();
     ControladorVenta controlventa = new ControladorVenta();
-    ModeloVenta modventa = new ModeloVenta();
+
+    Ver_Detalle_Fac verdetallefactura = new Ver_Detalle_Fac();
+    Ver_Detalle_Venta verdeven = new Ver_Detalle_Venta();
 
     public ControladorPrincipal() {
         prin.getBtnNuevo().addActionListener(this);
@@ -86,7 +85,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
 
         agredefac.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         buspro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        mosdefac.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        verdetallefactura.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         prin.getTxtbuscarusuario().getDocument().addDocumentListener(this);
         prin.getTxtbuscarproo().getDocument().addDocumentListener(this);
@@ -161,31 +160,8 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
 
         }
 
-        if (e.getSource().equals(agredefac.getBtagregardetallefac())) {
-            mofaco.setIdfac(Integer.parseInt(agredefac.getTxtidfacom().getText()));
-            mofaco.setIdprodu(Integer.parseInt(agredefac.getTxtproductos().getText()));
-            mofaco.setCantidadcompra(Integer.parseInt(agredefac.getTxtcantidadcom().getText()));
-            mofaco.setPreciouni(Integer.parseInt(agredefac.getTxtpreciouni().getText()));
-            mofaco.mostrarTablaFactura_compra(agredefac.getjTableagredefa(), "", "");
-
-        }
         if (e.getSource().equals(agredefac.getBtproductos())) {
-//            JButton agr = new JButton("Añadir");
-//            agr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar.png")));
-//            agr.setBounds(05, 20, 120, 30);
-//            buspro.getjPanel1().add(agr);
-//
-//            agr.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    mofaco.agregarDatos(buspro.getjTablebuscarpro(), agredefac.getjTableagredefa());
-//                            buspro.setVisible(false);
-//                }
-//
-//            });
-//
-//            buspro.setVisible(true);
-//            buspro.setLocationRelativeTo(null);
+
             agredefac.setVisible(false);
             prin.setVisible(false);
             produ.mostrarTablaProducto(buspro.getjTablebuscarpro(), "", "");
@@ -267,11 +243,11 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
                 iniciar(2);
             }
         });
-        mosdefac.addWindowListener(new WindowAdapter() {
+        verdetallefactura.addWindowListener(new WindowAdapter() {
             ;
         @Override
             public void windowClosed(WindowEvent e) {
-                mosdefac.setVisible(false);
+                verdetallefactura.setVisible(false);
                 iniciar(2);
             }
         });
@@ -299,17 +275,15 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
 
                 if (columna == 10) {
                     prin.setVisible(false);
-                    Controlador_Factura_Compra contFac= new Controlador_Factura_Compra();
-                    contFac.detalleFactura();
+                    Controlador_Factura_Compra contFac = new Controlador_Factura_Compra();
+                    contFac.detalleFactura(mofaco.getIdfac());
 
                 }
 
                 if (columna == 11) {
                     prin.setVisible(false);
-                    mosdefac.setVisible(true);
-                    mosdefac.setLocationRelativeTo(null);
-                    mosdefac.setTitle("Mostrar Detalle Factura ");
-                    mofaco.mostrarDetalleFactura(mosdefac.getjTablemostrardefac(), "", "DetalleFactura");
+                    verdetallefactura.setTitle("Mostrar Detalle Factura ");
+                    confactcom.ver_Factura(mofaco.getIdfac());
                 }
 
             }
@@ -364,7 +338,19 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
                 moven.setIdfactura(Integer.parseInt(prin.getjTableventa().getValueAt(fila, 0).toString()));
                 if (columna == 8) {
                     prin.setVisible(false);
-                    controlventa.actualizarVenta(modventa.getIdfactura());
+                    controlventa.actualizarven(moven.getIdfactura());
+                }
+                if (columna == 10) {
+                    prin.setVisible(false);
+
+                    controlventa.detalleVenta(moven.getIdfactura());
+
+                }
+
+                if (columna == 11) {
+                    prin.setVisible(false);
+                    verdeven.setTitle("Mostrar Detalle Venta ");
+                    controlventa.ver_Venta(moven.getIdfactura());
                 }
             }
         });
@@ -441,15 +427,15 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
     @Override
     public void stateChanged(ChangeEvent e) {
         int seleccion = prin.getJtprincipal().getSelectedIndex();
-        if (seleccion == 3) {
-            gestionarUsuario();
-
+        if (seleccion == 1) {
+            gestionarProducto();
         }
         if (seleccion == 0) {
             gestionarProveedor();
         }
         if (seleccion == 4) {
             gestionarCliente();
+
         }
         if (seleccion == 1) {
             gestionarProducto();
@@ -461,6 +447,10 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         if (seleccion == 5) {
             gestionarVenta();
         }
+        if (seleccion == 3) {
+            gestionarUsuario();
+
+        }
     }
 
     @Override
@@ -470,7 +460,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         produ.mostrarTablaProducto(prin.getTbproducto(), prin.getTxtbuscarproducto().getText(), "producto");
         mocli.mostrarTablaCliente(prin.getTbcliente(), prin.getTxtbuscarcli().getText(), "cliente");
         mofaco.mostrarTablaFactura_compra(prin.getTbfactura(), prin.getTxtbusfactura().getText(), "Factura_compra");
-
+        moven.mostrarTablaVenta(prin.getjTableventa(), prin.getTxtbuscarventa().getText(), "Venta");
     }
 
     @Override
@@ -480,6 +470,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         produ.mostrarTablaProducto(prin.getTbproducto(), prin.getTxtbuscarproducto().getText(), "producto");
         mocli.mostrarTablaCliente(prin.getTbcliente(), prin.getTxtbuscarcli().getText(), "cliente");
         mofaco.mostrarTablaFactura_compra(prin.getTbfactura(), prin.getTxtbusfactura().getText(), "Factura_compra");
+        moven.mostrarTablaVenta(prin.getjTableventa(), prin.getTxtbuscarventa().getText(), "Venta");
     }
 
     @Override
@@ -489,5 +480,6 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         produ.mostrarTablaProducto(prin.getTbproducto(), prin.getTxtbuscarproducto().getText(), "producto");
         mocli.mostrarTablaCliente(prin.getTbcliente(), prin.getTxtbuscarcli().getText(), "cliente");
         mofaco.mostrarTablaFactura_compra(prin.getTbfactura(), prin.getTxtbusfactura().getText(), "Factura_compra");
+        moven.mostrarTablaVenta(prin.getjTableventa(), prin.getTxtbuscarventa().getText(), "Venta");
     }
 }

@@ -9,6 +9,7 @@ import Vista.BuscarProveedor;
 import Vista.BuscarUsuario;
 import Vista.Buscar_Producto;
 import Vista.NuevaFactura;
+import Vista.Ver_Detalle_Fac;
 import Vista.vista_principall;
 import static java.awt.Color.BLUE;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -34,6 +36,7 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
     Modelo_Factura_Compra mofaco = new Modelo_Factura_Compra();
     Buscar_Producto busprod = new Buscar_Producto();
     Agregar_Detalle_factura agredefac = new Agregar_Detalle_factura();
+    Ver_Detalle_Fac verdetallefac = new Ver_Detalle_Fac();
 
     public Controlador_Factura_Compra() {
         newfac.getjButtonbuscarprove().addActionListener(this);
@@ -42,15 +45,18 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
         buspro.getTxtbuscarnewpro().getDocument().addDocumentListener(this);
         newfac.getBtguarnufac().addActionListener(this);
         agredefac.getBtproductos().addActionListener(this);
+        agredefac.getBtagregardetallefac().addActionListener(this);
         bususu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         newfac.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         buspro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        verdetallefac.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        agredefac.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         newfac.addWindowListener(new WindowAdapter() {
             ;
             public void windowClosed(WindowEvent e) {
                 ControladorPrincipal princ = new ControladorPrincipal();
-                princ.iniciar(2);
+                princ.iniciar(1);
 
             }
 
@@ -71,7 +77,20 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
                 newfac.setVisible(true);
             }
         });
+        verdetallefac.addWindowListener(new WindowAdapter() {
 
+            public void windowClosed(WindowEvent e) {
+                ControladorPrincipal princ = new ControladorPrincipal();
+                princ.iniciar(1);
+            }
+        });
+        agredefac.addWindowListener(new WindowAdapter() {
+
+            public void windowClosed(WindowEvent e) {
+                ControladorPrincipal princ = new ControladorPrincipal();
+                princ.iniciar(1);
+            }
+        });
     }
 
     public void agregarUsuario() {
@@ -158,17 +177,31 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
         prin.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
-    public void detalleFactura() {
+    public void detalleFactura(int fac) {
         agredefac.setVisible(true);
         agredefac.setLocationRelativeTo(null);
         agredefac.setTitle("Agregar Detalle Factura | Ventana");
-        agredefac.getTxtidfacom().setText(String.valueOf(mofaco.getIdfac()));
-        mofaco.mostrarDetalleFactura(agredefac.getjTableagredefa(), "", "");
+        agredefac.getTxtidfacom().setText(String.valueOf(fac));
 
+    }
+
+    public void ver_Factura(int fact) {
+        String dato[] = mofaco.buscarFacturaDetalle(fact, verdetallefac.getJtVerDetalleFactura());
+        verdetallefac.getLblFacturaTexto().setText(String.valueOf(fact));
+        verdetallefac.getLblProveedorTexto().setText(dato[1]);
+        verdetallefac.getLblUsuarioTexto().setText(dato[2]);
+        verdetallefac.getLblTipoDePagoTexto().setText(dato[3]);
+        verdetallefac.getLblComprobanteTexto().setText(dato[4]);
+        verdetallefac.getLblFechaTexto().setText(dato[5]);
+        verdetallefac.getLblImpuestoTexto().setText(dato[7]);
+        verdetallefac.getLblValorAPagarTexto().setText(dato[6]);
+        verdetallefac.setLocationRelativeTo(null);
+        verdetallefac.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         if (e.getSource().equals(agredefac.getBtproductos())) {
             JButton agr = new JButton("Añadir");
             agr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar.png")));
@@ -184,11 +217,33 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
                 public void actionPerformed(ActionEvent e) {
                     mofaco.agregarDatos(busprod.getjTablebuscarpro(), agredefac.getjTableagredefa());
                     buspro.setVisible(false);
+                    agredefac.setVisible(true);
+
                 }
 
             });
 
         }
+        if (e.getSource().equals(agredefac.getBtagregardetallefac())) {
+            JTable tabla = agredefac.getjTableagredefa();
+            try {
+                for (int i = 0; i < tabla.getRowCount(); i++) {
+                    mofaco.setIdfac(Integer.parseInt(agredefac.getTxtidfacom().getText()));
+                    mofaco.setIdprodu(Integer.parseInt(tabla.getValueAt(i, 0).toString()));
+                    mofaco.setCantidadcompra(Integer.parseInt(tabla.getValueAt(i, 3).toString()));
+                    mofaco.setPreciouni(Float.parseFloat(tabla.getValueAt(i, 4).toString()));
+
+                    mofaco.insertarFacturaComProducto();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            } finally {
+                agredefac.dispose();
+
+            }
+
+        }
+
         if (e.getSource().equals(newfac.getjButtonbuscarusu())) {
             newfac.setVisible(false);
             bususu.setLocationRelativeTo(null);
@@ -211,7 +266,7 @@ public class Controlador_Factura_Compra implements ActionListener, DocumentListe
                 JOptionPane.showConfirmDialog(null, "Hace Falta Informacion");
 
             } else {
-                mofaco.setCed(Integer.parseInt(newfac.getTxtcedufac().getText()));
+            mofaco.setCed(Integer.parseInt(newfac.getTxtcedufac().getText()));
                 mofaco.setIdusu(Integer.parseInt(newfac.getTxtidusu().getText()));
                 mofaco.setTipopago(newfac.getCbxtipopago().getSelectedItem().toString());
 

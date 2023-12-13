@@ -231,8 +231,19 @@ public class ModeloProducto {
         editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/descarga.png")));
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/borrar.png")));
         agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar.png")));
+        String[] titulo;
 
-        String[] titulo = {"Codigo", "nombre", "descripcion", "cantidad", "imagen", "precio"};
+        switch (nomPesta) {
+            case "producto":
+                titulo = new String[]{"Código", "NombreProd", "Descripcion", "Cantidad", "Imagen", "Precio Unitario"};
+                break;
+            case "factura":
+                titulo = new String[]{"Código", "NombreProd", "Descripcion", "Imagen", "Cantidad", "Precio Unitario"};
+                break;
+            default:
+                titulo = new String[]{"Código", "NombreProd", "Descripcion", "Imagen", "Cantidad", "Precio Unitario"};
+                break;
+        }
         int total = titulo.length;
         if (nomPesta.equals("producto")) {
             titulo = Arrays.copyOf(titulo, titulo.length + 2);
@@ -247,13 +258,13 @@ public class ModeloProducto {
 
         DefaultTableModel tablaProducto = new DefaultTableModel(null, titulo) {
             public boolean isCellEditable(int row, int column) {
-                if(nomPesta.equals("")){
-                    return column == 6;
-                }else{
-                   return false; 
+                if (nomPesta.equals("")) {
+                    if (column == 4 || column == 5 || column == 6) {
+                        return true;
+                    }
                 }
 
-                
+                return false;
             }
 
         };
@@ -284,15 +295,20 @@ public class ModeloProducto {
                 dato[2] = rs.getString(3);
                 dato[3] = rs.getString(4);
                 dato[5] = rs.getInt(6);
+                Object[] fila;
+                if (nomPesta.equals("producto")) {
 
-                Object[] fila = {dato[0], dato[1], dato[2], dato[3], dato[4], dato[5]};
+                    fila = new Object[]{dato[0], dato[1], dato[2], dato[3], dato[4], dato[5]};
+                } else {
+                    fila = new Object[]{dato[0], dato[1], dato[2], dato[4], 0, 0};
+                }
                 if (nomPesta.equals("producto")) {
                     fila = Arrays.copyOf(fila, fila.length + 2);
                     fila[fila.length - 2] = editar;
                     fila[fila.length - 1] = eliminar;
 
-                }else{
-                    fila = Arrays.copyOf(fila, fila.length + 1);
+                } else {
+                    fila = Arrays.copyOf(fila, fila.length + 3);
                     fila[fila.length - 1] = false;
                 }
 
@@ -304,13 +320,13 @@ public class ModeloProducto {
             e.printStackTrace();
         }
         tabla.setModel(tablaProducto);
-        
+
         int numColumnas = tabla.getColumnCount();
         if (!nomPesta.equals("producto")) {
-        int col = numColumnas-1;
-        TableColumn tc= tabla.getColumnModel().getColumn(col);
-        tc.setCellEditor(tabla.getDefaultEditor(Boolean.class));
-        tc.setCellRenderer(tabla.getDefaultRenderer(Boolean.class));
+            int col = numColumnas - 1;
+            TableColumn tc = tabla.getColumnModel().getColumn(col);
+            tc.setCellEditor(tabla.getDefaultEditor(Boolean.class));
+            tc.setCellRenderer(tabla.getDefaultRenderer(Boolean.class));
         }
         //Darle tamaño a cada columna
         int[] tamanos = {180, 80, 80, 100, 80, 100, 100, 100};
